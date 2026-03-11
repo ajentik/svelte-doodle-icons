@@ -1,6 +1,6 @@
 # doo-iconik
 
-606+ hand-drawn doodle style SVG icons for any framework.
+592+ hand-drawn doodle style SVG icons for any framework.
 
 ## Packages
 
