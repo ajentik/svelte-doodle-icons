@@ -20,7 +20,7 @@
     "build": "tsup src/index.tsx --format esm,cjs --dts"
   },
   "dependencies": {
-    "@doo-iconik/core": "workspace:*"
+    "@doo-iconik/core": "file:../core"
   },
   "peerDependencies": {
     "preact": "^10.0.0"

@@ -20,7 +20,7 @@
     "build": "tsup src/index.tsx --format esm,cjs --dts --external @builder.io/qwik"
   },
   "dependencies": {
-    "@doo-iconik/core": "workspace:*"
+    "@doo-iconik/core": "file:../core"
   },
   "peerDependencies": {
     "@builder.io/qwik": "^1.5.0 || ^2.0.0"

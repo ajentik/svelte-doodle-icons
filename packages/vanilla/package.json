@@ -19,7 +19,7 @@
     "build": "tsup src/index.ts --format esm,cjs,iife --global-name DooIconik --dts"
   },
   "dependencies": {
-    "@doo-iconik/core": "workspace:*"
+    "@doo-iconik/core": "file:../core"
   },
   "devDependencies": {
     "tsup": "^8.0.0",

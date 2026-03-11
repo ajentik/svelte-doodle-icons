@@ -7,7 +7,7 @@
     "build": "ng-packagr -p ng-package.json"
   },
   "dependencies": {
-    "@doo-iconik/core": "workspace:*"
+    "@doo-iconik/core": "file:../core"
   },
   "peerDependencies": {
     "@angular/core": ">=16.0.0",

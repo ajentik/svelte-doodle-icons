@@ -19,7 +19,7 @@
     "build": "tsup src/index.ts --format esm,cjs --dts"
   },
   "dependencies": {
-    "@doo-iconik/core": "workspace:*"
+    "@doo-iconik/core": "file:../core"
   },
   "peerDependencies": {
     "vue": "^3.3.0"

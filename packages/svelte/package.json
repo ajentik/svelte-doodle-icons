@@ -20,7 +20,7 @@
     "build": "svelte-package -i src -o dist"
   },
   "dependencies": {
-    "@doo-iconik/core": "workspace:*"
+    "@doo-iconik/core": "file:../core"
   },
   "peerDependencies": {
     "svelte": "^5.0.0"
