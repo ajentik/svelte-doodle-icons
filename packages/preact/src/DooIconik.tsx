@@ -1,7 +1,7 @@
 import { h, FunctionComponent } from 'preact';
 import { useEffect } from 'preact/hooks';
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, animationCSS } from '@doo-iconik/core';
-import type { DooIconikName, DooIconikSize } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
 import type { JSX } from 'preact';
 
 export interface DooIconikProps extends Omit<JSX.SVGAttributes<SVGSVGElement>, 'size'> {
@@ -12,6 +12,8 @@ export interface DooIconikProps extends Omit<JSX.SVGAttributes<SVGSVGElement>, '
   bounce?: boolean;
   flipHorizontal?: boolean;
   flipVertical?: boolean;
+  variant?: DooIconikVariant;
+  animation?: DooIconikAnimation;
 }
 
 let stylesInjected = false;
@@ -24,6 +26,8 @@ export const DooIconik: FunctionComponent<DooIconikProps> = ({
   bounce = false,
   flipHorizontal = false,
   flipVertical = false,
+  variant,
+  animation,
   class: className,
   ...rest
 }) => {
@@ -43,9 +47,10 @@ export const DooIconik: FunctionComponent<DooIconikProps> = ({
   if (!icon) return null;
 
   const px = resolveSize(size);
-  const animClass = buildAnimationClasses(spin, pulse, bounce);
+  const animClass = buildAnimationClasses(spin, pulse, bounce, animation);
+  const variantClass = buildVariantClass(variant);
   const transforms = buildTransform(flipHorizontal, flipVertical);
-  const classes = [animClass, className].filter(Boolean).join(' ');
+  const classes = [variantClass, animClass, className].filter(Boolean).join(' ');
 
   return h('svg', {
     xmlns: 'http://www.w3.org/2000/svg',

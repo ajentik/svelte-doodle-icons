@@ -1,6 +1,6 @@
 ---
-import type { DooIconikName, DooIconikSize } from '@doo-iconik/core';
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, animationCSS } from '@doo-iconik/core';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
 
 interface Props {
   name: DooIconikName;
@@ -10,6 +10,8 @@ interface Props {
   bounce?: boolean;
   flipHorizontal?: boolean;
   flipVertical?: boolean;
+  variant?: DooIconikVariant;
+  animation?: DooIconikAnimation;
   class?: string;
   [key: string]: any;
 }
@@ -22,6 +24,8 @@ const {
   bounce = false,
   flipHorizontal = false,
   flipVertical = false,
+  variant,
+  animation,
   class: className = '',
   ...rest
 } = Astro.props;
@@ -29,9 +33,10 @@ const {
 const icon = iconData[name];
 const pixelSize = resolveSize(size);
 const transforms = buildTransform(flipHorizontal, flipVertical);
-const animClass = buildAnimationClasses(spin, pulse, bounce);
-const classes = [animClass, className].filter(Boolean).join(' ');
-const needsAnimation = spin || pulse || bounce;
+const animClass = buildAnimationClasses(spin, pulse, bounce, animation);
+const variantClass = buildVariantClass(variant);
+const classes = [variantClass, animClass, className].filter(Boolean).join(' ');
+const needsAnimation = spin || pulse || bounce || !!animation || !!variant;
 ---
 
 {icon && (

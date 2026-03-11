@@ -1,6 +1,6 @@
 import type { Alpine as AlpineType } from 'alpinejs';
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, animationCSS } from '@doo-iconik/core';
-import type { DooIconikName, DooIconikSize } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
 
 // Inject animation styles once
 function injectStyles() {
@@ -19,12 +19,16 @@ function renderIcon(el: HTMLElement, name: DooIconikName, options: {
   bounce?: boolean;
   flipHorizontal?: boolean;
   flipVertical?: boolean;
+  variant?: DooIconikVariant;
+  animation?: DooIconikAnimation;
 } = {}) {
   const icon = iconData[name];
   if (!icon) { el.innerHTML = ''; return; }
 
   const px = resolveSize(options.size ?? 'md');
-  const cls = buildAnimationClasses(options.spin ?? false, options.pulse ?? false, options.bounce ?? false);
+  const cls = buildAnimationClasses(options.spin ?? false, options.pulse ?? false, options.bounce ?? false, options.animation);
+  const variantCls = buildVariantClass(options.variant);
+  const allClasses = [variantCls, cls].filter(Boolean).join(' ');
   const transform = buildTransform(options.flipHorizontal ?? false, options.flipVertical ?? false);
 
   const strokeAttrs = icon.stroke
@@ -35,7 +39,7 @@ function renderIcon(el: HTMLElement, name: DooIconikName, options: {
   const circles = (icon.circles || []).map(c => `<circle cx="${c.cx}" cy="${c.cy}" r="${c.r}"/>`).join('');
   const lines = (icon.lines || []).map(l => `<line x1="${l.x1}" y1="${l.y1}" x2="${l.x2}" y2="${l.y2}"/>`).join('');
 
-  el.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${icon.viewBox}" width="${px}" height="${px}" ${strokeAttrs} class="${cls}" ${transform ? `style="transform: ${transform}"` : ''} aria-hidden="true">${paths}${circles}${lines}</svg>`;
+  el.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${icon.viewBox}" width="${px}" height="${px}" ${strokeAttrs} class="${allClasses}" ${transform ? `style="transform: ${transform}"` : ''} aria-hidden="true">${paths}${circles}${lines}</svg>`;
 }
 
 /**
@@ -72,6 +76,8 @@ export default function dooIconikPlugin(Alpine: AlpineType) {
       else if (mod === 'bounce') options.bounce = true;
       else if (mod === 'flip-horizontal' || mod === 'fliph') options.flipHorizontal = true;
       else if (mod === 'flip-vertical' || mod === 'flipv') options.flipVertical = true;
+      else if (['glow', 'neon', 'shadow', 'embossed', 'glass', 'outline', 'retro'].includes(mod)) options.variant = mod;
+      else if (['wiggle', 'shake', 'float', 'heartbeat', 'tada', 'rubber', 'swing', 'jello'].includes(mod)) options.animation = mod;
     }
 
     renderIcon(el as HTMLElement, name, options);
@@ -84,7 +90,9 @@ export default function dooIconikPlugin(Alpine: AlpineType) {
       if (!icon) return '';
 
       const px = resolveSize(options?.size ?? 'md');
-      const cls = buildAnimationClasses(options?.spin ?? false, options?.pulse ?? false, options?.bounce ?? false);
+      const cls = buildAnimationClasses(options?.spin ?? false, options?.pulse ?? false, options?.bounce ?? false, options?.animation);
+      const variantCls = buildVariantClass(options?.variant);
+      const allClasses = [variantCls, cls].filter(Boolean).join(' ');
       const transform = buildTransform(options?.flipHorizontal ?? false, options?.flipVertical ?? false);
 
       const strokeAttrs = icon.stroke
@@ -95,11 +103,11 @@ export default function dooIconikPlugin(Alpine: AlpineType) {
       const circles = (icon.circles || []).map((c: any) => `<circle cx="${c.cx}" cy="${c.cy}" r="${c.r}"/>`).join('');
       const lines = (icon.lines || []).map((l: any) => `<line x1="${l.x1}" y1="${l.y1}" x2="${l.x2}" y2="${l.y2}"/>`).join('');
 
-      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${icon.viewBox}" width="${px}" height="${px}" ${strokeAttrs} class="${cls}" ${transform ? `style="transform: ${transform}"` : ''} aria-hidden="true">${paths}${circles}${lines}</svg>`;
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${icon.viewBox}" width="${px}" height="${px}" ${strokeAttrs} class="${allClasses}" ${transform ? `style="transform: ${transform}"` : ''} aria-hidden="true">${paths}${circles}${lines}</svg>`;
     };
   });
 }
 
 // Re-export for convenience
 export { iconData, resolveSize } from '@doo-iconik/core';
-export type { DooIconikName, DooIconikSize, DooIconikCategory, IconData } from '@doo-iconik/core';
+export type { DooIconikName, DooIconikSize, DooIconikCategory, DooIconikVariant, DooIconikAnimation, IconData } from '@doo-iconik/core';

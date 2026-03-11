@@ -39,6 +39,8 @@ class IconRepository
         bool $bounce = false,
         bool $flipHorizontal = false,
         bool $flipVertical = false,
+        string $variant = 'default',
+        ?string $animation = null,
         string $class = '',
         array $attributes = []
     ): HtmlString {
@@ -48,9 +50,16 @@ class IconRepository
         $px = is_numeric($size) ? (int) $size : (self::SIZES[$size] ?? 24);
 
         $classes = [];
-        if ($spin) $classes[] = 'doo-iconik-spin';
-        if ($pulse) $classes[] = 'doo-iconik-pulse';
-        if ($bounce) $classes[] = 'doo-iconik-bounce';
+        if ($animation) {
+            $classes[] = 'doo-iconik-' . $animation;
+        } else {
+            if ($spin) $classes[] = 'doo-iconik-spin';
+            if ($pulse) $classes[] = 'doo-iconik-pulse';
+            if ($bounce) $classes[] = 'doo-iconik-bounce';
+        }
+        if ($variant && $variant !== 'default') {
+            $classes[] = 'doo-iconik-' . $variant;
+        }
         if ($class) $classes[] = $class;
         $classStr = implode(' ', $classes);
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, animationCSS } from '@doo-iconik/core';
-import type { DooIconikName, DooIconikSize } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
 
 const props = withDefaults(defineProps<{
   name: DooIconikName;
@@ -11,6 +11,8 @@ const props = withDefaults(defineProps<{
   bounce?: boolean;
   flipHorizontal?: boolean;
   flipVertical?: boolean;
+  variant?: DooIconikVariant;
+  animation?: DooIconikAnimation;
 }>(), {
   size: 'md',
   spin: false,
@@ -18,12 +20,15 @@ const props = withDefaults(defineProps<{
   bounce: false,
   flipHorizontal: false,
   flipVertical: false,
+  variant: undefined,
+  animation: undefined,
 });
 
 const icon = computed(() => iconData[props.name]);
 const pixelSize = computed(() => resolveSize(props.size));
 const transforms = computed(() => buildTransform(props.flipHorizontal, props.flipVertical));
-const animClass = computed(() => buildAnimationClasses(props.spin, props.pulse, props.bounce));
+const animClass = computed(() => buildAnimationClasses(props.spin, props.pulse, props.bounce, props.animation));
+const variantClass = computed(() => buildVariantClass(props.variant));
 
 // Inject animation CSS once
 onMounted(() => {
@@ -48,7 +53,7 @@ onMounted(() => {
     :stroke-width="icon.stroke ? 2 : undefined"
     :stroke-linecap="icon.stroke ? 'round' : undefined"
     :stroke-linejoin="icon.stroke ? 'round' : undefined"
-    :class="animClass"
+    :class="[variantClass, animClass].filter(Boolean).join(' ')"
     :style="transforms ? { transform: transforms } : undefined"
     aria-hidden="true"
   >

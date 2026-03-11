@@ -1,7 +1,7 @@
 import { Component, createMemo, onMount, splitProps, JSX } from 'solid-js';
 import { For, Show } from 'solid-js/web';
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, animationCSS } from '@doo-iconik/core';
-import type { DooIconikName, DooIconikSize } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
 
 export interface DooIconikProps extends JSX.SvgSVGAttributes<SVGSVGElement> {
   name: DooIconikName;
@@ -11,15 +11,18 @@ export interface DooIconikProps extends JSX.SvgSVGAttributes<SVGSVGElement> {
   bounce?: boolean;
   flipHorizontal?: boolean;
   flipVertical?: boolean;
+  variant?: DooIconikVariant;
+  animation?: DooIconikAnimation;
 }
 
 export const DooIconik: Component<DooIconikProps> = (props) => {
-  const [local, svgProps] = splitProps(props, ['name', 'size', 'spin', 'pulse', 'bounce', 'flipHorizontal', 'flipVertical', 'class']);
+  const [local, svgProps] = splitProps(props, ['name', 'size', 'spin', 'pulse', 'bounce', 'flipHorizontal', 'flipVertical', 'variant', 'animation', 'class']);
 
   const icon = createMemo(() => iconData[local.name]);
   const pixelSize = createMemo(() => resolveSize(local.size ?? 'md'));
   const transforms = createMemo(() => buildTransform(local.flipHorizontal ?? false, local.flipVertical ?? false));
-  const animClass = createMemo(() => buildAnimationClasses(local.spin ?? false, local.pulse ?? false, local.bounce ?? false));
+  const animClass = createMemo(() => buildAnimationClasses(local.spin ?? false, local.pulse ?? false, local.bounce ?? false, local.animation));
+  const variantClass = createMemo(() => buildVariantClass(local.variant));
 
   onMount(() => {
     if (typeof document !== 'undefined' && !document.getElementById('doo-iconik-styles')) {
@@ -43,7 +46,7 @@ export const DooIconik: Component<DooIconikProps> = (props) => {
           stroke-width={iconData().stroke ? 2 : undefined}
           stroke-linecap={iconData().stroke ? 'round' : undefined}
           stroke-linejoin={iconData().stroke ? 'round' : undefined}
-          class={`${animClass()} ${local.class || ''}`.trim()}
+          class={[variantClass(), animClass(), local.class].filter(Boolean).join(' ') || undefined}
           style={transforms() ? { transform: transforms() } : undefined}
           aria-hidden="true"
           {...svgProps}

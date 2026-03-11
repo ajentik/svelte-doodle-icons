@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, animationCSS } from '@doo-iconik/core';
-import type { DooIconikName, DooIconikSize } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
 
 @Component({
   selector: 'doo-iconik',
@@ -19,6 +19,8 @@ export class DooIconikComponent implements OnInit, OnChanges {
   @Input() bounce = false;
   @Input() flipHorizontal = false;
   @Input() flipVertical = false;
+  @Input() variant?: DooIconikVariant;
+  @Input() animation?: DooIconikAnimation;
 
   svgContent: SafeHtml = '';
 
@@ -51,7 +53,9 @@ export class DooIconikComponent implements OnInit, OnChanges {
     if (!icon) { this.svgContent = ''; return; }
 
     const px = resolveSize(this.size);
-    const cls = buildAnimationClasses(this.spin, this.pulse, this.bounce);
+    const animCls = buildAnimationClasses(this.spin, this.pulse, this.bounce, this.animation);
+    const variantCls = buildVariantClass(this.variant);
+    const cls = [variantCls, animCls].filter(Boolean).join(' ');
     const transform = buildTransform(this.flipHorizontal, this.flipVertical);
 
     const strokeAttrs = icon.stroke

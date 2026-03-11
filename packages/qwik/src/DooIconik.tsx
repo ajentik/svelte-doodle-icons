@@ -1,6 +1,6 @@
 import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, animationCSS } from '@doo-iconik/core';
-import type { DooIconikName, DooIconikSize } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
 
 interface DooIconikProps {
   name: DooIconikName;
@@ -10,6 +10,8 @@ interface DooIconikProps {
   bounce?: boolean;
   flipHorizontal?: boolean;
   flipVertical?: boolean;
+  variant?: DooIconikVariant;
+  animation?: DooIconikAnimation;
   class?: string;
 }
 
@@ -22,6 +24,8 @@ export const DooIconik = component$<DooIconikProps>((props) => {
     bounce = false,
     flipHorizontal = false,
     flipVertical = false,
+    variant,
+    animation,
     class: className = '',
   } = props;
 
@@ -38,9 +42,10 @@ export const DooIconik = component$<DooIconikProps>((props) => {
   if (!icon) return null;
 
   const px = resolveSize(size);
-  const cls = buildAnimationClasses(spin, pulse, bounce);
+  const cls = buildAnimationClasses(spin, pulse, bounce, animation);
+  const variantCls = buildVariantClass(variant);
   const transform = buildTransform(flipHorizontal, flipVertical);
-  const classes = [cls, className].filter(Boolean).join(' ');
+  const classes = [variantCls, cls, className].filter(Boolean).join(' ');
 
   return (
     <svg

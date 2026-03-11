@@ -3,12 +3,13 @@
 module DooIconik
   module Helper
     def doo_iconik(name, size: :md, spin: false, pulse: false, bounce: false,
-                   flip_horizontal: false, flip_vertical: false, **html_options)
+                   flip_horizontal: false, flip_vertical: false,
+                   variant: :default, animation: nil, **html_options)
       icon = DooIconik.icon(name)
       return nil unless icon
 
       pixel_size = resolve_size(size)
-      classes = build_classes(spin, pulse, bounce, html_options.delete(:class))
+      classes = build_classes(spin, pulse, bounce, animation, variant, html_options.delete(:class))
       transform = build_transform(flip_horizontal, flip_vertical)
 
       svg_attrs = {
@@ -51,11 +52,16 @@ module DooIconik
       DooIconik::SIZES[size.to_sym] || 24
     end
 
-    def build_classes(spin, pulse, bounce, extra_class)
+    def build_classes(spin, pulse, bounce, animation, variant, extra_class)
       classes = []
-      classes << 'doo-iconik-spin' if spin
-      classes << 'doo-iconik-pulse' if pulse
-      classes << 'doo-iconik-bounce' if bounce
+      if animation
+        classes << "doo-iconik-#{animation}"
+      else
+        classes << 'doo-iconik-spin' if spin
+        classes << 'doo-iconik-pulse' if pulse
+        classes << 'doo-iconik-bounce' if bounce
+      end
+      classes << "doo-iconik-#{variant}" if variant && variant.to_s != 'default'
       classes << extra_class if extra_class.present?
       classes.join(' ')
     end

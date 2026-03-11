@@ -615,3 +615,26 @@ export type DooIconikCategory =
   | 'technology'
   | 'userinterface'
   | 'weather';
+
+export type DooIconikVariant =
+  | 'default'
+  | 'glow'
+  | 'neon'
+  | 'shadow'
+  | 'embossed'
+  | 'glass'
+  | 'outline'
+  | 'retro';
+
+export type DooIconikAnimation =
+  | 'spin'
+  | 'pulse'
+  | 'bounce'
+  | 'wiggle'
+  | 'shake'
+  | 'float'
+  | 'heartbeat'
+  | 'tada'
+  | 'rubber'
+  | 'swing'
+  | 'jello';

@@ -1,9 +1,9 @@
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, animationCSS } from '@doo-iconik/core';
-import type { DooIconikName, DooIconikSize } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
 
 export class DooIconikElement extends HTMLElement {
   static get observedAttributes() {
-    return ['name', 'size', 'spin', 'pulse', 'bounce', 'flip-horizontal', 'flip-vertical'];
+    return ['name', 'size', 'spin', 'pulse', 'bounce', 'flip-horizontal', 'flip-vertical', 'variant', 'animation'];
   }
 
   private shadow: ShadowRoot;
@@ -35,8 +35,12 @@ export class DooIconikElement extends HTMLElement {
     const bounce = this.hasAttribute('bounce');
     const flipH = this.hasAttribute('flip-horizontal');
     const flipV = this.hasAttribute('flip-vertical');
+    const variant = (this.getAttribute('variant') || undefined) as DooIconikVariant | undefined;
+    const animation = (this.getAttribute('animation') || undefined) as DooIconikAnimation | undefined;
 
-    const animClass = buildAnimationClasses(spin, pulse, bounce);
+    const animClass = buildAnimationClasses(spin, pulse, bounce, animation);
+    const variantClass = buildVariantClass(variant);
+    const cls = [variantClass, animClass].filter(Boolean).join(' ');
     const transform = buildTransform(flipH, flipV);
 
     const strokeAttrs = icon.stroke
@@ -53,7 +57,7 @@ export class DooIconikElement extends HTMLElement {
         viewBox="${icon.viewBox}"
         width="${pixelSize}" height="${pixelSize}"
         ${strokeAttrs}
-        class="${animClass}"
+        class="${cls}"
         ${transform ? `style="transform: ${transform}"` : ''}
         aria-hidden="true">
         ${paths}${circles}${lines}

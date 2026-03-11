@@ -4,9 +4,10 @@ import {
   resolveSize,
   buildTransform,
   buildAnimationClasses,
+  buildVariantClass,
   animationCSS,
 } from '@doo-iconik/core';
-import type { DooIconikName, DooIconikSize } from '@doo-iconik/core';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
 
 let cssInjected = false;
 
@@ -27,6 +28,8 @@ export interface DooIconikProps extends Omit<React.SVGProps<SVGSVGElement>, 'nam
   bounce?: boolean;
   flipHorizontal?: boolean;
   flipVertical?: boolean;
+  variant?: DooIconikVariant;
+  animation?: DooIconikAnimation;
 }
 
 export const DooIconik = forwardRef<SVGSVGElement, DooIconikProps>(function DooIconik(
@@ -38,6 +41,8 @@ export const DooIconik = forwardRef<SVGSVGElement, DooIconikProps>(function DooI
     bounce = false,
     flipHorizontal = false,
     flipVertical = false,
+    variant,
+    animation,
     className,
     style,
     ...rest
@@ -53,9 +58,10 @@ export const DooIconik = forwardRef<SVGSVGElement, DooIconikProps>(function DooI
 
   const pixelSize = resolveSize(size);
   const transform = buildTransform(flipHorizontal, flipVertical);
-  const animClasses = buildAnimationClasses(spin, pulse, bounce);
+  const animClasses = buildAnimationClasses(spin, pulse, bounce, animation);
+  const variantClass = buildVariantClass(variant);
 
-  const combinedClassName = [animClasses, className].filter(Boolean).join(' ') || undefined;
+  const combinedClassName = [variantClass, animClasses, className].filter(Boolean).join(' ') || undefined;
 
   const combinedStyle: React.CSSProperties = {
     ...style,

@@ -1,11 +1,11 @@
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, animationCSS } from '@doo-iconik/core';
-import type { DooIconikName, DooIconikSize } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
 import { DooIconikElement } from './DooIconik.js';
 
 export { DooIconikElement } from './DooIconik.js';
 
-export type { DooIconikName, DooIconikSize, DooIconikCategory, IconData } from '@doo-iconik/core';
-export { iconData, sizeMap, resolveSize, buildTransform, buildAnimationClasses, animationCSS } from '@doo-iconik/core';
+export type { DooIconikName, DooIconikSize, DooIconikCategory, DooIconikVariant, DooIconikAnimation, IconData } from '@doo-iconik/core';
+export { iconData, sizeMap, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
 
 /**
  * Register the `<doo-iconik>` custom element.
@@ -30,6 +30,8 @@ export function createIcon(
     bounce?: boolean;
     flipHorizontal?: boolean;
     flipVertical?: boolean;
+    variant?: DooIconikVariant;
+    animation?: DooIconikAnimation;
     className?: string;
   }
 ): SVGSVGElement | null {
@@ -41,8 +43,10 @@ export function createIcon(
   const animClass = buildAnimationClasses(
     opts.spin ?? false,
     opts.pulse ?? false,
-    opts.bounce ?? false
+    opts.bounce ?? false,
+    opts.animation
   );
+  const variantClass = buildVariantClass(opts.variant);
   const transform = buildTransform(
     opts.flipHorizontal ?? false,
     opts.flipVertical ?? false
@@ -66,7 +70,7 @@ export function createIcon(
     svg.setAttribute('fill', 'currentColor');
   }
 
-  const classes = [animClass, opts.className].filter(Boolean).join(' ');
+  const classes = [variantClass, animClass, opts.className].filter(Boolean).join(' ');
   if (classes) svg.setAttribute('class', classes);
   if (transform) svg.style.transform = transform;
 

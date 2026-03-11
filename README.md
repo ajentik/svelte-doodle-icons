@@ -213,6 +213,8 @@ All framework components share the same props:
 | `bounce` | `boolean` | `false` | Bounce animation |
 | `flipHorizontal` | `boolean` | `false` | Mirror horizontally |
 | `flipVertical` | `boolean` | `false` | Mirror vertically |
+| `variant` | `DooIconikVariant` | `undefined` | Visual style variant (see table below) |
+| `animation` | `DooIconikAnimation` | `undefined` | Animation preset (see table below) |
 
 ### Size presets
 
@@ -224,6 +226,57 @@ All framework components share the same props:
 | `lg` | 32px |
 | `xl` | 48px |
 | `2xl` | 64px |
+
+### Style variants
+
+Apply visual effects via the `variant` prop:
+
+| Variant | Effect |
+|---------|--------|
+| `default` | No effect |
+| `glow` | Soft glow using current color |
+| `neon` | Intense neon sign effect (4-layer glow) |
+| `shadow` | Drop shadow for depth |
+| `embossed` | Light + dark opposing shadows |
+| `glass` | Semi-transparent with subtle shadow |
+| `outline` | Forces stroke-only rendering |
+| `retro` | Sepia-toned vintage look |
+
+```jsx
+<DooIconik name="heart" variant="glow" />
+<DooIconik name="star" variant="neon" />
+<DooIconik name="shield" variant="embossed" />
+```
+
+### Animation presets
+
+Use the `animation` prop for expanded animation options. When set, it takes precedence over the boolean `spin`/`pulse`/`bounce` props.
+
+| Animation | Effect |
+|-----------|--------|
+| `spin` | Continuous 360° rotation |
+| `pulse` | Fade in/out |
+| `bounce` | Vertical bounce |
+| `wiggle` | Gentle rotation wiggle |
+| `shake` | Horizontal shake |
+| `float` | Smooth floating motion |
+| `heartbeat` | Double-beat scaling |
+| `tada` | Attention-grabbing entrance |
+| `rubber` | Rubber band stretch |
+| `swing` | Pendulum swing from top |
+| `jello` | Jelly-like skew |
+
+```jsx
+// New animation prop
+<DooIconik name="heart" animation="heartbeat" />
+<DooIconik name="bell" animation="swing" />
+
+// Boolean props still work (backward compatible)
+<DooIconik name="loader" spin />
+
+// Combine variant + animation
+<DooIconik name="star" variant="neon" animation="tada" />
+```
 
 ## Icon categories
 
