@@ -4,8 +4,12 @@
 import { readFileSync, writeFileSync } from 'fs';
 
 // Read existing icon data
-const mainIcons = JSON.parse(readFileSync('/Users/Vernes/svelte-doodle-icons/icon-data-raw.json', 'utf-8'));
-const healthcareIcons = JSON.parse(readFileSync('/Users/Vernes/svelte-doodle-icons/healthcare-icons.json', 'utf-8'));
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const mainIcons = JSON.parse(readFileSync(join(__dirname, 'icon-data-raw.json'), 'utf-8'));
+const healthcareIcons = JSON.parse(readFileSync(join(__dirname, 'healthcare-icons.json'), 'utf-8'));
 
 console.log(`Main icons: ${Object.keys(mainIcons).length}`);
 console.log(`Healthcare icons: ${Object.keys(healthcareIcons).length}`);
@@ -26,7 +30,7 @@ console.log(`Added: ${added}, Skipped (duplicates): ${skipped}`);
 console.log(`Total icons: ${Object.keys(mainIcons).length}`);
 
 // Write merged data
-writeFileSync('/Users/Vernes/svelte-doodle-icons/icon-data-raw.json', JSON.stringify(mainIcons, null, 2));
+writeFileSync(join(__dirname, 'icon-data-raw.json'), JSON.stringify(mainIcons, null, 2));
 
 // Generate types.ts
 const allNames = Object.keys(mainIcons).sort();
@@ -38,7 +42,7 @@ typesContent += `export type DoodleIconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' |
 typesContent += 'export type DoodleIconCategory =\n';
 typesContent += allCategories.map(c => `  | '${c}'`).join('\n') + ';\n';
 
-writeFileSync('/Users/Vernes/svelte-doodle-icons/src/lib/types.ts', typesContent);
+writeFileSync(join(__dirname, 'src/lib/types.ts'), typesContent);
 
 // Generate icon-data.ts
 let dataContent = '// Auto-generated — do not edit manually\n\n';
@@ -65,7 +69,7 @@ for (const name of allNames) {
 
 dataContent += '};\n';
 
-writeFileSync('/Users/Vernes/svelte-doodle-icons/src/lib/icon-data.ts', dataContent);
+writeFileSync(join(__dirname, 'src/lib/icon-data.ts'), dataContent);
 
 console.log(`\nRegenerated types.ts (${allNames.length} names) and icon-data.ts`);
 console.log(`Categories: ${allCategories.join(', ')}`);

@@ -3,8 +3,11 @@
  * Uses a more robust approach to extract function bodies
  */
 import { readFileSync, writeFileSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const source = readFileSync('/Users/Vernes/ajentik.com/node_modules/doodle-icons/build/index.es.js', 'utf-8');
+const source = readFileSync(join(__dirname, '../ajentik.com/node_modules/doodle-icons/build/index.es.js'), 'utf-8');
 
 // Step 1: Find all "var SvgXxx = function (props)" declarations
 const declRegex = /var (Svg\w+(?:\$\d+)?)\s*=\s*function\s*\(props\)\s*\{/g;
@@ -147,8 +150,8 @@ console.log(`\nTotal: ${totalMapped} mapped, ${totalMissing} missing`);
 console.log(`Final icon count: ${Object.keys(finalIcons).length}`);
 
 // Write outputs
-writeFileSync('/Users/Vernes/svelte-doodle-icons/icon-data-raw.json', JSON.stringify(finalIcons, null, 2));
-writeFileSync('/Users/Vernes/svelte-doodle-icons/icon-names.json', JSON.stringify(Object.keys(finalIcons).sort(), null, 2));
+writeFileSync(join(__dirname, 'icon-data-raw.json'), JSON.stringify(finalIcons, null, 2));
+writeFileSync(join(__dirname, 'icon-names.json'), JSON.stringify(Object.keys(finalIcons).sort(), null, 2));
 
 // Summary by category
 const summary = {};
@@ -162,5 +165,5 @@ for (const [cat, names] of Object.entries(summary).sort()) {
   console.log(`  ${cat} (${names.length}): ${names.slice(0, 5).join(', ')}...`);
 }
 
-writeFileSync('/Users/Vernes/svelte-doodle-icons/categories.json', JSON.stringify(summary, null, 2));
+writeFileSync(join(__dirname, 'categories.json'), JSON.stringify(summary, null, 2));
 console.log('\nDone!');

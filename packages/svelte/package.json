@@ -33,7 +33,7 @@
   "keywords": ["icons", "doodle", "hand-drawn", "svelte", "doo-iconik"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ajentik/svelte-doodle-icons.git",
+    "url": "https://github.com/ajentik/doo-iconik.git",
     "directory": "packages/svelte"
   }
 }
