@@ -1,5 +1,5 @@
 // Compatibility entry point for svelte-doodle-icons consumers
-// Re-exports with legacy DoodleIcon naming
+// Self-contained — does not depend on workspace packages
 
-export { default as DoodleIcon } from './packages/svelte/src/DooIconik.svelte';
+export { default as DoodleIcon } from './DoodleIcon.svelte';
 export { iconData } from './packages/core/src/icon-data.js';
