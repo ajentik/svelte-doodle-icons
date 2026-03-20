@@ -2,6 +2,17 @@
   "name": "doo-iconik",
   "private": true,
   "type": "module",
+  "svelte": "./packages/svelte/src/DooIconik.svelte",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "svelte": "./packages/svelte/src/DooIconik.svelte",
+      "types": "./index.d.ts",
+      "import": "./index.js",
+      "default": "./index.js"
+    }
+  },
   "workspaces": ["packages/*"],
   "scripts": {
     "generate": "node generate.mjs",
