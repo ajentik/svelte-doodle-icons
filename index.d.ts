@@ -1,4 +1,17 @@
 // Type definitions for svelte-doodle-icons compatibility
-export { DooIconikName as DoodleIconName, DooIconikSize as DoodleIconSize, DooIconikCategory as DoodleIconCategory } from './packages/core/src/types.js';
-export { iconData } from './packages/core/src/icon-data.js';
-export { default as DoodleIcon } from './packages/svelte/src/DooIconik.svelte';
+import type { SvelteComponent } from 'svelte';
+
+export type DoodleIconName = string;
+export type DoodleIconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+export type DoodleIconCategory = string;
+
+export interface IconData {
+  viewBox: string;
+  paths: string[];
+  circles?: { cx: number; cy: number; r: number }[];
+  lines?: { x1: number; y1: number; x2: number; y2: number }[];
+  stroke?: boolean;
+}
+
+export declare const iconData: Record<string, IconData>;
+export declare const DoodleIcon: typeof SvelteComponent;
