@@ -1,0 +1,22 @@
+name: Sync Icons to ajentik-svelte
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'icon-data-raw.json'
+      - 'packages/core/src/icon-data.ts'
+      - 'categories.json'
+  workflow_dispatch:
+
+jobs:
+  trigger-ajentik-rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger ajentik-svelte icon sync
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.CROSS_REPO_PAT }}
+          repository: ajentik/ajentik-svelte
+          event-type: icon-data-updated
+          client-payload: '{"ref": "${{ github.sha }}", "repo": "doo-iconik"}'
