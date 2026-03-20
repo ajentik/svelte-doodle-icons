@@ -2,12 +2,10 @@
   "name": "doo-iconik",
   "private": true,
   "type": "module",
-  "svelte": "./DoodleIcon.svelte",
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {
     ".": {
-      "svelte": "./DoodleIcon.svelte",
       "types": "./index.d.ts",
       "import": "./index.js",
       "default": "./index.js"
