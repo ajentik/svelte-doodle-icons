@@ -302,6 +302,18 @@ When `ariaLabel` is provided, the icon receives `role="img"` and `aria-label` an
 
 Icons span 19 categories: arrow, currency, ecommerce, elderlycare, emojis, files, finance, food, gendersymbols, handgestures, health, healthcare, interfaces, logos, misc, objects, technology, userinterface, weather.
 
+## Tree-Shaking
+
+Import individual icons for smaller bundles:
+
+```typescript
+// Only bundles the heart icon (~200 bytes)
+import { heart } from '@doo-iconik/core/icons/heart';
+
+// All icons (~212KB)
+import { iconData } from '@doo-iconik/core';
+```
+
 ## Development
 
 ```bash

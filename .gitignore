@@ -6,3 +6,6 @@ packages/*/dist/
 *.tsbuildinfo
 docs/icon-data-raw.json
 .sisyphus/
+
+# Auto-generated icon modules (run `npm run generate`)
+packages/core/src/icons/

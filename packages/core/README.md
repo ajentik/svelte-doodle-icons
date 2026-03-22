@@ -39,6 +39,18 @@ All framework wrappers built on `@doo-iconik/core` accept: `name`, `size`, `spin
 
 See the [main documentation](https://github.com/ajentik/doo-iconik#props) for full prop details.
 
+## Tree-Shaking
+
+Import individual icons for smaller bundles:
+
+```typescript
+// Only bundles the heart icon (~200 bytes)
+import { heart } from '@doo-iconik/core/icons/heart';
+
+// All icons (~212KB)
+import { iconData } from '@doo-iconik/core';
+```
+
 ## License
 
 MIT
