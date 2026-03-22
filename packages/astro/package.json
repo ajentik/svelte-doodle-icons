@@ -8,6 +8,9 @@
     ".": "./src/index.ts",
     "./DooIconik.astro": "./src/DooIconik.astro"
   },
+  "scripts": {
+    "build": "echo 'Astro package ships source — no build needed'"
+  },
   "files": ["src"],
   "dependencies": {
     "@doo-iconik/core": "file:../core"

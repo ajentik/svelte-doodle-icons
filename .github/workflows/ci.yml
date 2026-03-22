@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - run: npm install
+
+      - run: node generate.mjs
+
+      - run: node packages/flutter/scripts/generate-dart-icons.mjs
+
+      - run: node packages/laravel/scripts/sync-icons.mjs
+
+      - run: node packages/rails/scripts/sync-icons.mjs
+
+      - run: npm run build --workspace=packages/core
+
+      - name: Verify icon counts match across frameworks
+        run: |
+          RAW_COUNT=$(node -e "const d=JSON.parse(require('fs').readFileSync('icon-data-raw.json','utf8')); console.log(Object.keys(d).length)")
+          CORE_COUNT=$(grep -c '"viewBox"' packages/core/src/icon-data.ts)
+          FLUTTER_COUNT=$(grep -c "viewBox:" packages/flutter/lib/src/icon_data.dart)
+          LARAVEL_COUNT=$(node -e "const d=JSON.parse(require('fs').readFileSync('packages/laravel/data/icon-data.json','utf8')); console.log(Object.keys(d).length)")
+          RAILS_COUNT=$(node -e "const d=JSON.parse(require('fs').readFileSync('packages/rails/data/icon-data.json','utf8')); console.log(Object.keys(d).length)")
+
+          echo "icon-data-raw.json: $RAW_COUNT"
+          echo "core/icon-data.ts:  $CORE_COUNT"
+          echo "flutter/icon_data.dart: $FLUTTER_COUNT"
+          echo "laravel/icon-data.json: $LARAVEL_COUNT"
+          echo "rails/icon-data.json:   $RAILS_COUNT"
+
+          FAIL=0
+          for NAME_COUNT in "core:$CORE_COUNT" "flutter:$FLUTTER_COUNT" "laravel:$LARAVEL_COUNT" "rails:$RAILS_COUNT"; do
+            NAME="${NAME_COUNT%%:*}"
+            COUNT="${NAME_COUNT##*:}"
+            if [ "$COUNT" != "$RAW_COUNT" ]; then
+              echo "::error::$NAME count ($COUNT) does not match raw count ($RAW_COUNT)"
+              FAIL=1
+            fi
+          done
+
+          if [ "$FAIL" -eq 1 ]; then
+            exit 1
+          fi
+
+          echo "All icon counts match: $RAW_COUNT"

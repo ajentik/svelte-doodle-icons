@@ -2,15 +2,6 @@
   "name": "doo-iconik",
   "private": true,
   "type": "module",
-  "main": "./index.js",
-  "types": "./index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./index.d.ts",
-      "import": "./index.js",
-      "default": "./index.js"
-    }
-  },
   "workspaces": ["packages/*"],
   "scripts": {
     "generate": "node generate.mjs",
