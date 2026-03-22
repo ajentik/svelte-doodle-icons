@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "React component for doo-iconik hand-drawn icons",
   "license": "MIT",
+  "author": "Ajentik",
+  "homepage": "https://github.com/ajentik/doo-iconik/tree/main/packages/react",
+  "bugs": {
+    "url": "https://github.com/ajentik/doo-iconik/issues"
+  },
+  "sideEffects": false,
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

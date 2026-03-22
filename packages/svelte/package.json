@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "Svelte component for doo-iconik hand-drawn icons",
   "license": "MIT",
+  "author": "Ajentik",
+  "homepage": "https://github.com/ajentik/doo-iconik/tree/main/packages/svelte",
+  "bugs": {
+    "url": "https://github.com/ajentik/doo-iconik/issues"
+  },
+  "sideEffects": false,
   "type": "module",
   "svelte": "./dist/DooIconik.svelte",
   "main": "./dist/index.js",

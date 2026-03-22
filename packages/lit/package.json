@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "Lit adapter (Web Component) for doo-iconik icons",
   "license": "MIT",
+  "author": "Ajentik",
+  "homepage": "https://github.com/ajentik/doo-iconik/tree/main/packages/lit",
+  "bugs": {
+    "url": "https://github.com/ajentik/doo-iconik/issues"
+  },
+  "sideEffects": false,
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

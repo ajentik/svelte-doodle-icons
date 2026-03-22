@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "Vanilla JavaScript adapter (Web Component + createIcon) for doo-iconik icons",
   "license": "MIT",
+  "author": "Ajentik",
+  "homepage": "https://github.com/ajentik/doo-iconik/tree/main/packages/vanilla",
+  "bugs": {
+    "url": "https://github.com/ajentik/doo-iconik/issues"
+  },
+  "sideEffects": false,
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

@@ -30,7 +30,7 @@ export const DooIconik = component$<DooIconikProps>((props) => {
   } = props;
 
   useVisibleTask$(() => {
-    if (!document.getElementById('doo-iconik-styles')) {
+    if (typeof document !== 'undefined' && !document.getElementById('doo-iconik-styles')) {
       const style = document.createElement('style');
       style.id = 'doo-iconik-styles';
       style.textContent = animationCSS;
