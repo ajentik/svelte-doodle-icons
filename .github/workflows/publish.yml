@@ -31,18 +31,27 @@ jobs:
         run: node generate.mjs
 
       - name: Build all packages
-        run: npm run build
+        run: npm run build --workspaces
 
       - name: Publish packages
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          DRY_RUN: ${{ inputs.dry-run }}
         run: |
           DRYRUN=""
-          if [ "${{ inputs.dry-run }}" = "true" ]; then
+          if [ "$DRY_RUN" = "true" ]; then
             DRYRUN="--dry-run"
           fi
 
+          FAILED=""
           for pkg in core react vue svelte angular solid lit preact qwik alpine vanilla astro; do
             echo "Publishing @doo-iconik/$pkg..."
-            npm publish --workspace=packages/$pkg --access public $DRYRUN || echo "Failed to publish $pkg (may already exist)"
+            if ! npm publish --workspace=packages/$pkg --access public $DRYRUN; then
+              echo "::warning::Failed to publish @doo-iconik/$pkg (may already exist)"
+              FAILED="$FAILED $pkg"
+            fi
           done
+
+          if [ -n "$FAILED" ]; then
+            echo "::notice::Packages that failed to publish:$FAILED"
+          fi

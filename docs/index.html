@@ -476,6 +476,10 @@
     .doo-iconik-outline { fill: none !important; stroke: currentColor !important; stroke-width: 1.5 !important; }
     .doo-iconik-retro { filter: sepia(0.6) saturate(1.4) drop-shadow(1px 1px 0px rgba(0,0,0,0.2)); }
 
+    .doo-iconik-flip-h { transform: scaleX(-1); }
+    .doo-iconik-flip-v { transform: scaleY(-1); }
+    .doo-iconik-flip-h.doo-iconik-flip-v { transform: scale(-1, -1); }
+
     @media (max-width: 768px) {
       .controls-row {
         flex-direction: column;
@@ -590,7 +594,7 @@
       right: 0;
       width: 420px;
       height: 100vh;
-      background: var(--bg-primary);
+      background: var(--bg-base);
       border-left: 1px solid var(--border-color);
       z-index: 1000;
       overflow-y: auto;
@@ -920,24 +924,24 @@
 
   <section class="usage-section">
     <h2>Quick Start</h2>
-    <div class="usage-tabs" id="usageTabs">
-      <button class="usage-tab active" data-tab="react">React</button>
-      <button class="usage-tab" data-tab="vue">Vue</button>
-      <button class="usage-tab" data-tab="svelte">Svelte</button>
-      <button class="usage-tab" data-tab="angular">Angular</button>
-      <button class="usage-tab" data-tab="solid">Solid</button>
-      <button class="usage-tab" data-tab="lit">Lit</button>
-      <button class="usage-tab" data-tab="preact">Preact</button>
-      <button class="usage-tab" data-tab="qwik">Qwik</button>
-      <button class="usage-tab" data-tab="astro">Astro</button>
-      <button class="usage-tab" data-tab="vanilla">Vanilla</button>
-      <button class="usage-tab" data-tab="alpine">Alpine</button>
-      <button class="usage-tab" data-tab="laravel">Laravel</button>
-      <button class="usage-tab" data-tab="rails">Rails</button>
-      <button class="usage-tab" data-tab="flutter">Flutter</button>
+    <div class="usage-tabs" id="usageTabs" role="tablist" aria-label="Framework quick start examples">
+      <button class="usage-tab active" data-tab="react" role="tab" aria-selected="true" aria-controls="usage-panel-react" aria-label="React usage example">React</button>
+      <button class="usage-tab" data-tab="vue" role="tab" aria-selected="false" aria-controls="usage-panel-vue" aria-label="Vue usage example">Vue</button>
+      <button class="usage-tab" data-tab="svelte" role="tab" aria-selected="false" aria-controls="usage-panel-svelte" aria-label="Svelte usage example">Svelte</button>
+      <button class="usage-tab" data-tab="angular" role="tab" aria-selected="false" aria-controls="usage-panel-angular" aria-label="Angular usage example">Angular</button>
+      <button class="usage-tab" data-tab="solid" role="tab" aria-selected="false" aria-controls="usage-panel-solid" aria-label="Solid usage example">Solid</button>
+      <button class="usage-tab" data-tab="lit" role="tab" aria-selected="false" aria-controls="usage-panel-lit" aria-label="Lit usage example">Lit</button>
+      <button class="usage-tab" data-tab="preact" role="tab" aria-selected="false" aria-controls="usage-panel-preact" aria-label="Preact usage example">Preact</button>
+      <button class="usage-tab" data-tab="qwik" role="tab" aria-selected="false" aria-controls="usage-panel-qwik" aria-label="Qwik usage example">Qwik</button>
+      <button class="usage-tab" data-tab="astro" role="tab" aria-selected="false" aria-controls="usage-panel-astro" aria-label="Astro usage example">Astro</button>
+      <button class="usage-tab" data-tab="vanilla" role="tab" aria-selected="false" aria-controls="usage-panel-vanilla" aria-label="Vanilla JS usage example">Vanilla</button>
+      <button class="usage-tab" data-tab="alpine" role="tab" aria-selected="false" aria-controls="usage-panel-alpine" aria-label="Alpine.js usage example">Alpine</button>
+      <button class="usage-tab" data-tab="laravel" role="tab" aria-selected="false" aria-controls="usage-panel-laravel" aria-label="Laravel usage example">Laravel</button>
+      <button class="usage-tab" data-tab="rails" role="tab" aria-selected="false" aria-controls="usage-panel-rails" aria-label="Rails usage example">Rails</button>
+      <button class="usage-tab" data-tab="flutter" role="tab" aria-selected="false" aria-controls="usage-panel-flutter" aria-label="Flutter usage example">Flutter</button>
     </div>
 
-    <div class="usage-code active" data-tab="react">
+    <div class="usage-code active" data-tab="react" id="usage-panel-react" role="tabpanel" aria-labelledby="usageTabs">
       <div class="install">npm install @doo-iconik/react</div>
       <pre>import { DooIconik } from '@doo-iconik/react';
 
@@ -945,7 +949,7 @@
 &lt;DooIconik name="star" variant="neon" animation="pulse" /&gt;</pre>
     </div>
 
-    <div class="usage-code" data-tab="vue">
+    <div class="usage-code" data-tab="vue" id="usage-panel-vue" role="tabpanel">
       <div class="install">npm install @doo-iconik/vue</div>
       <pre>import { DooIconik } from '@doo-iconik/vue';
 
@@ -953,7 +957,7 @@
 &lt;DooIconik name="star" variant="neon" animation="pulse" /&gt;</pre>
     </div>
 
-    <div class="usage-code" data-tab="svelte">
+    <div class="usage-code" data-tab="svelte" id="usage-panel-svelte" role="tabpanel">
       <div class="install">npm install @doo-iconik/svelte</div>
       <pre>import { DooIconik } from '@doo-iconik/svelte';
 
@@ -961,7 +965,7 @@
 &lt;DooIconik name="star" variant="neon" animation="pulse" /&gt;</pre>
     </div>
 
-    <div class="usage-code" data-tab="angular">
+    <div class="usage-code" data-tab="angular" id="usage-panel-angular" role="tabpanel">
       <div class="install">npm install @doo-iconik/angular</div>
       <pre>import { DooIconikModule } from '@doo-iconik/angular';
 
@@ -969,7 +973,7 @@
 &lt;doo-iconik name="star" variant="neon" animation="pulse"&gt;&lt;/doo-iconik&gt;</pre>
     </div>
 
-    <div class="usage-code" data-tab="solid">
+    <div class="usage-code" data-tab="solid" id="usage-panel-solid" role="tabpanel">
       <div class="install">npm install @doo-iconik/solid</div>
       <pre>import { DooIconik } from '@doo-iconik/solid';
 
@@ -977,7 +981,7 @@
 &lt;DooIconik name="star" variant="neon" animation="pulse" /&gt;</pre>
     </div>
 
-    <div class="usage-code" data-tab="lit">
+    <div class="usage-code" data-tab="lit" id="usage-panel-lit" role="tabpanel">
       <div class="install">npm install @doo-iconik/lit</div>
       <pre>import '@doo-iconik/lit';
 
@@ -985,7 +989,7 @@
 &lt;doo-iconik name="star" variant="neon" animation="pulse"&gt;&lt;/doo-iconik&gt;</pre>
     </div>
 
-    <div class="usage-code" data-tab="preact">
+    <div class="usage-code" data-tab="preact" id="usage-panel-preact" role="tabpanel">
       <div class="install">npm install @doo-iconik/preact</div>
       <pre>import { DooIconik } from '@doo-iconik/preact';
 
@@ -993,7 +997,7 @@
 &lt;DooIconik name="star" variant="neon" animation="pulse" /&gt;</pre>
     </div>
 
-    <div class="usage-code" data-tab="qwik">
+    <div class="usage-code" data-tab="qwik" id="usage-panel-qwik" role="tabpanel">
       <div class="install">npm install @doo-iconik/qwik</div>
       <pre>import { DooIconik } from '@doo-iconik/qwik';
 
@@ -1001,7 +1005,7 @@
 &lt;DooIconik name="star" variant="neon" animation="pulse" /&gt;</pre>
     </div>
 
-    <div class="usage-code" data-tab="astro">
+    <div class="usage-code" data-tab="astro" id="usage-panel-astro" role="tabpanel">
       <div class="install">npm install @doo-iconik/astro</div>
       <pre>---
 import { DooIconik } from '@doo-iconik/astro';
@@ -1011,7 +1015,7 @@ import { DooIconik } from '@doo-iconik/astro';
 &lt;DooIconik name="star" variant="neon" animation="pulse" /&gt;</pre>
     </div>
 
-    <div class="usage-code" data-tab="vanilla">
+    <div class="usage-code" data-tab="vanilla" id="usage-panel-vanilla" role="tabpanel">
       <div class="install">npm install @doo-iconik/vanilla</div>
       <pre>import { createIcon } from '@doo-iconik/vanilla';
 
@@ -1019,7 +1023,7 @@ const icon = createIcon({ name: 'heart', size: 'md' });
 document.body.appendChild(icon);</pre>
     </div>
 
-    <div class="usage-code" data-tab="alpine">
+    <div class="usage-code" data-tab="alpine" id="usage-panel-alpine" role="tabpanel">
       <div class="install">npm install @doo-iconik/alpine</div>
       <pre>import { dooIconikPlugin } from '@doo-iconik/alpine';
 Alpine.plugin(dooIconikPlugin);
@@ -1027,19 +1031,19 @@ Alpine.plugin(dooIconikPlugin);
 &lt;div x-data x-doo-iconik="{ name: 'heart', size: 'md' }"&gt;&lt;/div&gt;</pre>
     </div>
 
-    <div class="usage-code" data-tab="laravel">
+    <div class="usage-code" data-tab="laravel" id="usage-panel-laravel" role="tabpanel">
       <div class="install">composer require ajentik/doo-iconik</div>
       <pre>&lt;x-doo-iconik name="heart" size="md" /&gt;
 &lt;x-doo-iconik name="star" variant="neon" animation="pulse" /&gt;</pre>
     </div>
 
-    <div class="usage-code" data-tab="rails">
+    <div class="usage-code" data-tab="rails" id="usage-panel-rails" role="tabpanel">
       <div class="install">gem install doo_iconik</div>
       <pre>&lt;%= doo_iconik 'heart', size: :md %&gt;
 &lt;%= doo_iconik 'star', variant: :neon, animation: :pulse %&gt;</pre>
     </div>
 
-    <div class="usage-code" data-tab="flutter">
+    <div class="usage-code" data-tab="flutter" id="usage-panel-flutter" role="tabpanel">
       <div class="install">flutter pub add doo_iconik</div>
       <pre>import 'package:doo_iconik/doo_iconik.dart';
 
@@ -1059,10 +1063,10 @@ DooIconik(name: 'star', variant: DooIconikVariant.neon)</pre>
   <div id="toast" class="toast">Copied!</div>
 
   <div class="preview-overlay" id="previewOverlay"></div>
-  <div class="preview-panel" id="previewPanel">
+  <div class="preview-panel" id="previewPanel" role="dialog" aria-modal="true" aria-label="Icon preview">
     <div class="preview-header">
       <h3 id="previewName">icon-name</h3>
-      <button class="preview-close" id="previewClose">&times;</button>
+      <button class="preview-close" id="previewClose" aria-label="Close preview panel">&times;</button>
     </div>
     <div class="preview-icon-area" id="previewIconArea"></div>
     <div class="preview-controls">
@@ -1120,15 +1124,21 @@ DooIconik(name: 'star', variant: DooIconikVariant.neon)</pre>
     </div>
     <div class="preview-snippet">
       <div class="preview-snippet-header">
-        <div class="preview-snippet-tabs" id="previewFrameworkTabs">
-          <button class="preview-snippet-tab active" data-fw="react">React</button>
-          <button class="preview-snippet-tab" data-fw="vue">Vue</button>
-          <button class="preview-snippet-tab" data-fw="svelte">Svelte</button>
-          <button class="preview-snippet-tab" data-fw="angular">Angular</button>
-          <button class="preview-snippet-tab" data-fw="solid">Solid</button>
-          <button class="preview-snippet-tab" data-fw="laravel">Laravel</button>
-          <button class="preview-snippet-tab" data-fw="rails">Rails</button>
-          <button class="preview-snippet-tab" data-fw="flutter">Flutter</button>
+        <div class="preview-snippet-tabs" id="previewFrameworkTabs" role="tablist" aria-label="Code snippet framework">
+          <button class="preview-snippet-tab active" data-fw="react" role="tab" aria-selected="true" aria-label="React code snippet">React</button>
+          <button class="preview-snippet-tab" data-fw="vue" role="tab" aria-selected="false" aria-label="Vue code snippet">Vue</button>
+          <button class="preview-snippet-tab" data-fw="svelte" role="tab" aria-selected="false" aria-label="Svelte code snippet">Svelte</button>
+          <button class="preview-snippet-tab" data-fw="angular" role="tab" aria-selected="false" aria-label="Angular code snippet">Angular</button>
+          <button class="preview-snippet-tab" data-fw="solid" role="tab" aria-selected="false" aria-label="Solid code snippet">Solid</button>
+          <button class="preview-snippet-tab" data-fw="lit" role="tab" aria-selected="false" aria-label="Lit code snippet">Lit</button>
+          <button class="preview-snippet-tab" data-fw="preact" role="tab" aria-selected="false" aria-label="Preact code snippet">Preact</button>
+          <button class="preview-snippet-tab" data-fw="qwik" role="tab" aria-selected="false" aria-label="Qwik code snippet">Qwik</button>
+          <button class="preview-snippet-tab" data-fw="astro" role="tab" aria-selected="false" aria-label="Astro code snippet">Astro</button>
+          <button class="preview-snippet-tab" data-fw="vanilla" role="tab" aria-selected="false" aria-label="Vanilla JS code snippet">Vanilla</button>
+          <button class="preview-snippet-tab" data-fw="alpine" role="tab" aria-selected="false" aria-label="Alpine.js code snippet">Alpine</button>
+          <button class="preview-snippet-tab" data-fw="laravel" role="tab" aria-selected="false" aria-label="Laravel code snippet">Laravel</button>
+          <button class="preview-snippet-tab" data-fw="rails" role="tab" aria-selected="false" aria-label="Rails code snippet">Rails</button>
+          <button class="preview-snippet-tab" data-fw="flutter" role="tab" aria-selected="false" aria-label="Flutter code snippet">Flutter</button>
         </div>
         <button class="preview-copy-btn" id="previewCopy">Copy</button>
       </div>
@@ -1368,10 +1378,15 @@ DooIconik(name: 'star', variant: DooIconikVariant.neon)</pre>
     // Usage tabs
     document.querySelectorAll('.usage-tab').forEach(tab => {
       tab.addEventListener('click', () => {
-        document.querySelectorAll('.usage-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.usage-tab').forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
         document.querySelectorAll('.usage-code').forEach(c => c.classList.remove('active'));
         tab.classList.add('active');
-        document.querySelector(`.usage-code[data-tab="${tab.dataset.tab}"]`).classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        const panel = document.querySelector(`.usage-code[data-tab="${tab.dataset.tab}"]`);
+        if (panel) panel.classList.add('active');
       });
     });
 
@@ -1401,7 +1416,11 @@ DooIconik(name: 'star', variant: DooIconikVariant.neon)</pre>
       document.querySelectorAll('#previewSizes .preview-pill').forEach(p => p.classList.toggle('active', p.dataset.size === 'md'));
       document.querySelectorAll('#previewVariants .preview-pill').forEach(p => p.classList.toggle('active', p.dataset.variant === 'default'));
       document.querySelectorAll('#previewAnimations .preview-pill').forEach(p => p.classList.toggle('active', p.dataset.animation === 'none'));
-      document.querySelectorAll('.preview-snippet-tab').forEach(t => t.classList.toggle('active', t.dataset.fw === 'react'));
+      document.querySelectorAll('.preview-snippet-tab').forEach(t => {
+        const isReact = t.dataset.fw === 'react';
+        t.classList.toggle('active', isReact);
+        t.setAttribute('aria-selected', isReact ? 'true' : 'false');
+      });
       previewState.framework = 'react';
       document.getElementById('previewName').textContent = iconName;
       document.getElementById('previewOverlay').classList.add('active');
@@ -1420,21 +1439,44 @@ DooIconik(name: 'star', variant: DooIconikVariant.neon)</pre>
       const icon = window.iconData[s.icon];
       if (!icon) return;
 
-      const sizes = { xs: 12, sm: 16, md: 24, lg: 32, xl: 48, '2xl': 64 };
-      const px = sizes[s.size] || 24;
+      const previewSizes = { xs: 12, sm: 16, md: 24, lg: 32, xl: 48, '2xl': 64 };
+      const px = previewSizes[s.size] || 24;
       const classes = [];
       if (s.variant !== 'default') classes.push('doo-iconik-' + s.variant);
       if (s.animation !== 'none') classes.push('doo-iconik-' + s.animation);
       if (s.flipH) classes.push('doo-iconik-flip-h');
       if (s.flipV) classes.push('doo-iconik-flip-v');
 
-      const paths = (icon.paths || []).map(p => {
-        if (typeof p === 'string') return `<path d="${p}" fill="${s.color}" />`;
-        return `<path d="${p.d}" fill="${p.fill || s.color}" ${p.opacity ? `opacity="${p.opacity}"` : ''} />`;
-      }).join('');
+      const isStroke = icon.stroke;
+
+      let svgContent = '';
+
+      // Render paths (fill/stroke is set on the parent <svg> element)
+      (icon.paths || []).forEach(p => {
+        if (typeof p === 'string') {
+          svgContent += `<path d="${p}" />`;
+        } else {
+          svgContent += `<path d="${p.d}"${p.fill ? ` fill="${p.fill}"` : ''}${p.opacity ? ` opacity="${p.opacity}"` : ''} />`;
+        }
+      });
+
+      // Render circles
+      (icon.circles || []).forEach(c => {
+        svgContent += `<circle cx="${c.cx}" cy="${c.cy}" r="${c.r}" />`;
+      });
+
+      // Render lines
+      (icon.lines || []).forEach(l => {
+        svgContent += `<line x1="${l.x1}" y1="${l.y1}" x2="${l.x2}" y2="${l.y2}" />`;
+      });
+
+      const svgAttrs = isStroke
+        ? `fill="none" stroke="${s.color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"`
+        : `fill="${s.color}"`;
 
       const area = document.getElementById('previewIconArea');
-      area.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${icon.viewBox || '0 0 24 24'}" width="96" height="96" class="${classes.join(' ')}" aria-hidden="true">${paths}</svg>`;
+      if (!area) return;
+      area.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${icon.viewBox || '0 0 24 24'}" width="96" height="96" ${svgAttrs} class="${classes.join(' ')}" aria-hidden="true">${svgContent}</svg>`;
 
       updateSnippet();
     }
@@ -1451,16 +1493,38 @@ DooIconik(name: 'star', variant: DooIconikVariant.neon)</pre>
       let code = '';
       const fw = s.framework;
       const name = s.icon;
+      const attrs = props.map(([k,v]) => v === true ? ` ${k}` : ` ${k}="${v}"`).join('');
 
-      if (fw === 'react' || fw === 'vue' || fw === 'svelte' || fw === 'solid') {
+      if (fw === 'react' || fw === 'vue' || fw === 'svelte' || fw === 'solid' || fw === 'preact') {
         const pkg = `@doo-iconik/${fw}`;
-        const attrs = props.map(([k,v]) => v === true ? ` ${k}` : ` ${k}="${v}"`).join('');
         code = `import { DooIconik } from '${pkg}';\n\n<DooIconik name="${name}"${attrs} />`;
-      } else if (fw === 'angular') {
-        const attrs = props.map(([k,v]) => v === true ? ` ${k}` : ` ${k}="${v}"`).join('');
-        code = `import { DooIconikModule } from '@doo-iconik/angular';\n\n<doo-iconik name="${name}"${attrs}></doo-iconik>`;
+      } else if (fw === 'angular' || fw === 'lit') {
+        const pkg = `@doo-iconik/${fw}`;
+        const importLine = fw === 'angular'
+          ? `import { DooIconikModule } from '${pkg}';`
+          : `import '${pkg}';`;
+        code = `${importLine}\n\n<doo-iconik name="${name}"${attrs}></doo-iconik>`;
+      } else if (fw === 'qwik') {
+        code = `import { DooIconik } from '@doo-iconik/qwik';\n\n<DooIconik name="${name}"${attrs} />`;
+      } else if (fw === 'astro') {
+        code = `---\nimport { DooIconik } from '@doo-iconik/astro';\n---\n\n<DooIconik name="${name}"${attrs} />`;
+      } else if (fw === 'vanilla') {
+        const objProps = [['name', `'${name}'`]];
+        if (s.size !== 'md') objProps.push(['size', `'${s.size}'`]);
+        if (s.variant !== 'default') objProps.push(['variant', `'${s.variant}'`]);
+        if (s.animation !== 'none') objProps.push(['animation', `'${s.animation}'`]);
+        if (s.flipH) objProps.push(['flipHorizontal', 'true']);
+        if (s.flipV) objProps.push(['flipVertical', 'true']);
+        const objStr = objProps.map(([k,v]) => `${k}: ${v}`).join(', ');
+        code = `import { createIcon } from '@doo-iconik/vanilla';\n\nconst icon = createIcon({ ${objStr} });\ndocument.body.appendChild(icon);`;
+      } else if (fw === 'alpine') {
+        const objProps = [['name', `'${name}'`]];
+        if (s.size !== 'md') objProps.push(['size', `'${s.size}'`]);
+        if (s.variant !== 'default') objProps.push(['variant', `'${s.variant}'`]);
+        if (s.animation !== 'none') objProps.push(['animation', `'${s.animation}'`]);
+        const objStr = objProps.map(([k,v]) => `${k}: ${v}`).join(', ');
+        code = `import { dooIconikPlugin } from '@doo-iconik/alpine';\nAlpine.plugin(dooIconikPlugin);\n\n<div x-data x-doo-iconik="{ ${objStr} }"></div>`;
       } else if (fw === 'laravel') {
-        const attrs = props.map(([k,v]) => v === true ? ` ${k}` : ` ${k}="${v}"`).join('');
         code = `<x-doo-iconik name="${name}"${attrs} />`;
       } else if (fw === 'rails') {
         const rubyArgs = props.map(([k,v]) => {
@@ -1479,11 +1543,21 @@ DooIconik(name: 'star', variant: DooIconikVariant.neon)</pre>
         code = `import 'package:doo_iconik/doo_iconik.dart';\n\nDooIconik(name: '${name}'${dartArgs ? ', ' + dartArgs : ''})`;
       }
 
-      document.getElementById('previewCode').textContent = code;
+      const codeEl = document.getElementById('previewCode');
+      if (codeEl) codeEl.textContent = code;
     }
 
     document.getElementById('previewClose').addEventListener('click', closePreview);
     document.getElementById('previewOverlay').addEventListener('click', closePreview);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const panel = document.getElementById('previewPanel');
+        if (panel && panel.classList.contains('active')) {
+          closePreview();
+        }
+      }
+    });
 
     document.querySelectorAll('#previewSizes .preview-pill').forEach(pill => {
       pill.addEventListener('click', () => {
@@ -1529,19 +1603,29 @@ DooIconik(name: 'star', variant: DooIconikVariant.neon)</pre>
 
     document.querySelectorAll('.preview-snippet-tab').forEach(tab => {
       tab.addEventListener('click', () => {
-        document.querySelectorAll('.preview-snippet-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.preview-snippet-tab').forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
         tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
         previewState.framework = tab.dataset.fw;
         updateSnippet();
       });
     });
 
     document.getElementById('previewCopy').addEventListener('click', () => {
-      const code = document.getElementById('previewCode').textContent;
+      const codeEl = document.getElementById('previewCode');
+      if (!codeEl) return;
+      const code = codeEl.textContent;
       navigator.clipboard.writeText(code).then(() => {
         const btn = document.getElementById('previewCopy');
-        btn.textContent = 'Copied!';
-        setTimeout(() => btn.textContent = 'Copy', 1500);
+        if (btn) {
+          btn.textContent = 'Copied!';
+          setTimeout(() => btn.textContent = 'Copy', 1500);
+        }
+      }).catch(err => {
+        console.error('Failed to copy snippet:', err);
       });
     });
 

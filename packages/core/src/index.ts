@@ -7,5 +7,6 @@ export {
   buildTransform,
   buildAnimationClasses,
   buildVariantClass,
-  animationCSS
+  animationCSS,
+  escapeAttr
 } from './utils.js';

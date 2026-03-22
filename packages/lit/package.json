@@ -8,7 +8,7 @@
   "bugs": {
     "url": "https://github.com/ajentik/doo-iconik/issues"
   },
-  "sideEffects": false,
+  "sideEffects": ["./dist/DooIconik.*", "./src/DooIconik.*"],
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

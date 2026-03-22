@@ -52,16 +52,16 @@ class IconRepository
 
         $classes = [];
         if ($animation) {
-            $classes[] = 'doo-iconik-' . $animation;
+            $classes[] = 'doo-iconik-' . e($animation);
         } else {
             if ($spin) $classes[] = 'doo-iconik-spin';
             if ($pulse) $classes[] = 'doo-iconik-pulse';
             if ($bounce) $classes[] = 'doo-iconik-bounce';
         }
         if ($variant && $variant !== 'default') {
-            $classes[] = 'doo-iconik-' . $variant;
+            $classes[] = 'doo-iconik-' . e($variant);
         }
-        if ($class) $classes[] = $class;
+        if ($class) $classes[] = e($class);
         $classStr = implode(' ', $classes);
 
         $transforms = [];

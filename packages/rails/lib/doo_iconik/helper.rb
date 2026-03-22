@@ -20,7 +20,7 @@ module DooIconik
         class: classes.presence,
         style: transform ? "transform: #{transform}" : nil,
         'aria-hidden': aria_label ? nil : 'true',
-        'aria-label': aria_label || nil,
+        'aria-label': aria_label,
         role: aria_label ? 'img' : nil
       }
 

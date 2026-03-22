@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS, escapeAttr } from '@doo-iconik/core';
 import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
 
 @Component({
@@ -68,7 +68,7 @@ export class DooIconikComponent implements OnInit, OnChanges {
     const lines = (icon.lines || []).map(l => `<line x1="${l.x1}" y1="${l.y1}" x2="${l.x2}" y2="${l.y2}"/>`).join('');
 
     const ariaAttrs = this.ariaLabel
-      ? `aria-label="${this.ariaLabel}" role="img"`
+      ? `aria-label="${escapeAttr(this.ariaLabel)}" role="img"`
       : 'aria-hidden="true"';
 
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${icon.viewBox}" width="${px}" height="${px}" ${strokeAttrs} class="${cls}" ${transform ? `style="transform: ${transform}"` : ''} ${ariaAttrs}>${paths}${circles}${lines}</svg>`;

@@ -38,7 +38,7 @@
   stroke-width={icon.stroke ? 2 : undefined}
   stroke-linecap={icon.stroke ? 'round' : undefined}
   stroke-linejoin={icon.stroke ? 'round' : undefined}
-  class="{combinedClass}"
+  class={combinedClass}
   style:transform={transforms}
   aria-hidden={ariaLabel ? undefined : true}
   aria-label={ariaLabel || undefined}

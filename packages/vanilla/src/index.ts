@@ -5,7 +5,7 @@ import { DooIconikElement } from './DooIconik.js';
 export { DooIconikElement } from './DooIconik.js';
 
 export type { DooIconikName, DooIconikSize, DooIconikCategory, DooIconikVariant, DooIconikAnimation, IconData } from '@doo-iconik/core';
-export { iconData, sizeMap, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
+export { iconData, sizeMap, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS, escapeAttr } from '@doo-iconik/core';
 
 /**
  * Register the `<doo-iconik>` custom element.

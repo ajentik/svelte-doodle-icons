@@ -1,5 +1,19 @@
 import type { DooIconikSize } from './types.js';
 
+/**
+ * Escape a string for safe interpolation into an HTML attribute value.
+ * Prevents XSS when user-supplied text (e.g. ariaLabel) is placed inside
+ * a quoted HTML attribute in an innerHTML string.
+ */
+export function escapeAttr(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 export const sizeMap: Record<string, number> = {
   xs: 12, sm: 16, md: 24, lg: 32, xl: 48, '2xl': 64
 };

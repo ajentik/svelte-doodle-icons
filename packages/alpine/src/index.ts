@@ -1,5 +1,5 @@
 import type { Alpine as AlpineType } from 'alpinejs';
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS, escapeAttr } from '@doo-iconik/core';
 import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
 
 // Inject animation styles once
@@ -41,7 +41,7 @@ function renderIcon(el: HTMLElement, name: DooIconikName, options: {
   const lines = (icon.lines || []).map(l => `<line x1="${l.x1}" y1="${l.y1}" x2="${l.x2}" y2="${l.y2}"/>`).join('');
 
   const ariaAttrs = options.ariaLabel
-    ? `aria-label="${options.ariaLabel}" role="img"`
+    ? `aria-label="${escapeAttr(options.ariaLabel)}" role="img"`
     : 'aria-hidden="true"';
 
   el.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${icon.viewBox}" width="${px}" height="${px}" ${strokeAttrs} class="${allClasses}" ${transform ? `style="transform: ${transform}"` : ''} ${ariaAttrs}>${paths}${circles}${lines}</svg>`;
@@ -109,7 +109,7 @@ export default function dooIconikPlugin(Alpine: AlpineType) {
       const lines = (icon.lines || []).map((l: any) => `<line x1="${l.x1}" y1="${l.y1}" x2="${l.x2}" y2="${l.y2}"/>`).join('');
 
       const ariaAttrs = options?.ariaLabel
-        ? `aria-label="${options.ariaLabel}" role="img"`
+        ? `aria-label="${escapeAttr(options.ariaLabel)}" role="img"`
         : 'aria-hidden="true"';
 
       return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${icon.viewBox}" width="${px}" height="${px}" ${strokeAttrs} class="${allClasses}" ${transform ? `style="transform: ${transform}"` : ''} ${ariaAttrs}>${paths}${circles}${lines}</svg>`;

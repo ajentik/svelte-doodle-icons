@@ -20,3 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Interactive demo site with search, category filter, and copy-to-clipboard
 - CI workflow for icon count verification
 - Dependabot configuration for automated dependency updates
+
+[Unreleased]: https://github.com/ajentik/doo-iconik/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/ajentik/doo-iconik/releases/tag/v1.0.0

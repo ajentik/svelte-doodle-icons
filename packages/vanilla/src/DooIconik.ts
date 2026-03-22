@@ -1,4 +1,4 @@
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS, escapeAttr } from '@doo-iconik/core';
 import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
 
 export class DooIconikElement extends HTMLElement {
@@ -53,7 +53,7 @@ export class DooIconikElement extends HTMLElement {
 
     const ariaLabel = this.getAttribute('aria-label');
     const ariaAttrs = ariaLabel
-      ? `aria-label="${ariaLabel}" role="img"`
+      ? `aria-label="${escapeAttr(ariaLabel)}" role="img"`
       : 'aria-hidden="true"';
 
     this.shadow.innerHTML = `
