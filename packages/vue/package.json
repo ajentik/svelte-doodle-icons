@@ -10,19 +10,16 @@
   },
   "sideEffects": false,
   "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "types": "./src/index.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
+    ".": "./src/index.ts",
+    "./DooIconik.vue": "./src/DooIconik.vue"
   },
-  "files": ["dist"],
+  "files": ["src"],
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts"
+    "build": "echo 'Vue package ships source — no build needed'"
   },
   "dependencies": {
     "@doo-iconik/core": "file:../core"
@@ -31,7 +28,6 @@
     "vue": "^3.3.0"
   },
   "devDependencies": {
-    "tsup": "^8.0.0",
     "typescript": "^5.0.0",
     "vue": "^3.3.0"
   },

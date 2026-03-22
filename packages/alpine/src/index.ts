@@ -58,7 +58,7 @@ function renderIcon(el: HTMLElement, name: DooIconikName, options: {
 export default function dooIconikPlugin(Alpine: AlpineType) {
   injectStyles();
 
-  Alpine.directive('doo-iconik', (el, { expression, modifiers }, { evaluate }) => {
+  Alpine.directive('doo-iconik', (el: HTMLElement, { expression, modifiers }: { expression: string; modifiers: string[] }, { evaluate }: { evaluate: (expr: string) => unknown }) => {
     const value = evaluate(expression);
 
     let name: DooIconikName;
