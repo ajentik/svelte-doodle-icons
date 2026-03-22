@@ -1,5 +1,7 @@
 # @doo-iconik/react
 
+[![npm version](https://img.shields.io/npm/v/@doo-iconik/react.svg)](https://www.npmjs.com/package/@doo-iconik/react)
+
 React component library: 595 hand-drawn doodle-style SVG icons for React 18/19.
 
 Part of [doo-iconik](https://github.com/ajentik/doo-iconik).

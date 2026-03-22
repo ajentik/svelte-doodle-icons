@@ -1,5 +1,7 @@
 # @doo-iconik/core
 
+[![npm version](https://img.shields.io/npm/v/@doo-iconik/core.svg)](https://www.npmjs.com/package/@doo-iconik/core)
+
 Framework-agnostic shared icon data and utilities: 595 hand-drawn doodle-style SVG icons.
 
 Part of [doo-iconik](https://github.com/ajentik/doo-iconik).

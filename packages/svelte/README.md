@@ -1,5 +1,7 @@
 # @doo-iconik/svelte
 
+[![npm version](https://img.shields.io/npm/v/@doo-iconik/svelte.svg)](https://www.npmjs.com/package/@doo-iconik/svelte)
+
 Svelte component library: 595 hand-drawn doodle-style SVG icons for Svelte 5.
 
 Part of [doo-iconik](https://github.com/ajentik/doo-iconik).

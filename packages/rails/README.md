@@ -1,5 +1,7 @@
 # doo_iconik
 
+[![Gem Version](https://img.shields.io/gem/v/doo_iconik.svg)](https://rubygems.org/gems/doo_iconik)
+
 Rails helper gem: 595 hand-drawn doodle-style SVG icons for Rails 6+.
 
 Part of [doo-iconik](https://github.com/ajentik/doo-iconik).

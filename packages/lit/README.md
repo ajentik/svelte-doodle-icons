@@ -1,5 +1,7 @@
 # @doo-iconik/lit
 
+[![npm version](https://img.shields.io/npm/v/@doo-iconik/lit.svg)](https://www.npmjs.com/package/@doo-iconik/lit)
+
 Lit web component: 595 hand-drawn doodle-style SVG icons for Lit 3.
 
 Part of [doo-iconik](https://github.com/ajentik/doo-iconik).

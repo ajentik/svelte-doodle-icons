@@ -1,5 +1,7 @@
 # @doo-iconik/qwik
 
+[![npm version](https://img.shields.io/npm/v/@doo-iconik/qwik.svg)](https://www.npmjs.com/package/@doo-iconik/qwik)
+
 Qwik component library: 595 hand-drawn doodle-style SVG icons for Qwik.
 
 Part of [doo-iconik](https://github.com/ajentik/doo-iconik).

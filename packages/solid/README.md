@@ -1,5 +1,7 @@
 # @doo-iconik/solid
 
+[![npm version](https://img.shields.io/npm/v/@doo-iconik/solid.svg)](https://www.npmjs.com/package/@doo-iconik/solid)
+
 SolidJS component library: 595 hand-drawn doodle-style SVG icons for SolidJS.
 
 Part of [doo-iconik](https://github.com/ajentik/doo-iconik).

@@ -1,5 +1,10 @@
 # doo-iconik
 
+[![CI](https://github.com/ajentik/doo-iconik/actions/workflows/ci.yml/badge.svg)](https://github.com/ajentik/doo-iconik/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Icons](https://img.shields.io/badge/icons-595-blueviolet)](https://ajentik.github.io/doo-iconik/)
+[![Frameworks](https://img.shields.io/badge/frameworks-15-blue)](https://github.com/ajentik/doo-iconik#packages)
+
 595 hand-drawn doodle style SVG icons for any framework.
 
 ## Packages

@@ -1,5 +1,7 @@
 # doo_iconik
 
+[![pub version](https://img.shields.io/pub/v/doo_iconik.svg)](https://pub.dev/packages/doo_iconik)
+
 Flutter widget library: 595 hand-drawn doodle-style SVG icons for Flutter 3.10+.
 
 Part of [doo-iconik](https://github.com/ajentik/doo-iconik).

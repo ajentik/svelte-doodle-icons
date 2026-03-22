@@ -28,6 +28,9 @@ jobs:
 
       - run: npm run build --workspace=packages/core
 
+      - name: Run tests
+        run: npx vitest run
+
       - name: Verify icon counts match across frameworks
         run: |
           RAW_COUNT=$(node -e "const d=JSON.parse(require('fs').readFileSync('icon-data-raw.json','utf8')); console.log(Object.keys(d).length)")

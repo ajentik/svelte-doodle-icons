@@ -2,16 +2,23 @@
   "name": "doo-iconik",
   "private": true,
   "type": "module",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "generate": "node generate.mjs",
     "build": "npm run generate && npm run build --workspaces",
-    "build:core": "npm run build --workspace=packages/core"
+    "build:core": "npm run build --workspace=packages/core",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "engines": {
     "node": ">=24"
   },
   "devDependencies": {
-    "typescript": "^5.0.0"
+    "@vitest/coverage-v8": "^4.1.0",
+    "typescript": "^5.0.0",
+    "vitest": "^4.1.0"
   }
 }

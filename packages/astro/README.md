@@ -1,5 +1,7 @@
 # @doo-iconik/astro
 
+[![npm version](https://img.shields.io/npm/v/@doo-iconik/astro.svg)](https://www.npmjs.com/package/@doo-iconik/astro)
+
 Astro component library: 595 hand-drawn doodle-style SVG icons for Astro 3/4.
 
 Part of [doo-iconik](https://github.com/ajentik/doo-iconik).

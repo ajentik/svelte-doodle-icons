@@ -1,5 +1,7 @@
 # ajentik/doo-iconik-laravel
 
+[![Packagist Version](https://img.shields.io/packagist/v/ajentik/doo-iconik-laravel.svg)](https://packagist.org/packages/ajentik/doo-iconik-laravel)
+
 Laravel Blade component: 595 hand-drawn doodle-style SVG icons for Laravel 10/11/12.
 
 Part of [doo-iconik](https://github.com/ajentik/doo-iconik).
