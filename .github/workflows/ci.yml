@@ -31,7 +31,7 @@ jobs:
       - name: Verify icon counts match across frameworks
         run: |
           RAW_COUNT=$(node -e "const d=JSON.parse(require('fs').readFileSync('icon-data-raw.json','utf8')); console.log(Object.keys(d).length)")
-          CORE_COUNT=$(grep -c '"viewBox"' packages/core/src/icon-data.ts)
+          CORE_COUNT=$(grep -c 'viewBox: "' packages/core/src/icon-data.ts)
           FLUTTER_COUNT=$(grep -c "viewBox:" packages/flutter/lib/src/icon_data.dart)
           LARAVEL_COUNT=$(node -e "const d=JSON.parse(require('fs').readFileSync('packages/laravel/data/icon-data.json','utf8')); console.log(Object.keys(d).length)")
           RAILS_COUNT=$(node -e "const d=JSON.parse(require('fs').readFileSync('packages/rails/data/icon-data.json','utf8')); console.log(Object.keys(d).length)")
