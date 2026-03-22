@@ -30,8 +30,14 @@ jobs:
       - name: Generate icon data
         run: node generate.mjs
 
+      - name: Build core package first
+        run: npm run build --workspace=packages/core
+
       - name: Build all packages
         run: npm run build --workspaces
+
+      - name: Run tests
+        run: npx vitest run
 
       - name: Publish packages
         env:

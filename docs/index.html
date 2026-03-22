@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>doo-iconik | 595 hand-drawn doodle-style SVG icons</title>
+  <meta name="description" content="595 hand-drawn doodle-style SVG icons for React, Vue, Svelte, Angular, Solid, Lit, Preact, Qwik, Astro, and more. Free, open-source, MIT licensed.">
+  <meta name="theme-color" content="#0a0a0f">
+  <link rel="canonical" href="https://ajentik.github.io/doo-iconik/">
+  <meta property="og:title" content="doo-iconik | 595 hand-drawn doodle-style SVG icons">
+  <meta property="og:description" content="595 hand-drawn doodle-style SVG icons for any framework. Free, open-source, MIT licensed.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ajentik.github.io/doo-iconik/">
+  <meta property="og:image" content="https://ajentik.github.io/doo-iconik/og-image.png">
   <style>
     :root {
       --bg-base: #0a0a0f;
@@ -40,6 +48,71 @@
       --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       
       --icon-color: #ffffff;
+    }
+
+    body.light {
+      --bg-base: #f8f9fa;
+      --bg-surface: #ffffff;
+      --bg-surface-hover: #f0f0f5;
+      --bg-surface-active: #e4e4ec;
+      --border-color: #d1d5db;
+      --border-hover: #9ca3af;
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --text-muted: #6b7280;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+      --shadow-glow: 0 0 15px rgba(139, 92, 246, 0.2);
+      --icon-color: #111827;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      z-index: -1;
+      color: var(--text-primary);
+      background: var(--bg-surface);
+      padding: var(--spacing-2) var(--spacing-4);
+      font-size: 0.875rem;
+      text-decoration: none;
+      border: 2px solid var(--accent-primary);
+      border-radius: var(--radius-sm);
+    }
+
+    .skip-link:focus {
+      position: fixed;
+      left: var(--spacing-4);
+      top: var(--spacing-4);
+      width: auto;
+      height: auto;
+      overflow: visible;
+      z-index: 9999;
+    }
+
+    .theme-toggle {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+      vertical-align: middle;
+      margin-left: var(--spacing-3);
+    }
+
+    .theme-toggle:hover {
+      background: var(--bg-surface-hover);
+      border-color: var(--border-hover);
+      color: var(--text-primary);
     }
 
     * {
@@ -110,7 +183,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(10, 10, 15, 0.85);
+      background: color-mix(in srgb, var(--bg-base) 85%, transparent);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-color);
@@ -806,6 +879,8 @@
 </head>
 <body>
 
+  <a href="#icon-grid" class="skip-link">Skip to icons</a>
+
   <header class="header">
     <h1>doo-iconik</h1>
     <p>595 hand-drawn doodle-style SVG icons for any framework</p>
@@ -815,6 +890,14 @@
       </svg>
       View on GitHub
     </a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+      <svg id="themeIconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+        <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg id="themeIconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
   </header>
 
   <div class="controls-wrapper">
@@ -917,8 +1000,7 @@
 
   <div class="stats-bar">
     <div class="stats-info">
-      <span><strong><span id="stats-filtered">0</span></strong> icons shown</span>
-      <span><strong><span id="stats-total">0</span></strong> total</span>
+      <span>Showing <strong><span id="stats-filtered">0</span></strong> of <strong><span id="stats-total">595</span></strong></span>
     </div>
   </div>
 
@@ -1053,7 +1135,7 @@ DooIconik(name: 'star', variant: DooIconikVariant.neon)</pre>
   </section>
 
   <main class="main-content">
-    <div class="icon-grid" id="icon-grid"></div>
+    <div class="icon-grid" id="icon-grid" role="grid"></div>
   </main>
 
   <footer class="footer">
@@ -1147,6 +1229,67 @@ DooIconik(name: 'star', variant: DooIconikVariant.neon)</pre>
   </div>
 
   <script>
+    // --- Theme toggle ---
+    (function initTheme() {
+      const stored = localStorage.getItem('doo-iconik-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = stored || (prefersDark ? 'dark' : 'dark'); // default dark, respects stored pref
+      if (theme === 'light') {
+        document.body.classList.add('light');
+      }
+      // Update icons after DOM is ready
+      requestAnimationFrame(function() {
+        const sunIcon = document.getElementById('themeIconSun');
+        const moonIcon = document.getElementById('themeIconMoon');
+        if (sunIcon && moonIcon) {
+          sunIcon.style.display = theme === 'light' ? 'block' : 'none';
+          moonIcon.style.display = theme === 'light' ? 'none' : 'block';
+        }
+      });
+    })();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggle = document.getElementById('themeToggle');
+      if (toggle) {
+        toggle.addEventListener('click', function() {
+          const isLight = document.body.classList.toggle('light');
+          localStorage.setItem('doo-iconik-theme', isLight ? 'light' : 'dark');
+          document.getElementById('themeIconSun').style.display = isLight ? 'block' : 'none';
+          document.getElementById('themeIconMoon').style.display = isLight ? 'none' : 'block';
+          document.querySelector('meta[name="theme-color"]').content = isLight ? '#f8f9fa' : '#0a0a0f';
+          // Update color picker default if still on default
+          if (state.color === '#ffffff' && isLight) {
+            state.color = '#111827';
+            DOM.colorPicker.value = '#111827';
+            document.documentElement.style.setProperty('--icon-color', '#111827');
+          } else if (state.color === '#111827' && !isLight) {
+            state.color = '#ffffff';
+            DOM.colorPicker.value = '#ffffff';
+            document.documentElement.style.setProperty('--icon-color', '#ffffff');
+          }
+          render();
+        });
+      }
+    });
+
+    // --- URL state helpers ---
+    function readUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        q: params.get('q') || '',
+        cat: params.get('cat') || 'all'
+      };
+    }
+
+    function syncUrlParams() {
+      const params = new URLSearchParams();
+      if (state.search) params.set('q', state.search);
+      if (state.category && state.category !== 'all') params.set('cat', state.category);
+      const qs = params.toString();
+      const url = window.location.pathname + (qs ? '?' + qs : '');
+      history.replaceState(null, '', url);
+    }
+
     const state = {
       icons: [],
       filtered: [],
@@ -1189,9 +1332,24 @@ DooIconik(name: 'star', variant: DooIconikVariant.neon)</pre>
         window.iconData = data;
         state.icons = Object.entries(data).map(([name, icon]) => ({ name, ...icon }));
         state.filtered = [...state.icons];
-        
+
+        // Restore state from URL params
+        const urlParams = readUrlParams();
+        if (urlParams.q) {
+          state.search = urlParams.q;
+          DOM.search.value = urlParams.q;
+        }
+        if (urlParams.cat && urlParams.cat !== 'all') {
+          state.category = urlParams.cat;
+          DOM.category.value = urlParams.cat;
+        }
+
         setupEventListeners();
-        render();
+        if (state.search || state.category !== 'all') {
+          filterIcons();
+        } else {
+          render();
+        }
       } catch (err) {
         console.error('Failed to load icons:', err);
         DOM.grid.innerHTML = `
@@ -1218,7 +1376,8 @@ DooIconik(name: 'star', variant: DooIconikVariant.neon)</pre>
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <p>No icons found matching your criteria.</p>
+            <p>No icons match your search.</p>
+            <p style="font-size: 0.8rem; margin-top: 8px;">Try a different keyword or clear your filters.</p>
           </div>
         `;
         return;
@@ -1311,6 +1470,7 @@ DooIconik(name: 'star', variant: DooIconikVariant.neon)</pre>
         const matchCategory = state.category === 'all' || icon.category === state.category;
         return matchSearch && matchCategory;
       });
+      syncUrlParams();
       render();
     }
 
