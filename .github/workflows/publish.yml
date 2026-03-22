@@ -1,0 +1,48 @@
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Dry run (no actual publish)'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: npm install
+
+      - name: Generate icon data
+        run: node generate.mjs
+
+      - name: Build all packages
+        run: npm run build
+
+      - name: Publish packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          DRYRUN=""
+          if [ "${{ inputs.dry-run }}" = "true" ]; then
+            DRYRUN="--dry-run"
+          fi
+
+          for pkg in core react vue svelte angular solid lit preact qwik alpine vanilla astro; do
+            echo "Publishing @doo-iconik/$pkg..."
+            npm publish --workspace=packages/$pkg --access public $DRYRUN || echo "Failed to publish $pkg (may already exist)"
+          done

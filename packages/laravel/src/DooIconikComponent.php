@@ -16,6 +16,7 @@ class DooIconikComponent extends Component
         public bool $flipVertical = false,
         public string $variant = 'default',
         public ?string $animation = null,
+        public ?string $ariaLabel = null,
     ) {}
 
     public function render()
@@ -30,8 +31,9 @@ class DooIconikComponent extends Component
             flipVertical: $this->flipVertical,
             variant: $this->variant,
             animation: $this->animation,
+            ariaLabel: $this->ariaLabel,
             class: $this->attributes->get('class', ''),
-            attributes: $this->attributes->except(['name', 'size', 'spin', 'pulse', 'bounce', 'flip-horizontal', 'flip-vertical', 'variant', 'animation', 'class'])->getAttributes()
+            attributes: $this->attributes->except(['name', 'size', 'spin', 'pulse', 'bounce', 'flip-horizontal', 'flip-vertical', 'variant', 'animation', 'aria-label', 'class'])->getAttributes()
         );
     }
 }

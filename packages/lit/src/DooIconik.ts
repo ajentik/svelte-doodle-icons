@@ -47,6 +47,7 @@ export class DooIconikElement extends LitElement {
   @property({ type: Boolean, attribute: 'flip-vertical' }) flipVertical = false;
   @property({ type: String }) variant?: DooIconikVariant;
   @property({ type: String }) animation?: DooIconikAnimation;
+  @property({ type: String, attribute: 'aria-label' }) override ariaLabel: string | null = null;
 
   render() {
     const icon = iconData[this.name];
@@ -71,7 +72,9 @@ export class DooIconikElement extends LitElement {
         stroke-linejoin=${icon.stroke ? 'round' : nothing}
         class=${allClasses || nothing}
         style=${transform ? `transform: ${transform}` : nothing}
-        aria-hidden="true"
+        aria-hidden=${this.ariaLabel ? nothing : 'true'}
+        aria-label=${this.ariaLabel || nothing}
+        role=${this.ariaLabel ? 'img' : nothing}
       >
         ${icon.paths.map(d => svg`<path d=${d} />`)}
         ${(icon.circles || []).map(c => svg`<circle cx=${c.cx} cy=${c.cy} r=${c.r} />`)}

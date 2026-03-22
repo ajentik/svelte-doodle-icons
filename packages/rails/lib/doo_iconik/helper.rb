@@ -4,7 +4,7 @@ module DooIconik
   module Helper
     def doo_iconik(name, size: :md, spin: false, pulse: false, bounce: false,
                    flip_horizontal: false, flip_vertical: false,
-                   variant: :default, animation: nil, **html_options)
+                   variant: :default, animation: nil, aria_label: nil, **html_options)
       icon = DooIconik.icon(name)
       return nil unless icon
 
@@ -19,7 +19,9 @@ module DooIconik
         height: pixel_size,
         class: classes.presence,
         style: transform ? "transform: #{transform}" : nil,
-        'aria-hidden': 'true'
+        'aria-hidden': aria_label ? nil : 'true',
+        'aria-label': aria_label || nil,
+        role: aria_label ? 'img' : nil
       }
 
       if icon['stroke']

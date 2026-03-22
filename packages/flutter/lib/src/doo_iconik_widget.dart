@@ -40,6 +40,7 @@ class DooIconik extends StatelessWidget {
   final Color? color;
   final DooIconikVariant variant;
   final DooIconikAnimation? animation;
+  final String? semanticLabel;
 
   const DooIconik({
     super.key,
@@ -54,6 +55,7 @@ class DooIconik extends StatelessWidget {
     this.color,
     this.variant = DooIconikVariant.defaultVariant,
     this.animation,
+    this.semanticLabel,
   });
 
   static const _sizeMap = {
@@ -106,7 +108,20 @@ class DooIconik extends StatelessWidget {
       if (bounce) icon = _BounceAnimation(child: icon);
     }
 
-    return SizedBox(width: _pixelSize, height: _pixelSize, child: icon);
+    Widget result = SizedBox(width: _pixelSize, height: _pixelSize, child: icon);
+
+    if (semanticLabel != null) {
+      result = Semantics(
+        label: semanticLabel,
+        image: true,
+        excludeSemantics: true,
+        child: result,
+      );
+    } else {
+      result = ExcludeSemantics(child: result);
+    }
+
+    return result;
   }
 }
 

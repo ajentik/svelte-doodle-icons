@@ -14,6 +14,7 @@ export interface DooIconikProps extends Omit<JSX.SVGAttributes<SVGSVGElement>, '
   flipVertical?: boolean;
   variant?: DooIconikVariant;
   animation?: DooIconikAnimation;
+  ariaLabel?: string;
 }
 
 let stylesInjected = false;
@@ -28,6 +29,7 @@ export const DooIconik: FunctionComponent<DooIconikProps> = ({
   flipVertical = false,
   variant,
   animation,
+  ariaLabel,
   class: className,
   ...rest
 }) => {
@@ -64,7 +66,9 @@ export const DooIconik: FunctionComponent<DooIconikProps> = ({
     'stroke-linejoin': icon.stroke ? 'round' : undefined,
     class: classes || undefined,
     style: transforms ? { transform: transforms } : undefined,
-    'aria-hidden': 'true',
+    'aria-hidden': ariaLabel ? undefined : 'true',
+    'aria-label': ariaLabel || undefined,
+    role: ariaLabel ? 'img' : undefined,
     ...rest,
   },
     ...icon.paths.map(d => h('path', { d })),

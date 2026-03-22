@@ -215,6 +215,7 @@ All framework components share the same props:
 | `flipVertical` | `boolean` | `false` | Mirror vertically |
 | `variant` | `DooIconikVariant` | `undefined` | Visual style variant (see table below) |
 | `animation` | `DooIconikAnimation` | `undefined` | Animation preset (see table below) |
+| `ariaLabel` | `string` | `undefined` | Accessible label — makes the icon meaningful to screen readers |
 
 ### Size presets
 
@@ -277,6 +278,20 @@ Use the `animation` prop for expanded animation options. When set, it takes prec
 // Combine variant + animation
 <DooIconik name="star" variant="neon" animation="tada" />
 ```
+
+### Accessibility
+
+By default, icons are decorative (`aria-hidden="true"`) and invisible to screen readers. Set `ariaLabel` to make an icon meaningful:
+
+```jsx
+// Decorative — hidden from assistive tech (default)
+<DooIconik name="heart" />
+
+// Meaningful — announced by screen readers
+<DooIconik name="heart" ariaLabel="Favorite" />
+```
+
+When `ariaLabel` is provided, the icon receives `role="img"` and `aria-label` and `aria-hidden` is removed. In Flutter, the equivalent prop is `semanticLabel` which wraps the icon in a `Semantics` widget. In Rails, use `aria_label:`.
 
 ## Icon categories
 

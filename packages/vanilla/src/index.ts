@@ -32,6 +32,7 @@ export function createIcon(
     flipVertical?: boolean;
     variant?: DooIconikVariant;
     animation?: DooIconikAnimation;
+    ariaLabel?: string;
     className?: string;
   }
 ): SVGSVGElement | null {
@@ -58,7 +59,12 @@ export function createIcon(
   svg.setAttribute('viewBox', icon.viewBox);
   svg.setAttribute('width', String(pixelSize));
   svg.setAttribute('height', String(pixelSize));
-  svg.setAttribute('aria-hidden', 'true');
+  if (opts.ariaLabel) {
+    svg.setAttribute('aria-label', opts.ariaLabel);
+    svg.setAttribute('role', 'img');
+  } else {
+    svg.setAttribute('aria-hidden', 'true');
+  }
 
   if (icon.stroke) {
     svg.setAttribute('fill', 'none');

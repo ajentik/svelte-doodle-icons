@@ -21,6 +21,7 @@ function renderIcon(el: HTMLElement, name: DooIconikName, options: {
   flipVertical?: boolean;
   variant?: DooIconikVariant;
   animation?: DooIconikAnimation;
+  ariaLabel?: string;
 } = {}) {
   const icon = iconData[name];
   if (!icon) { el.innerHTML = ''; return; }
@@ -39,7 +40,11 @@ function renderIcon(el: HTMLElement, name: DooIconikName, options: {
   const circles = (icon.circles || []).map(c => `<circle cx="${c.cx}" cy="${c.cy}" r="${c.r}"/>`).join('');
   const lines = (icon.lines || []).map(l => `<line x1="${l.x1}" y1="${l.y1}" x2="${l.x2}" y2="${l.y2}"/>`).join('');
 
-  el.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${icon.viewBox}" width="${px}" height="${px}" ${strokeAttrs} class="${allClasses}" ${transform ? `style="transform: ${transform}"` : ''} aria-hidden="true">${paths}${circles}${lines}</svg>`;
+  const ariaAttrs = options.ariaLabel
+    ? `aria-label="${options.ariaLabel}" role="img"`
+    : 'aria-hidden="true"';
+
+  el.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${icon.viewBox}" width="${px}" height="${px}" ${strokeAttrs} class="${allClasses}" ${transform ? `style="transform: ${transform}"` : ''} ${ariaAttrs}>${paths}${circles}${lines}</svg>`;
 }
 
 /**
@@ -103,7 +108,11 @@ export default function dooIconikPlugin(Alpine: AlpineType) {
       const circles = (icon.circles || []).map((c: any) => `<circle cx="${c.cx}" cy="${c.cy}" r="${c.r}"/>`).join('');
       const lines = (icon.lines || []).map((l: any) => `<line x1="${l.x1}" y1="${l.y1}" x2="${l.x2}" y2="${l.y2}"/>`).join('');
 
-      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${icon.viewBox}" width="${px}" height="${px}" ${strokeAttrs} class="${allClasses}" ${transform ? `style="transform: ${transform}"` : ''} aria-hidden="true">${paths}${circles}${lines}</svg>`;
+      const ariaAttrs = options?.ariaLabel
+        ? `aria-label="${options.ariaLabel}" role="img"`
+        : 'aria-hidden="true"';
+
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${icon.viewBox}" width="${px}" height="${px}" ${strokeAttrs} class="${allClasses}" ${transform ? `style="transform: ${transform}"` : ''} ${ariaAttrs}>${paths}${circles}${lines}</svg>`;
     };
   });
 }

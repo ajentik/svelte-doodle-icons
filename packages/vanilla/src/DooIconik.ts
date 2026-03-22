@@ -3,7 +3,7 @@ import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation
 
 export class DooIconikElement extends HTMLElement {
   static get observedAttributes() {
-    return ['name', 'size', 'spin', 'pulse', 'bounce', 'flip-horizontal', 'flip-vertical', 'variant', 'animation'];
+    return ['name', 'size', 'spin', 'pulse', 'bounce', 'flip-horizontal', 'flip-vertical', 'variant', 'animation', 'aria-label'];
   }
 
   private shadow: ShadowRoot;
@@ -51,6 +51,11 @@ export class DooIconikElement extends HTMLElement {
     const circles = (icon.circles || []).map(c => `<circle cx="${c.cx}" cy="${c.cy}" r="${c.r}" />`).join('');
     const lines = (icon.lines || []).map(l => `<line x1="${l.x1}" y1="${l.y1}" x2="${l.x2}" y2="${l.y2}" />`).join('');
 
+    const ariaLabel = this.getAttribute('aria-label');
+    const ariaAttrs = ariaLabel
+      ? `aria-label="${ariaLabel}" role="img"`
+      : 'aria-hidden="true"';
+
     this.shadow.innerHTML = `
       <style>${animationCSS}</style>
       <svg xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +64,7 @@ export class DooIconikElement extends HTMLElement {
         ${strokeAttrs}
         class="${cls}"
         ${transform ? `style="transform: ${transform}"` : ''}
-        aria-hidden="true">
+        ${ariaAttrs}>
         ${paths}${circles}${lines}
       </svg>
     `;

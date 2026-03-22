@@ -30,6 +30,7 @@ export interface DooIconikProps extends Omit<React.SVGProps<SVGSVGElement>, 'nam
   flipVertical?: boolean;
   variant?: DooIconikVariant;
   animation?: DooIconikAnimation;
+  ariaLabel?: string;
 }
 
 export const DooIconik = forwardRef<SVGSVGElement, DooIconikProps>(function DooIconik(
@@ -43,6 +44,7 @@ export const DooIconik = forwardRef<SVGSVGElement, DooIconikProps>(function DooI
     flipVertical = false,
     variant,
     animation,
+    ariaLabel,
     className,
     style,
     ...rest
@@ -82,7 +84,9 @@ export const DooIconik = forwardRef<SVGSVGElement, DooIconikProps>(function DooI
       strokeLinejoin={icon.stroke ? 'round' : undefined}
       className={combinedClassName}
       style={combinedStyle}
-      aria-hidden="true"
+      aria-hidden={ariaLabel ? undefined : true}
+      aria-label={ariaLabel || undefined}
+      role={ariaLabel ? 'img' : undefined}
       {...rest}
     >
       {icon.paths.map((d, i) => (

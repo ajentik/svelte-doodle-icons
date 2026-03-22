@@ -13,10 +13,11 @@ export interface DooIconikProps extends JSX.SvgSVGAttributes<SVGSVGElement> {
   flipVertical?: boolean;
   variant?: DooIconikVariant;
   animation?: DooIconikAnimation;
+  ariaLabel?: string;
 }
 
 export const DooIconik: Component<DooIconikProps> = (props) => {
-  const [local, svgProps] = splitProps(props, ['name', 'size', 'spin', 'pulse', 'bounce', 'flipHorizontal', 'flipVertical', 'variant', 'animation', 'class']);
+  const [local, svgProps] = splitProps(props, ['name', 'size', 'spin', 'pulse', 'bounce', 'flipHorizontal', 'flipVertical', 'variant', 'animation', 'ariaLabel', 'class']);
 
   const icon = createMemo(() => iconData[local.name]);
   const pixelSize = createMemo(() => resolveSize(local.size ?? 'md'));
@@ -48,7 +49,9 @@ export const DooIconik: Component<DooIconikProps> = (props) => {
           stroke-linejoin={iconData().stroke ? 'round' : undefined}
           class={[variantClass(), animClass(), local.class].filter(Boolean).join(' ') || undefined}
           style={transforms() ? { transform: transforms() } : undefined}
-          aria-hidden="true"
+          aria-hidden={local.ariaLabel ? undefined : true}
+          aria-label={local.ariaLabel || undefined}
+          role={local.ariaLabel ? 'img' : undefined}
           {...svgProps}
         >
           <For each={iconData().paths}>{(d) => <path d={d} />}</For>

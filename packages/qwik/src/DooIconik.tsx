@@ -12,6 +12,7 @@ interface DooIconikProps {
   flipVertical?: boolean;
   variant?: DooIconikVariant;
   animation?: DooIconikAnimation;
+  ariaLabel?: string;
   class?: string;
 }
 
@@ -26,6 +27,7 @@ export const DooIconik = component$<DooIconikProps>((props) => {
     flipVertical = false,
     variant,
     animation,
+    ariaLabel,
     class: className = '',
   } = props;
 
@@ -60,7 +62,9 @@ export const DooIconik = component$<DooIconikProps>((props) => {
       stroke-linejoin={icon.stroke ? 'round' : undefined}
       class={classes || undefined}
       style={transform ? { transform } : undefined}
-      aria-hidden="true"
+      aria-hidden={ariaLabel ? undefined : true}
+      aria-label={ariaLabel || undefined}
+      role={ariaLabel ? 'img' : undefined}
     >
       {icon.paths.map((d, i) => <path key={i} d={d} />)}
       {(icon.circles || []).map((c, i) => <circle key={`c${i}`} cx={c.cx} cy={c.cy} r={c.r} />)}

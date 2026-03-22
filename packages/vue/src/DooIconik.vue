@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<{
   flipVertical?: boolean;
   variant?: DooIconikVariant;
   animation?: DooIconikAnimation;
+  ariaLabel?: string;
 }>(), {
   size: 'md',
   spin: false,
@@ -55,7 +56,9 @@ onMounted(() => {
     :stroke-linejoin="icon.stroke ? 'round' : undefined"
     :class="[variantClass, animClass].filter(Boolean).join(' ')"
     :style="transforms ? { transform: transforms } : undefined"
-    aria-hidden="true"
+    :aria-hidden="ariaLabel ? undefined : true"
+    :aria-label="ariaLabel || undefined"
+    :role="ariaLabel ? 'img' : undefined"
   >
     <path v-for="(d, i) in icon.paths" :key="'p' + i" :d="d" />
     <circle

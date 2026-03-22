@@ -61,3 +61,10 @@ When modifying a component, check the equivalent in other frameworks to keep beh
 ## Reporting Issues
 
 Use [GitHub Issues](https://github.com/ajentik/doo-iconik/issues) with a clear description and reproduction steps.
+
+## Releasing
+
+1. Update version in all `packages/*/package.json` files
+2. Update `CHANGELOG.md`
+3. Create a GitHub Release with the version tag (e.g., `v1.0.1`)
+4. The publish workflow will automatically publish to npm

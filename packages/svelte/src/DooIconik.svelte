@@ -12,11 +12,12 @@
     flipVertical?: boolean;
     variant?: DooIconikVariant;
     animation?: DooIconikAnimation;
+    ariaLabel?: string;
     class?: string;
     [key: string]: unknown;
   }
 
-  let { name, size = 'md', spin = false, pulse = false, bounce = false, flipHorizontal = false, flipVertical = false, variant, animation, class: className = '', ...rest }: Props = $props();
+  let { name, size = 'md', spin = false, pulse = false, bounce = false, flipHorizontal = false, flipVertical = false, variant, animation, ariaLabel, class: className = '', ...rest }: Props = $props();
 
   const icon = $derived(iconData[name]);
   const pixelSize = $derived(resolveSize(size));
@@ -39,7 +40,9 @@
   stroke-linejoin={icon.stroke ? 'round' : undefined}
   class="{combinedClass}"
   style:transform={transforms}
-  aria-hidden="true"
+  aria-hidden={ariaLabel ? undefined : true}
+  aria-label={ariaLabel || undefined}
+  role={ariaLabel ? 'img' : undefined}
   {...rest}
 >
   {#each icon.paths as d}

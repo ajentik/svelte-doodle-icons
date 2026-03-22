@@ -41,6 +41,7 @@ class IconRepository
         bool $flipVertical = false,
         string $variant = 'default',
         ?string $animation = null,
+        ?string $ariaLabel = null,
         string $class = '',
         array $attributes = []
     ): HtmlString {
@@ -87,8 +88,12 @@ class IconRepository
             array_keys($attributes), array_values($attributes)
         ));
 
+        $ariaAttrs = $ariaLabel
+            ? 'aria-label="' . e($ariaLabel) . '" role="img"'
+            : 'aria-hidden="true"';
+
         $svg = <<<SVG
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="{$icon['viewBox']}" width="{$px}" height="{$px}" {$strokeAttrs} class="{$classStr}" {$transformStr} aria-hidden="true" {$extraAttrs}>{$paths}{$circles}{$lines}</svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="{$icon['viewBox']}" width="{$px}" height="{$px}" {$strokeAttrs} class="{$classStr}" {$transformStr} {$ariaAttrs} {$extraAttrs}>{$paths}{$circles}{$lines}</svg>
         SVG;
 
         return new HtmlString(trim($svg));

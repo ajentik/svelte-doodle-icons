@@ -21,6 +21,7 @@ export class DooIconikComponent implements OnInit, OnChanges {
   @Input() flipVertical = false;
   @Input() variant?: DooIconikVariant;
   @Input() animation?: DooIconikAnimation;
+  @Input() ariaLabel?: string;
 
   svgContent: SafeHtml = '';
 
@@ -66,7 +67,11 @@ export class DooIconikComponent implements OnInit, OnChanges {
     const circles = (icon.circles || []).map(c => `<circle cx="${c.cx}" cy="${c.cy}" r="${c.r}"/>`).join('');
     const lines = (icon.lines || []).map(l => `<line x1="${l.x1}" y1="${l.y1}" x2="${l.x2}" y2="${l.y2}"/>`).join('');
 
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${icon.viewBox}" width="${px}" height="${px}" ${strokeAttrs} class="${cls}" ${transform ? `style="transform: ${transform}"` : ''} aria-hidden="true">${paths}${circles}${lines}</svg>`;
+    const ariaAttrs = this.ariaLabel
+      ? `aria-label="${this.ariaLabel}" role="img"`
+      : 'aria-hidden="true"';
+
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${icon.viewBox}" width="${px}" height="${px}" ${strokeAttrs} class="${cls}" ${transform ? `style="transform: ${transform}"` : ''} ${ariaAttrs}>${paths}${circles}${lines}</svg>`;
 
     this.svgContent = this.sanitizer.bypassSecurityTrustHtml(svg);
   }
