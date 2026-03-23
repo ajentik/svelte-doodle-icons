@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "tsup": "^8.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^6.0.2"
   },
   "keywords": ["icons", "doodle", "hand-drawn", "alpine", "alpinejs", "ui", "doo-iconik"],
   "repository": {

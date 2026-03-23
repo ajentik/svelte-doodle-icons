@@ -28,7 +28,7 @@
     "vue": "^3.3.0"
   },
   "devDependencies": {
-    "typescript": "^5.0.0",
+    "typescript": "^6.0.2",
     "vue": "^3.3.0"
   },
   "keywords": ["icons", "doodle", "hand-drawn", "vue", "vue3", "ui", "doo-iconik"],
