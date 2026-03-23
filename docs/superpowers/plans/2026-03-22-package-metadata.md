@@ -10,7 +10,7 @@
 
 ---
 
-### Task 1: Add metadata to `@doo-iconik/core`
+### Task 1: Add metadata to `@ajentik/doo-iconik`
 
 **Files:**
 - Modify: `packages/core/package.json`

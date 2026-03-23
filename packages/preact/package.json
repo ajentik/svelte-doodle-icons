@@ -1,5 +1,5 @@
 {
-  "name": "@doo-iconik/preact",
+  "name": "@ajentik/doo-iconik-preact",
   "version": "1.0.0",
   "description": "Preact component for doo-iconik hand-drawn icons",
   "license": "MIT",
@@ -21,12 +21,12 @@
       "default": "./dist/index.mjs"
     }
   },
-  "files": ["dist"],
+  "files": ["dist", "LICENSE", "README.md"],
   "scripts": {
     "build": "tsup src/index.tsx --format esm,cjs --dts"
   },
   "dependencies": {
-    "@doo-iconik/core": "file:../core"
+    "@ajentik/doo-iconik": "file:../core"
   },
   "peerDependencies": {
     "preact": "^10.0.0"

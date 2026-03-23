@@ -21,7 +21,7 @@
     "baseUrl": ".",
     "outDir": "./dist",
     "paths": {
-      "@doo-iconik/core": ["../core/src/index.ts"]
+      "@ajentik/doo-iconik": ["../core/src/index.ts"]
     }
   },
   "include": ["src/**/*.ts"],

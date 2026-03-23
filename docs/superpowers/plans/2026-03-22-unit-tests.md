@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add unit test coverage for `@doo-iconik/core` utilities, icon data integrity, and the React component as a representative framework adapter.
+**Goal:** Add unit test coverage for `@ajentik/doo-iconik` utilities, icon data integrity, and the React component as a representative framework adapter.
 
 **Architecture:** Use Vitest as the test runner — it's fast, ESM-native, and works with TypeScript out of the box. Tests live alongside source in `packages/{pkg}/src/__tests__/`. Core tests cover all utility functions + icon data validation. React tests use `@testing-library/react` for component rendering. No tests for every framework adapter — React serves as the reference; other frameworks are structurally identical.
 

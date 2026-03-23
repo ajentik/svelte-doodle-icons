@@ -1,6 +1,6 @@
-# @doo-iconik/core
+# @ajentik/doo-iconik
 
-[![npm version](https://img.shields.io/npm/v/@doo-iconik/core.svg)](https://www.npmjs.com/package/@doo-iconik/core)
+[![npm version](https://img.shields.io/npm/v/@ajentik/doo-iconik.svg)](https://www.npmjs.com/package/@ajentik/doo-iconik)
 
 Framework-agnostic shared icon data and utilities: 595 hand-drawn doodle-style SVG icons.
 
@@ -9,13 +9,13 @@ Part of [doo-iconik](https://github.com/ajentik/doo-iconik).
 ## Install
 
 ```bash
-npm i @doo-iconik/core
+npm i @ajentik/doo-iconik
 ```
 
 ## Usage
 
 ```js
-import { getIcon, getAllIconNames } from '@doo-iconik/core';
+import { getIcon, getAllIconNames } from '@ajentik/doo-iconik';
 
 // Get a single icon's SVG data
 const heart = getIcon('heart');
@@ -35,7 +35,7 @@ const names = getAllIconNames();
 
 ## Props
 
-All framework wrappers built on `@doo-iconik/core` accept: `name`, `size`, `spin`, `pulse`, `bounce`, `flipHorizontal`, `flipVertical`, `variant`, `animation`.
+All framework wrappers built on `@ajentik/doo-iconik` accept: `name`, `size`, `spin`, `pulse`, `bounce`, `flipHorizontal`, `flipVertical`, `variant`, `animation`.
 
 See the [main documentation](https://github.com/ajentik/doo-iconik#props) for full prop details.
 
@@ -45,10 +45,10 @@ Import individual icons for smaller bundles:
 
 ```typescript
 // Only bundles the heart icon (~200 bytes)
-import { heart } from '@doo-iconik/core/icons/heart';
+import { heart } from '@ajentik/doo-iconik/icons/heart';
 
 // All icons (~212KB)
-import { iconData } from '@doo-iconik/core';
+import { iconData } from '@ajentik/doo-iconik';
 ```
 
 ## License

@@ -1,7 +1,7 @@
 import { Component, createMemo, onMount, splitProps, JSX } from 'solid-js';
 import { For, Show } from 'solid-js/web';
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
-import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@ajentik/doo-iconik';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@ajentik/doo-iconik';
 
 export interface DooIconikProps extends JSX.SvgSVGAttributes<SVGSVGElement> {
   name: DooIconikName;

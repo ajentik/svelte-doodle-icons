@@ -1,6 +1,6 @@
-# @doo-iconik/angular
+# @ajentik/doo-iconik-angular
 
-[![npm version](https://img.shields.io/npm/v/@doo-iconik/angular.svg)](https://www.npmjs.com/package/@doo-iconik/angular)
+[![npm version](https://img.shields.io/npm/v/@ajentik/doo-iconik-angular.svg)](https://www.npmjs.com/package/@ajentik/doo-iconik-angular)
 
 Angular component library: 595 hand-drawn doodle-style SVG icons for Angular 16+.
 
@@ -9,13 +9,13 @@ Part of [doo-iconik](https://github.com/ajentik/doo-iconik).
 ## Install
 
 ```bash
-npm i @doo-iconik/angular
+npm i @ajentik/doo-iconik-angular
 ```
 
 ## Usage
 
 ```typescript
-import { DooIconikComponent } from '@doo-iconik/angular';
+import { DooIconikComponent } from '@ajentik/doo-iconik-angular';
 
 @Component({
   selector: 'app-root',

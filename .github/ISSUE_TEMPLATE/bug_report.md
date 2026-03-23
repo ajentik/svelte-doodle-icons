@@ -6,7 +6,7 @@ labels: bug
 
 ## Package
 
-Which package? (e.g., `@doo-iconik/react`, `@doo-iconik/vue`, `doo_iconik` gem)
+Which package? (e.g., `@ajentik/doo-iconik-react`, `@ajentik/doo-iconik-vue`, `doo_iconik` gem)
 
 ## Version
 

@@ -6,8 +6,8 @@ import {
   buildAnimationClasses,
   buildVariantClass,
   animationCSS,
-} from '@doo-iconik/core';
-import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
+} from '@ajentik/doo-iconik';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@ajentik/doo-iconik';
 
 let cssInjected = false;
 

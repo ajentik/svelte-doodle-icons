@@ -1,5 +1,5 @@
 {
-  "name": "@doo-iconik/solid",
+  "name": "@ajentik/doo-iconik-solid",
   "version": "1.0.0",
   "description": "SolidJS component for doo-iconik hand-drawn icons",
   "license": "MIT",
@@ -21,12 +21,12 @@
       "default": "./dist/index.mjs"
     }
   },
-  "files": ["dist"],
+  "files": ["dist", "LICENSE", "README.md"],
   "scripts": {
     "build": "tsup src/index.tsx --format esm,cjs --dts"
   },
   "dependencies": {
-    "@doo-iconik/core": "file:../core"
+    "@ajentik/doo-iconik": "file:../core"
   },
   "peerDependencies": {
     "solid-js": "^1.7.0"

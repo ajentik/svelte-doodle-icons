@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
-  import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass } from '@doo-iconik/core';
+  import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@ajentik/doo-iconik';
+  import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass } from '@ajentik/doo-iconik';
 
   interface Props {
     name: DooIconikName;

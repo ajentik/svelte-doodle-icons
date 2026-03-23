@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS, escapeAttr } from '@doo-iconik/core';
-import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS, escapeAttr } from '@ajentik/doo-iconik';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@ajentik/doo-iconik';
 
 @Component({
   selector: 'doo-iconik',

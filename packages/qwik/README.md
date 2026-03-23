@@ -1,6 +1,6 @@
-# @doo-iconik/qwik
+# @ajentik/doo-iconik-qwik
 
-[![npm version](https://img.shields.io/npm/v/@doo-iconik/qwik.svg)](https://www.npmjs.com/package/@doo-iconik/qwik)
+[![npm version](https://img.shields.io/npm/v/@ajentik/doo-iconik-qwik.svg)](https://www.npmjs.com/package/@ajentik/doo-iconik-qwik)
 
 Qwik component library: 595 hand-drawn doodle-style SVG icons for Qwik.
 
@@ -9,14 +9,14 @@ Part of [doo-iconik](https://github.com/ajentik/doo-iconik).
 ## Install
 
 ```bash
-npm i @doo-iconik/qwik
+npm i @ajentik/doo-iconik-qwik
 ```
 
 ## Usage
 
 ```tsx
 import { component$ } from '@builder.io/qwik';
-import { DooIconik } from '@doo-iconik/qwik';
+import { DooIconik } from '@ajentik/doo-iconik-qwik';
 
 export default component$(() => {
   return (

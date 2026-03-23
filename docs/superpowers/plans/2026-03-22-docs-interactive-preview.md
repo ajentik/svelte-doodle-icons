@@ -44,7 +44,7 @@ Modify the icon card click handler:
 
 Example generated snippet:
 ```jsx
-import { DooIconik } from '@doo-iconik/react';
+import { DooIconik } from '@ajentik/doo-iconik-react';
 
 <DooIconik name="heart" size="lg" variant="neon" animation="heartbeat" />
 ```
@@ -85,7 +85,7 @@ git commit -m "docs: add interactive preview panel with live code generation"
 │                                          │
 │  ┌─ React ─┬─ Vue ─┬─ Svelte ─┬─ ... ─┐ │
 │  │ import { DooIconik }         [Copy] │ │
-│  │   from '@doo-iconik/react';         │ │
+│  │   from '@ajentik/doo-iconik-react';         │ │
 │  │                                     │ │
 │  │ <DooIconik                          │ │
 │  │   name="heart"                      │ │

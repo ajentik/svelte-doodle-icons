@@ -4,14 +4,14 @@
 
 **Goal:** Enable per-icon imports so bundlers can tree-shake unused icons, reducing the 212KB monolith to only the icons actually used.
 
-**Architecture:** Extend `generate.mjs` to produce individual icon modules at `packages/core/src/icons/{name}.ts`, each exporting a single `IconData` object. Add an export map in `packages/core/package.json` for `@doo-iconik/core/icons/{name}`. The existing monolith `icon-data.ts` remains for consumers who want all icons. Consumers can then do:
+**Architecture:** Extend `generate.mjs` to produce individual icon modules at `packages/core/src/icons/{name}.ts`, each exporting a single `IconData` object. Add an export map in `packages/core/package.json` for `@ajentik/doo-iconik/icons/{name}`. The existing monolith `icon-data.ts` remains for consumers who want all icons. Consumers can then do:
 
 ```typescript
 // All icons (existing — 212KB)
-import { iconData } from '@doo-iconik/core';
+import { iconData } from '@ajentik/doo-iconik';
 
 // Single icon (new — ~200 bytes)
-import { heart } from '@doo-iconik/core/icons/heart';
+import { heart } from '@ajentik/doo-iconik/icons/heart';
 ```
 
 **Tech Stack:** Node.js (generate.mjs), TypeScript, package.json exports map
@@ -164,10 +164,10 @@ Import individual icons for smaller bundles:
 
 \```typescript
 // Only bundles the heart icon (~200 bytes)
-import { heart } from '@doo-iconik/core/icons/heart';
+import { heart } from '@ajentik/doo-iconik/icons/heart';
 
 // All icons (~212KB)
-import { iconData } from '@doo-iconik/core';
+import { iconData } from '@ajentik/doo-iconik';
 \```
 ```
 

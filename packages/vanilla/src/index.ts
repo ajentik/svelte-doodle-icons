@@ -1,11 +1,11 @@
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
-import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@ajentik/doo-iconik';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@ajentik/doo-iconik';
 import { DooIconikElement } from './DooIconik.js';
 
 export { DooIconikElement } from './DooIconik.js';
 
-export type { DooIconikName, DooIconikSize, DooIconikCategory, DooIconikVariant, DooIconikAnimation, IconData } from '@doo-iconik/core';
-export { iconData, sizeMap, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS, escapeAttr } from '@doo-iconik/core';
+export type { DooIconikName, DooIconikSize, DooIconikCategory, DooIconikVariant, DooIconikAnimation, IconData } from '@ajentik/doo-iconik';
+export { iconData, sizeMap, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS, escapeAttr } from '@ajentik/doo-iconik';
 
 /**
  * Register the `<doo-iconik>` custom element.

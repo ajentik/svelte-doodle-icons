@@ -1,6 +1,6 @@
-# @doo-iconik/svelte
+# @ajentik/doo-iconik-svelte
 
-[![npm version](https://img.shields.io/npm/v/@doo-iconik/svelte.svg)](https://www.npmjs.com/package/@doo-iconik/svelte)
+[![npm version](https://img.shields.io/npm/v/@ajentik/doo-iconik-svelte.svg)](https://www.npmjs.com/package/@ajentik/doo-iconik-svelte)
 
 Svelte component library: 595 hand-drawn doodle-style SVG icons for Svelte 5.
 
@@ -9,14 +9,14 @@ Part of [doo-iconik](https://github.com/ajentik/doo-iconik).
 ## Install
 
 ```bash
-npm i @doo-iconik/svelte
+npm i @ajentik/doo-iconik-svelte
 ```
 
 ## Usage
 
 ```svelte
 <script>
-  import { DooIconik } from '@doo-iconik/svelte';
+  import { DooIconik } from '@ajentik/doo-iconik-svelte';
 </script>
 
 <DooIconik name="heart" size="lg" />

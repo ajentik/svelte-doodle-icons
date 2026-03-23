@@ -5,7 +5,7 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: '@doo-iconik/core',
+        find: '@ajentik/doo-iconik',
         replacement: path.resolve(__dirname, '../core/src/index.ts'),
       },
     ],

@@ -1,5 +1,5 @@
 {
-  "name": "@doo-iconik/svelte",
+  "name": "@ajentik/doo-iconik-svelte",
   "version": "1.0.0",
   "description": "Svelte component for doo-iconik hand-drawn icons",
   "license": "MIT",
@@ -21,12 +21,12 @@
       "default": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": ["dist", "LICENSE", "README.md"],
   "scripts": {
     "build": "svelte-package -i src -o dist"
   },
   "dependencies": {
-    "@doo-iconik/core": "file:../core"
+    "@ajentik/doo-iconik": "file:../core"
   },
   "peerDependencies": {
     "svelte": "^5.0.0"

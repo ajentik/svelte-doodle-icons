@@ -1,5 +1,5 @@
 {
-  "name": "@doo-iconik/core",
+  "name": "@ajentik/doo-iconik",
   "version": "1.0.0",
   "description": "Framework-agnostic core icon data and utilities for doo-iconik",
   "license": "MIT",
@@ -44,7 +44,7 @@
       "default": "./dist/icons/index.js"
     }
   },
-  "files": ["dist"],
+  "files": ["dist", "LICENSE", "README.md"],
   "scripts": {
     "build": "tsc -p tsconfig.json"
   },

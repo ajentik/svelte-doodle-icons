@@ -36,24 +36,69 @@ jobs:
       - name: Build all packages
         run: npm run build --workspaces
 
+      - name: Verify icon counts
+        run: |
+          RAW_COUNT=$(node -e "const d=JSON.parse(require('fs').readFileSync('icon-data-raw.json','utf8')); console.log(Object.keys(d).length)")
+          CORE_COUNT=$(grep -c 'viewBox: "' packages/core/src/icon-data.ts)
+          echo "Raw: $RAW_COUNT, Core: $CORE_COUNT"
+          if [ "$CORE_COUNT" != "$RAW_COUNT" ]; then
+            echo "::error::Icon count mismatch: core=$CORE_COUNT raw=$RAW_COUNT"
+            exit 1
+          fi
+
       - name: Run tests
         run: npx vitest run
+
+      - name: Verify version sync
+        if: github.event_name == 'release'
+        run: |
+          TAG="${GITHUB_REF#refs/tags/v}"
+          echo "Release tag version: $TAG"
+          FAIL=0
+          for pkg in packages/{core,react,vue,svelte,angular,solid,lit,preact,qwik,alpine,vanilla,astro}/package.json; do
+            VER=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$pkg','utf8')).version)")
+            if [ "$VER" != "$TAG" ]; then
+              echo "::error::$pkg version ($VER) != tag v$TAG"
+              FAIL=1
+            fi
+          done
+          if [ "$FAIL" -eq 1 ]; then exit 1; fi
+
+      - name: Rewrite core dependency for publish
+        run: |
+          CORE_VER=$(node -e "console.log(JSON.parse(require('fs').readFileSync('packages/core/package.json','utf8')).version)")
+          echo "Core version: $CORE_VER"
+          for pkg in react vue svelte angular solid lit preact qwik alpine vanilla astro; do
+            FILE="packages/$pkg/package.json"
+            node -e "
+              const fs = require('fs');
+              const p = JSON.parse(fs.readFileSync('$FILE', 'utf8'));
+              if (p.dependencies && p.dependencies['@ajentik/doo-iconik'] && p.dependencies['@ajentik/doo-iconik'].startsWith('file:')) {
+                p.dependencies['@ajentik/doo-iconik'] = '^' + '$CORE_VER';
+                fs.writeFileSync('$FILE', JSON.stringify(p, null, 2) + '\n');
+                console.log('Rewrote: ' + '$FILE');
+              }
+            "
+          done
 
       - name: Publish packages
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           DRY_RUN: ${{ inputs.dry-run }}
         run: |
-          DRYRUN=""
-          if [ "$DRY_RUN" = "true" ]; then
-            DRYRUN="--dry-run"
-          fi
+          FLAGS="--access public --provenance"
+          if [ "$DRY_RUN" = "true" ]; then FLAGS="$FLAGS --dry-run"; fi
 
           FAILED=""
           for pkg in core react vue svelte angular solid lit preact qwik alpine vanilla astro; do
-            echo "Publishing @doo-iconik/$pkg..."
-            if ! npm publish --workspace=packages/$pkg --access public $DRYRUN; then
-              echo "::warning::Failed to publish @doo-iconik/$pkg (may already exist)"
+            if [ "$pkg" = "core" ]; then
+              PKG_NAME="@ajentik/doo-iconik"
+            else
+              PKG_NAME="@ajentik/doo-iconik-$pkg"
+            fi
+            echo "Publishing $PKG_NAME..."
+            if ! npm publish --workspace=packages/$pkg $FLAGS; then
+              echo "::warning::Failed to publish $PKG_NAME (may already exist)"
               FAILED="$FAILED $pkg"
             fi
           done

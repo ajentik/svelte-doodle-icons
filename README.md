@@ -11,18 +11,18 @@
 
 | Package | Framework | Install |
 |---------|-----------|---------|
-| `@doo-iconik/core` | None (shared data) | `npm i @doo-iconik/core` |
-| `@doo-iconik/react` | React 18/19 | `npm i @doo-iconik/react` |
-| `@doo-iconik/vue` | Vue 3 | `npm i @doo-iconik/vue` |
-| `@doo-iconik/svelte` | Svelte 5 | `npm i @doo-iconik/svelte` |
-| `@doo-iconik/solid` | SolidJS | `npm i @doo-iconik/solid` |
-| `@doo-iconik/angular` | Angular 16+ | `npm i @doo-iconik/angular` |
-| `@doo-iconik/preact` | Preact 10 | `npm i @doo-iconik/preact` |
-| `@doo-iconik/qwik` | Qwik | `npm i @doo-iconik/qwik` |
-| `@doo-iconik/astro` | Astro 3/4 | `npm i @doo-iconik/astro` |
-| `@doo-iconik/lit` | Lit 3 | `npm i @doo-iconik/lit` |
-| `@doo-iconik/vanilla` | Vanilla JS / Web Components | `npm i @doo-iconik/vanilla` |
-| `@doo-iconik/alpine` | Alpine.js 3 | `npm i @doo-iconik/alpine` |
+| `@ajentik/doo-iconik` | None (shared data) | `npm i @ajentik/doo-iconik` |
+| `@ajentik/doo-iconik-react` | React 18/19 | `npm i @ajentik/doo-iconik-react` |
+| `@ajentik/doo-iconik-vue` | Vue 3 | `npm i @ajentik/doo-iconik-vue` |
+| `@ajentik/doo-iconik-svelte` | Svelte 5 | `npm i @ajentik/doo-iconik-svelte` |
+| `@ajentik/doo-iconik-solid` | SolidJS | `npm i @ajentik/doo-iconik-solid` |
+| `@ajentik/doo-iconik-angular` | Angular 16+ | `npm i @ajentik/doo-iconik-angular` |
+| `@ajentik/doo-iconik-preact` | Preact 10 | `npm i @ajentik/doo-iconik-preact` |
+| `@ajentik/doo-iconik-qwik` | Qwik | `npm i @ajentik/doo-iconik-qwik` |
+| `@ajentik/doo-iconik-astro` | Astro 3/4 | `npm i @ajentik/doo-iconik-astro` |
+| `@ajentik/doo-iconik-lit` | Lit 3 | `npm i @ajentik/doo-iconik-lit` |
+| `@ajentik/doo-iconik-vanilla` | Vanilla JS / Web Components | `npm i @ajentik/doo-iconik-vanilla` |
+| `@ajentik/doo-iconik-alpine` | Alpine.js 3 | `npm i @ajentik/doo-iconik-alpine` |
 | `doo_iconik` | Ruby on Rails | `gem 'doo_iconik'` |
 | `ajentik/doo-iconik-laravel` | Laravel 10/11/12 | `composer require ajentik/doo-iconik-laravel` |
 | `doo_iconik` | Flutter 3.10+ | `flutter pub add doo_iconik` |
@@ -32,7 +32,7 @@
 ### React
 
 ```jsx
-import { DooIconik } from '@doo-iconik/react';
+import { DooIconik } from '@ajentik/doo-iconik-react';
 
 function App() {
   return <DooIconik name="heart" size="lg" spin />;
@@ -43,7 +43,7 @@ function App() {
 
 ```vue
 <script setup>
-import { DooIconik } from '@doo-iconik/vue';
+import { DooIconik } from '@ajentik/doo-iconik-vue';
 </script>
 
 <template>
@@ -55,7 +55,7 @@ import { DooIconik } from '@doo-iconik/vue';
 
 ```svelte
 <script>
-  import { DooIconik } from '@doo-iconik/svelte';
+  import { DooIconik } from '@ajentik/doo-iconik-svelte';
 </script>
 
 <DooIconik name="heart" size="lg" spin />
@@ -64,7 +64,7 @@ import { DooIconik } from '@doo-iconik/vue';
 ### SolidJS
 
 ```jsx
-import { DooIconik } from '@doo-iconik/solid';
+import { DooIconik } from '@ajentik/doo-iconik-solid';
 
 function App() {
   return <DooIconik name="heart" size="lg" spin />;
@@ -74,7 +74,7 @@ function App() {
 ### Angular
 
 ```typescript
-import { DooIconikComponent } from '@doo-iconik/angular';
+import { DooIconikComponent } from '@ajentik/doo-iconik-angular';
 
 @Component({
   standalone: true,
@@ -87,7 +87,7 @@ export class AppComponent {}
 ### Preact
 
 ```jsx
-import { DooIconik } from '@doo-iconik/preact';
+import { DooIconik } from '@ajentik/doo-iconik-preact';
 
 function App() {
   return <DooIconik name="heart" size="lg" spin />;
@@ -97,7 +97,7 @@ function App() {
 ### Qwik
 
 ```jsx
-import { DooIconik } from '@doo-iconik/qwik';
+import { DooIconik } from '@ajentik/doo-iconik-qwik';
 
 export default component$(() => {
   return <DooIconik name="heart" size="lg" spin />;
@@ -108,7 +108,7 @@ export default component$(() => {
 
 ```astro
 ---
-import { DooIconik } from '@doo-iconik/astro';
+import { DooIconik } from '@ajentik/doo-iconik-astro';
 ---
 
 <DooIconik name="heart" size="lg" spin />
@@ -117,7 +117,7 @@ import { DooIconik } from '@doo-iconik/astro';
 ### Lit
 
 ```js
-import '@doo-iconik/lit';
+import '@ajentik/doo-iconik-lit';
 ```
 
 ```html
@@ -128,7 +128,7 @@ import '@doo-iconik/lit';
 
 ```js
 // Web Component
-import { register } from '@doo-iconik/vanilla';
+import { register } from '@ajentik/doo-iconik-vanilla';
 register();
 ```
 
@@ -138,7 +138,7 @@ register();
 
 ```js
 // Or programmatic usage
-import { createIcon } from '@doo-iconik/vanilla';
+import { createIcon } from '@ajentik/doo-iconik-vanilla';
 const svg = createIcon('heart', { size: 'lg', spin: true });
 document.body.appendChild(svg);
 ```
@@ -147,7 +147,7 @@ document.body.appendChild(svg);
 
 ```js
 import Alpine from 'alpinejs';
-import dooIconikPlugin from '@doo-iconik/alpine';
+import dooIconikPlugin from '@ajentik/doo-iconik-alpine';
 
 Alpine.plugin(dooIconikPlugin);
 Alpine.start();
@@ -308,10 +308,10 @@ Import individual icons for smaller bundles:
 
 ```typescript
 // Only bundles the heart icon (~200 bytes)
-import { heart } from '@doo-iconik/core/icons/heart';
+import { heart } from '@ajentik/doo-iconik/icons/heart';
 
 // All icons (~212KB)
-import { iconData } from '@doo-iconik/core';
+import { iconData } from '@ajentik/doo-iconik';
 ```
 
 ## Development

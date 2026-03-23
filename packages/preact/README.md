@@ -1,6 +1,6 @@
-# @doo-iconik/preact
+# @ajentik/doo-iconik-preact
 
-[![npm version](https://img.shields.io/npm/v/@doo-iconik/preact.svg)](https://www.npmjs.com/package/@doo-iconik/preact)
+[![npm version](https://img.shields.io/npm/v/@ajentik/doo-iconik-preact.svg)](https://www.npmjs.com/package/@ajentik/doo-iconik-preact)
 
 Preact component library: 595 hand-drawn doodle-style SVG icons for Preact 10.
 
@@ -9,13 +9,13 @@ Part of [doo-iconik](https://github.com/ajentik/doo-iconik).
 ## Install
 
 ```bash
-npm i @doo-iconik/preact
+npm i @ajentik/doo-iconik-preact
 ```
 
 ## Usage
 
 ```jsx
-import { DooIconik } from '@doo-iconik/preact';
+import { DooIconik } from '@ajentik/doo-iconik-preact';
 
 function App() {
   return (

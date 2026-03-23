@@ -1,6 +1,6 @@
-# @doo-iconik/vanilla
+# @ajentik/doo-iconik-vanilla
 
-[![npm version](https://img.shields.io/npm/v/@doo-iconik/vanilla.svg)](https://www.npmjs.com/package/@doo-iconik/vanilla)
+[![npm version](https://img.shields.io/npm/v/@ajentik/doo-iconik-vanilla.svg)](https://www.npmjs.com/package/@ajentik/doo-iconik-vanilla)
 
 Vanilla JS / Web Components: 595 hand-drawn doodle-style SVG icons for Vanilla JS.
 
@@ -9,7 +9,7 @@ Part of [doo-iconik](https://github.com/ajentik/doo-iconik).
 ## Install
 
 ```bash
-npm i @doo-iconik/vanilla
+npm i @ajentik/doo-iconik-vanilla
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ npm i @doo-iconik/vanilla
 ### Web Component
 
 ```js
-import { register } from '@doo-iconik/vanilla';
+import { register } from '@ajentik/doo-iconik-vanilla';
 
 // Register the <doo-iconik> custom element
 register();
@@ -31,7 +31,7 @@ register();
 ### Programmatic API
 
 ```js
-import { createIcon } from '@doo-iconik/vanilla';
+import { createIcon } from '@ajentik/doo-iconik-vanilla';
 
 const icon = createIcon('heart', { size: 'lg', spin: true });
 document.body.appendChild(icon);

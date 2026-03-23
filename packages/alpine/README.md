@@ -1,6 +1,6 @@
-# @doo-iconik/alpine
+# @ajentik/doo-iconik-alpine
 
-[![npm version](https://img.shields.io/npm/v/@doo-iconik/alpine.svg)](https://www.npmjs.com/package/@doo-iconik/alpine)
+[![npm version](https://img.shields.io/npm/v/@ajentik/doo-iconik-alpine.svg)](https://www.npmjs.com/package/@ajentik/doo-iconik-alpine)
 
 Alpine.js plugin: 595 hand-drawn doodle-style SVG icons for Alpine.js 3.
 
@@ -9,14 +9,14 @@ Part of [doo-iconik](https://github.com/ajentik/doo-iconik).
 ## Install
 
 ```bash
-npm i @doo-iconik/alpine
+npm i @ajentik/doo-iconik-alpine
 ```
 
 ## Usage
 
 ```js
 import Alpine from 'alpinejs';
-import { dooIconikPlugin } from '@doo-iconik/alpine';
+import { dooIconikPlugin } from '@ajentik/doo-iconik-alpine';
 
 Alpine.plugin(dooIconikPlugin);
 Alpine.start();

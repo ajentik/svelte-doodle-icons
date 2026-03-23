@@ -1,6 +1,6 @@
-# @doo-iconik/solid
+# @ajentik/doo-iconik-solid
 
-[![npm version](https://img.shields.io/npm/v/@doo-iconik/solid.svg)](https://www.npmjs.com/package/@doo-iconik/solid)
+[![npm version](https://img.shields.io/npm/v/@ajentik/doo-iconik-solid.svg)](https://www.npmjs.com/package/@ajentik/doo-iconik-solid)
 
 SolidJS component library: 595 hand-drawn doodle-style SVG icons for SolidJS.
 
@@ -9,13 +9,13 @@ Part of [doo-iconik](https://github.com/ajentik/doo-iconik).
 ## Install
 
 ```bash
-npm i @doo-iconik/solid
+npm i @ajentik/doo-iconik-solid
 ```
 
 ## Usage
 
 ```jsx
-import { DooIconik } from '@doo-iconik/solid';
+import { DooIconik } from '@ajentik/doo-iconik-solid';
 
 function App() {
   return (

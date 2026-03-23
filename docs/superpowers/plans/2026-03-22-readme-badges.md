@@ -65,12 +65,12 @@ git commit -m "docs: add CI, license, icon count, and framework badges to README
 
 - [ ] **Step 1: Add npm version badge to each package README**
 
-For each JS/TS package, add a badge line after the `# @doo-iconik/{name}` heading:
+For each JS/TS package, add a badge line after the `# @ajentik/doo-iconik[-{name}]` heading:
 
 ```markdown
-# @doo-iconik/{name}
+# @ajentik/doo-iconik[-{name}]
 
-[![npm version](https://img.shields.io/npm/v/@doo-iconik/{name}.svg)](https://www.npmjs.com/package/@doo-iconik/{name})
+[![npm version](https://img.shields.io/npm/v/@ajentik/doo-iconik[-{name}].svg)](https://www.npmjs.com/package/@ajentik/doo-iconik[-{name}])
 ```
 
 Replace `{name}` with each package name: core, react, vue, svelte, angular, solid, lit, preact, qwik, alpine, vanilla, astro.

@@ -1,7 +1,7 @@
 import { LitElement, html, css, svg, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass } from '@doo-iconik/core';
-import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass } from '@ajentik/doo-iconik';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@ajentik/doo-iconik';
 
 @customElement('doo-iconik-lit')
 export class DooIconikElement extends LitElement {

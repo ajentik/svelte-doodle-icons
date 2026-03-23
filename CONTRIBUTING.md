@@ -45,7 +45,7 @@ npm run build
 
 ## Framework Packages
 
-All JS/TS framework packages depend on `@doo-iconik/core`. The component in each package:
+All JS/TS framework packages depend on `@ajentik/doo-iconik`. The component in each package:
 - Imports icon data and utilities from core
 - Renders SVGs using the framework's native patterns
 - Supports all shared props (name, size, spin, variant, animation, etc.)

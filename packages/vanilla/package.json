@@ -1,5 +1,5 @@
 {
-  "name": "@doo-iconik/vanilla",
+  "name": "@ajentik/doo-iconik-vanilla",
   "version": "1.0.0",
   "description": "Vanilla JavaScript adapter (Web Component + createIcon) for doo-iconik icons",
   "license": "MIT",
@@ -20,12 +20,12 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
+  "files": ["dist", "LICENSE", "README.md"],
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs,iife --global-name DooIconik --dts"
   },
   "dependencies": {
-    "@doo-iconik/core": "file:../core"
+    "@ajentik/doo-iconik": "file:../core"
   },
   "devDependencies": {
     "tsup": "^8.0.0",

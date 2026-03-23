@@ -1,5 +1,5 @@
 {
-  "name": "@doo-iconik/angular",
+  "name": "@ajentik/doo-iconik-angular",
   "version": "1.0.0",
   "description": "Angular component adapter for doo-iconik hand-drawn icons",
   "license": "MIT",
@@ -9,12 +9,12 @@
     "url": "https://github.com/ajentik/doo-iconik/issues"
   },
   "sideEffects": false,
-  "files": ["dist"],
+  "files": ["dist", "LICENSE", "README.md"],
   "scripts": {
     "build": "ng-packagr -p ng-package.json"
   },
   "dependencies": {
-    "@doo-iconik/core": "file:../core"
+    "@ajentik/doo-iconik": "file:../core"
   },
   "peerDependencies": {
     "@angular/core": ">=16.0.0",

@@ -1,7 +1,7 @@
 import { h, FunctionComponent } from 'preact';
 import { useEffect } from 'preact/hooks';
-import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@doo-iconik/core';
-import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@doo-iconik/core';
+import { iconData, resolveSize, buildTransform, buildAnimationClasses, buildVariantClass, animationCSS } from '@ajentik/doo-iconik';
+import type { DooIconikName, DooIconikSize, DooIconikVariant, DooIconikAnimation } from '@ajentik/doo-iconik';
 import type { JSX } from 'preact';
 
 export interface DooIconikProps extends Omit<JSX.SVGAttributes<SVGSVGElement>, 'size'> {

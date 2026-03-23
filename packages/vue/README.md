@@ -1,6 +1,6 @@
-# @doo-iconik/vue
+# @ajentik/doo-iconik-vue
 
-[![npm version](https://img.shields.io/npm/v/@doo-iconik/vue.svg)](https://www.npmjs.com/package/@doo-iconik/vue)
+[![npm version](https://img.shields.io/npm/v/@ajentik/doo-iconik-vue.svg)](https://www.npmjs.com/package/@ajentik/doo-iconik-vue)
 
 Vue component library: 595 hand-drawn doodle-style SVG icons for Vue 3.
 
@@ -9,14 +9,14 @@ Part of [doo-iconik](https://github.com/ajentik/doo-iconik).
 ## Install
 
 ```bash
-npm i @doo-iconik/vue
+npm i @ajentik/doo-iconik-vue
 ```
 
 ## Usage
 
 ```vue
 <script setup>
-import { DooIconik } from '@doo-iconik/vue';
+import { DooIconik } from '@ajentik/doo-iconik-vue';
 </script>
 
 <template>

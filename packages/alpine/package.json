@@ -1,5 +1,5 @@
 {
-  "name": "@doo-iconik/alpine",
+  "name": "@ajentik/doo-iconik-alpine",
   "version": "1.0.0",
   "description": "Alpine.js adapter (directive + magic) for doo-iconik icons",
   "license": "MIT",
@@ -20,12 +20,12 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
+  "files": ["dist", "LICENSE", "README.md"],
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs,iife --global-name DooIconikAlpine --dts"
   },
   "dependencies": {
-    "@doo-iconik/core": "file:../core"
+    "@ajentik/doo-iconik": "file:../core"
   },
   "peerDependencies": {
     "alpinejs": "^3.0.0"

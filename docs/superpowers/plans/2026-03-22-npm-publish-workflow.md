@@ -63,7 +63,8 @@ jobs:
           fi
 
           for pkg in core react vue svelte angular solid lit preact qwik alpine vanilla astro; do
-            echo "Publishing @doo-iconik/$pkg..."
+            if [ "$pkg" = "core" ]; then PKG_NAME="@ajentik/doo-iconik"; else PKG_NAME="@ajentik/doo-iconik-$pkg"; fi
+            echo "Publishing $PKG_NAME..."
             npm publish --workspace=packages/$pkg --access public $DRYRUN || echo "Failed to publish $pkg (may already exist)"
           done
 ```
