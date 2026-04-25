@@ -59,17 +59,18 @@ jobs:
             fi
           done
 
-      - name: Icon complexity audit
-        # Reports outliers and writes a JSON report. Not strict yet — flips
-        # to STRICT_COMPLEXITY=1 once the simplification PRs land.
+      - name: Icon complexity audit (strict)
+        # Fails the build if any icon exceeds the hard cap
+        # (8 paths / 32 cmds / 600 d-chars). Soft-cap violations are
+        # surfaced in the job summary but don't fail.
+        shell: bash
         run: |
+          set -eo pipefail
           mkdir -p docs
-          COMPLEXITY_REPORT=docs/icon-complexity-baseline.json node generate.mjs >> $GITHUB_STEP_SUMMARY 2>&1 || true
-          if [ -f docs/icon-complexity-baseline.json ]; then
-            HARD=$(node -e "console.log(JSON.parse(require('fs').readFileSync('docs/icon-complexity-baseline.json','utf8')).hardViolations.length)")
-            SOFT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('docs/icon-complexity-baseline.json','utf8')).softViolations.length)")
-            echo "Icon complexity — soft: $SOFT, hard: $HARD"
-          fi
+          STRICT_COMPLEXITY=1 COMPLEXITY_REPORT=docs/icon-complexity-baseline.json node generate.mjs | tee -a "$GITHUB_STEP_SUMMARY"
+          HARD=$(node -e "console.log(JSON.parse(require('fs').readFileSync('docs/icon-complexity-baseline.json','utf8')).hardViolations.length)")
+          SOFT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('docs/icon-complexity-baseline.json','utf8')).softViolations.length)")
+          echo "Icon complexity — soft: $SOFT, hard: $HARD"
 
       - name: Verify icon counts match across frameworks
         run: |

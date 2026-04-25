@@ -1,0 +1,191 @@
+#!/usr/bin/env node
+// Final pass — clears the remaining 20 hard-cap violators so CI can flip
+// to STRICT_COMPLEXITY=1. Most fixes just merge multiple decorative
+// `M..L` strokes into single multi-stroke paths.
+
+import { readFileSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const dataPath = join(__dirname, '..', 'icon-data-raw.json');
+const data = JSON.parse(readFileSync(dataPath, 'utf8'));
+
+const replacements = {
+  // Monitor + face inside + signal blips on the side.
+  telehealth: [
+    'M 3 5 C 3 4.4 3.4 4 4 4 L 20 4 C 20.6 4 21 4.4 21 5 L 21 16 C 21 16.6 20.6 17 20 17 L 4 17 C 3.4 17 3 16.6 3 16 Z',
+    'M 9 20 L 15 20 M 12 17 L 12 20',
+    'M 14 10.5 C 14 9.4 13.1 8.5 12 8.5 C 10.9 8.5 10 9.4 10 10.5 C 10 11.6 10.9 12.5 12 12.5 C 13.1 12.5 14 11.6 14 10.5 Z',
+    'M 8.5 14.5 C 9.5 12.5 14.5 12.5 15.5 14.5',
+    'M 17 7 C 18 7 19 8 19 9 M 17 9 C 17.5 9 18 9.5 18 10',
+  ],
+
+  // EHR card + heart + lines.
+  'ehr-system': [
+    'M 3 5 C 3 4.4 3.4 4 4 4 L 20 4 C 20.6 4 21 4.4 21 5 L 21 17 C 21 17.6 20.6 18 20 18 L 4 18 C 3.4 18 3 17.6 3 17 Z',
+    'M 9 18 L 9 20 M 15 18 L 15 20 M 7 20 L 17 20',
+    'M 7 9 C 7 8 8 7.5 8.5 8 C 9 8.5 9 8.5 9.5 8 C 10 7.5 11 8 11 9 C 11 10 8 12 8 12 C 8 12 7 10 7 9 Z',
+    'M 13 8 L 19 8 M 13 11 L 19 11 M 13 14 L 17 14',
+  ],
+
+  // Four nodes + central node + four diagonals + small spark.
+  'machine-learning': [
+    'M 12 10 C 13.1 10 14 10.9 14 12 C 14 13.1 13.1 14 12 14 C 10.9 14 10 13.1 10 12 C 10 10.9 10.9 10 12 10 Z',
+    'M 5 5 C 5.5 4.5 6.5 4.5 7 5 C 7 6 6 6.5 5.5 6.3 Z M 17 5 C 17.5 4.5 18.5 4.5 19 5 C 19 6 18 6.5 17.5 6.3 Z',
+    'M 5 19 C 5.5 18.5 6.5 18.5 7 19 C 7 20 6 20.5 5.5 20.3 Z M 17 19 C 17.5 18.5 18.5 18.5 19 19 C 19 20 18 20.5 17.5 20.3 Z',
+    'M 7 6 L 10.5 10.5 M 17 6 L 13.5 10.5 M 7 18 L 10.5 13.5 M 17 18 L 13.5 13.5',
+  ],
+
+  // Clipboard + hand-drawn bar chart inside.
+  'medical-chart': [
+    'M 5 5 C 5 4.4 5.4 4 6 4 L 18 4 C 18.6 4 19 4.4 19 5 L 19 21 C 19 21.6 18.6 22 18 22 L 6 22 C 5.4 22 5 21.6 5 21 Z',
+    'M 9 2 C 9 1.4 9.4 1 10 1 L 14 1 C 14.6 1 15 1.4 15 2 L 15 5 L 9 5 Z',
+    'M 7 17 L 7 14 M 10 17 L 10 11 M 13 17 L 13 13 M 16 17 L 16 9',
+    'M 7 19 L 17 19',
+  ],
+
+  // Pill capsule + bell + small chime line.
+  'medication-reminder': [
+    'M 8 7 L 16 15 C 17.5 16.5 17.5 18.5 16 20 C 14.5 21.5 12.5 21.5 11 20 L 3 12 C 1.5 10.5 1.5 8.5 3 7 C 4.5 5.5 6.5 5.5 8 7 Z',
+    'M 5 9 L 11 15',
+    'M 18 4 C 20 4 21.5 5.5 21.5 7.5 L 21.5 11 L 23 13 L 13 13 L 14.5 11 L 14.5 7.5 C 14.5 5.5 16 4 18 4 Z',
+    'M 17 14.5 C 17 15.3 17.7 16 18.5 16 C 19.3 16 20 15.3 20 14.5',
+  ],
+
+  // Calendar + check.
+  schedule: [
+    'M 4 6 C 4 5.4 4.4 5 5 5 L 19 5 C 19.6 5 20 5.4 20 6 L 20 20 C 20 20.6 19.6 21 19 21 L 5 21 C 4.4 21 4 20.6 4 20 Z',
+    'M 4 9 L 20 9',
+    'M 8 3 L 8 6 M 16 3 L 16 6',
+    'M 8 14 L 11 17 L 16 12',
+  ],
+
+  // Snowflake: 3 axes + small barbs (combined into 2 paths).
+  snowflake: [
+    'M 12 2 L 12 22 M 4 7 L 20 17 M 4 17 L 20 7',
+    'M 10 4.5 L 12 2 L 14 4.5 M 10 19.5 L 12 22 L 14 19.5',
+    'M 7 7.5 L 4 7 L 5 9.8 M 17 16.5 L 20 17 L 19 14.2',
+    'M 5 14.2 L 4 17 L 7 16.5 M 19 9.8 L 20 7 L 17 7.5',
+  ],
+
+  // Single crutch outline + grip + foot.
+  crutch: [
+    'M 9 3 C 9 2.4 9.4 2 10 2 L 14 2 C 14.6 2 15 2.4 15 3 L 15 5 L 9 5 Z',
+    'M 9 5 L 11 12 L 11 21',
+    'M 15 5 L 13 12 L 13 21',
+    'M 9 12 L 15 12',
+    'M 9 21 L 15 21',
+  ],
+
+  // Folder + heart pulse line + tab.
+  'medical-record': [
+    'M 4 7 C 4 6.4 4.4 6 5 6 L 9 6 L 11 8 L 19 8 C 19.6 8 20 8.4 20 9 L 20 19 C 20 19.6 19.6 20 19 20 L 5 20 C 4.4 20 4 19.6 4 19 Z',
+    'M 7 14 L 9 14 L 10.5 11 L 12.5 17 L 14 14 L 17 14',
+  ],
+
+  // Phone outline + a single gear at the corner.
+  'phone-setting': [
+    'M 7 2 C 5.9 2 5 2.9 5 4 L 5 20 C 5 21.1 5.9 22 7 22 L 14 22 C 15.1 22 16 21.1 16 20 L 16 14',
+    'M 16 4 C 16 2.9 15.1 2 14 2 L 7 2',
+    'M 18.5 12.5 C 19.6 12.5 20.5 13.4 20.5 14.5 C 20.5 15.6 19.6 16.5 18.5 16.5 C 17.4 16.5 16.5 15.6 16.5 14.5 C 16.5 13.4 17.4 12.5 18.5 12.5 Z',
+    'M 18.5 11 L 18.5 12.5 M 18.5 16.5 L 18.5 18 M 16 14.5 L 17 14.5 M 20 14.5 L 21 14.5',
+  ],
+
+  // Document + small check + lock dot.
+  'prior-authorization': [
+    'M 6 2 C 5.4 2 5 2.4 5 3 L 5 21 C 5 21.6 5.4 22 6 22 L 18 22 C 18.6 22 19 21.6 19 21 L 19 7 L 14 2 Z',
+    'M 14 2 L 14 7 L 19 7',
+    'M 7 11 L 13 11 M 7 14 L 11 14',
+    'M 12 18 L 14 20 L 18 16',
+  ],
+
+  // Single glove silhouette.
+  gloves: [
+    'M 6 21 L 6 12 C 6 11 5.5 9.5 5 8 C 4.5 6.5 5.5 5.5 6.5 6 C 7.5 6.5 8 8 8 9.5',
+    'M 8 9.5 L 8 6 C 8 4.5 9.5 3.5 10.5 4.5 C 11 5.5 11 7.5 10.5 9.5',
+    'M 10.5 9.5 L 11 6 C 11 4.5 12.5 4 13 5 C 13.5 6 13.5 8 13 10',
+    'M 13 10 L 14 8 C 14.5 7 16 7 16 8.5 C 16 10 15 12 15 14',
+    'M 6 13 L 15 13',
+    'M 6 21 L 15 21 L 15 14',
+  ],
+
+  // Forearm splint: rod with two wrap straps.
+  splint: [
+    'M 5 5 L 19 19',
+    'M 4 8 C 4 7 4.5 6.5 5.5 7 L 17 18.5 C 18 19 17.5 20 16.5 20 Z',
+    'M 7 9 L 9.5 11.5 M 9 7 L 11.5 9.5',
+    'M 14 16 L 16.5 18.5 M 16 14 L 18.5 16.5',
+  ],
+
+  // Speedometer dial: arc + needle + hub + 3 ticks.
+  'efficiency-meter': [
+    'M 3 17 C 3 11 7 7 12 7 C 17 7 21 11 21 17',
+    'M 3 17 L 21 17',
+    'M 12 17 L 8 10',
+    'M 12 17 C 12.6 17 12.6 17.6 12 17.6 Z',
+    'M 6 12 L 7 13 M 12 9 L 12 10 M 18 12 L 17 13',
+  ],
+
+  // MRI tube + patient bed with cross.
+  'mri-scan': [
+    'M 4 8 C 4 6 5 5 7 5 L 17 5 C 19 5 20 6 20 8 L 20 16 C 20 18 19 19 17 19 L 7 19 C 5 19 4 18 4 16 Z',
+    'M 9 12 C 9 10.3 10.3 9 12 9 C 13.7 9 15 10.3 15 12 C 15 13.7 13.7 15 12 15 C 10.3 15 9 13.7 9 12 Z',
+    'M 9 19 L 9 22 L 15 22 L 15 19',
+    'M 11.2 11 L 12.8 11 L 12.8 13 L 11.2 13 Z M 11.2 11 L 11.2 13 M 11.2 12 L 12.8 12',
+  ],
+
+  // Browser-style website: frame + dot row + content area.
+  website: [
+    'M 3 4 C 3 3.4 3.4 3 4 3 L 20 3 C 20.6 3 21 3.4 21 4 L 21 20 C 21 20.6 20.6 21 20 21 L 4 21 C 3.4 21 3 20.6 3 20 Z',
+    'M 3 7 L 21 7',
+    'M 5 5 C 5.3 5 5.3 5.3 5 5.3 Z M 7 5 C 7.3 5 7.3 5.3 7 5.3 Z M 9 5 C 9.3 5 9.3 5.3 9 5.3 Z',
+    'M 6 11 L 18 11 M 6 14 L 14 14 M 6 17 L 16 17',
+  ],
+
+  // Settings cog: circle + 4-direction spokes (combined).
+  setting: [
+    'M 12 15 C 13.7 15 15 13.7 15 12 C 15 10.3 13.7 9 12 9 C 10.3 9 9 10.3 9 12 C 9 13.7 10.3 15 12 15 Z',
+    'M 12 2 L 12 4 M 12 20 L 12 22',
+    'M 2 12 L 4 12 M 20 12 L 22 12',
+    'M 4.9 4.9 L 6.3 6.3 M 17.7 17.7 L 19.1 19.1',
+    'M 4.9 19.1 L 6.3 17.7 M 17.7 6.3 L 19.1 4.9',
+  ],
+
+  // Other-gender symbol: circle + 8 spokes (combined into 2 multi-strokes).
+  'other-gender': [
+    'M 6 12 A 6 6 0 1 0 18 12 A 6 6 0 1 0 6 12 Z',
+    'M 12 6 L 12 3 M 12 21 L 12 18 M 6 12 L 3 12 M 21 12 L 18 12',
+    'M 7.8 7.8 L 5.5 5.5 M 16.2 16.2 L 18.5 18.5 M 7.8 16.2 L 5.5 18.5 M 16.2 7.8 L 18.5 5.5',
+  ],
+
+  // Sunny: sun disc + 8 rays merged into 2 paths.
+  sunny: [
+    'M 7 12 A 5 5 0 1 0 17 12 A 5 5 0 1 0 7 12 Z',
+    'M 12 2 L 12 4.5 M 12 19.5 L 12 22 M 2 12 L 4.5 12 M 19.5 12 L 22 12',
+    'M 4.9 4.9 L 6.7 6.7 M 17.3 17.3 L 19.1 19.1 M 4.9 19.1 L 6.7 17.3 M 17.3 6.7 L 19.1 4.9',
+  ],
+
+  // Railway tracks: two long rails + sleepers (combined).
+  railway: [
+    'M 9 2.5 C 8 9 8 16 7 21.5',
+    'M 15 2.5 C 16 9 16 16 17 21.5',
+    'M 4 18 L 20 18 M 5 14 L 19 14 M 7 10 L 17 10 M 9 6 L 15 6',
+  ],
+};
+
+let updated = 0;
+for (const [name, paths] of Object.entries(replacements)) {
+  if (!data[name]) {
+    console.warn('skip (missing): ' + name);
+    continue;
+  }
+  data[name].paths = paths;
+  data[name].stroke = true;
+  delete data[name].circles;
+  delete data[name].lines;
+  updated++;
+}
+
+writeFileSync(dataPath, JSON.stringify(data, null, 2) + '\n', 'utf8');
+console.log('Updated ' + updated + ' icons.');
