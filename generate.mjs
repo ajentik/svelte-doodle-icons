@@ -156,3 +156,100 @@ for (const name of iconNames) {
 barrelExports.push('');
 writeFileSync(join(iconsDir, 'index.ts'), barrelExports.join('\n'));
 console.log('Generated ' + iconNames.length + ' individual icon modules in packages/core/src/icons/');
+
+// ─── Icon complexity audit ────────────────────────────────────────────────
+// Doodle icons should stay sparse and hand-drawn. Track outliers so that
+// new contributions don't drift towards mini-illustration territory.
+//
+//   Soft cap (warn): ≤ 6 paths,  ≤ 24 commands, ≤ 450 d-chars
+//   Hard cap (fail): ≤ 8 paths,  ≤ 32 commands, ≤ 600 d-chars
+//
+// Pass STRICT_COMPLEXITY=1 to fail the build on hard-cap violations.
+// Pass COMPLEXITY_REPORT=path.json to write a machine-readable report.
+
+const SOFT = { paths: 6, cmds: 24, dlen: 450 };
+const HARD = { paths: 8, cmds: 32, dlen: 600 };
+
+const CMD_RE = /[MLCAQHVSTZmlcaqhvstz]/g;
+
+function measureIcon(icon) {
+  const paths = icon.paths || [];
+  const dlen = paths.reduce((a, p) => a + p.length, 0);
+  const cmds = paths.reduce((a, p) => a + (p.match(CMD_RE) || []).length, 0);
+  return { paths: paths.length, cmds, dlen };
+}
+
+const audit = iconNames.map((name) => {
+  const m = measureIcon(rawData[name]);
+  const overSoft = m.paths > SOFT.paths || m.cmds > SOFT.cmds || m.dlen > SOFT.dlen;
+  const overHard = m.paths > HARD.paths || m.cmds > HARD.cmds || m.dlen > HARD.dlen;
+  return { name, category: rawData[name].category || '?', ...m, overSoft, overHard };
+});
+
+const totals = audit.reduce(
+  (a, r) => ({ paths: a.paths + r.paths, cmds: a.cmds + r.cmds, dlen: a.dlen + r.dlen }),
+  { paths: 0, cmds: 0, dlen: 0 },
+);
+const n = audit.length;
+const avg = { paths: totals.paths / n, cmds: totals.cmds / n, dlen: totals.dlen / n };
+
+const softViolations = audit.filter((r) => r.overSoft).sort((a, b) => b.cmds - a.cmds);
+const hardViolations = audit.filter((r) => r.overHard);
+
+console.log('');
+console.log('── Icon complexity audit ──────────────────────────────');
+console.log('  icons:        ' + n);
+console.log('  avg paths:    ' + avg.paths.toFixed(2) + '  (soft cap ' + SOFT.paths + ')');
+console.log('  avg cmds:     ' + avg.cmds.toFixed(2) + '  (soft cap ' + SOFT.cmds + ')');
+console.log('  avg d-chars:  ' + avg.dlen.toFixed(0) + '  (soft cap ' + SOFT.dlen + ')');
+console.log('  soft viol:    ' + softViolations.length);
+console.log('  hard viol:    ' + hardViolations.length);
+
+if (softViolations.length > 0) {
+  console.log('');
+  console.log('  Top offenders (soft cap exceeded):');
+  console.log('    paths cmds dlen  category        name');
+  for (const r of softViolations.slice(0, 25)) {
+    const tag = r.overHard ? '!' : ' ';
+    console.log(
+      '  ' + tag + ' ' +
+      String(r.paths).padStart(5) + ' ' +
+      String(r.cmds).padStart(4) + ' ' +
+      String(r.dlen).padStart(4) + '  ' +
+      r.category.padEnd(14) + '  ' +
+      r.name,
+    );
+  }
+  if (softViolations.length > 25) {
+    console.log('    … ' + (softViolations.length - 25) + ' more');
+  }
+}
+console.log('───────────────────────────────────────────────────────');
+
+if (process.env.COMPLEXITY_REPORT) {
+  const reportPath = process.env.COMPLEXITY_REPORT;
+  writeFileSync(
+    reportPath,
+    JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        caps: { soft: SOFT, hard: HARD },
+        totals: { count: n, avg },
+        softViolations,
+        hardViolations,
+      },
+      null,
+      2,
+    ),
+  );
+  console.log('Wrote complexity report → ' + reportPath);
+}
+
+if (process.env.STRICT_COMPLEXITY === '1' && hardViolations.length > 0) {
+  console.error('');
+  console.error('STRICT_COMPLEXITY=1: ' + hardViolations.length + ' icon(s) exceed the hard cap.');
+  for (const r of hardViolations) {
+    console.error('  ✗ ' + r.name + '  paths=' + r.paths + ' cmds=' + r.cmds + ' dlen=' + r.dlen);
+  }
+  process.exit(1);
+}

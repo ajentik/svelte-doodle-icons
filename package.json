@@ -7,6 +7,8 @@
   ],
   "scripts": {
     "generate": "node generate.mjs",
+    "lint:icons": "STRICT_COMPLEXITY=1 node generate.mjs",
+    "report:icons": "COMPLEXITY_REPORT=docs/icon-complexity-baseline.json node generate.mjs",
     "build": "npm run generate && npm run build --workspaces",
     "build:core": "npm run build --workspace=packages/core",
     "test": "vitest run",

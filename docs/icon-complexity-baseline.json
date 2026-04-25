@@ -1,0 +1,1935 @@
+{
+  "generatedAt": "2026-04-25T04:26:30.748Z",
+  "caps": {
+    "soft": {
+      "paths": 6,
+      "cmds": 24,
+      "dlen": 450
+    },
+    "hard": {
+      "paths": 8,
+      "cmds": 32,
+      "dlen": 600
+    }
+  },
+  "totals": {
+    "count": 595,
+    "avg": {
+      "paths": 4.556302521008403,
+      "cmds": 17.64873949579832,
+      "dlen": 219.85210084033613
+    }
+  },
+  "softViolations": [
+    {
+      "name": "ai-brain",
+      "category": "healthcare",
+      "paths": 11,
+      "cmds": 53,
+      "dlen": 827,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "referral",
+      "category": "healthcare",
+      "paths": 10,
+      "cmds": 53,
+      "dlen": 800,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "care-plan",
+      "category": "healthcare",
+      "paths": 12,
+      "cmds": 50,
+      "dlen": 685,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "roi-calculator",
+      "category": "healthcare",
+      "paths": 16,
+      "cmds": 50,
+      "dlen": 552,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "support-ticket",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 50,
+      "dlen": 720,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "ambulance",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 49,
+      "dlen": 795,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "qr",
+      "category": "ecommerce",
+      "paths": 8,
+      "cmds": 48,
+      "dlen": 471,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "agentic",
+      "category": "technology",
+      "paths": 10,
+      "cmds": 46,
+      "dlen": 639,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "spine",
+      "category": "healthcare",
+      "paths": 11,
+      "cmds": 46,
+      "dlen": 397,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "x-ray",
+      "category": "healthcare",
+      "paths": 17,
+      "cmds": 46,
+      "dlen": 617,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "pill-organizer",
+      "category": "healthcare",
+      "paths": 12,
+      "cmds": 45,
+      "dlen": 542,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "setting2",
+      "category": "interfaces",
+      "paths": 18,
+      "cmds": 44,
+      "dlen": 400,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "knowledge-base",
+      "category": "healthcare",
+      "paths": 15,
+      "cmds": 43,
+      "dlen": 847,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "bandage-alt",
+      "category": "healthcare",
+      "paths": 16,
+      "cmds": 42,
+      "dlen": 606,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "insurance-claim",
+      "category": "healthcare",
+      "paths": 13,
+      "cmds": 42,
+      "dlen": 883,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "staff-scheduling",
+      "category": "healthcare",
+      "paths": 12,
+      "cmds": 42,
+      "dlen": 591,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "vitals-monitor",
+      "category": "healthcare",
+      "paths": 12,
+      "cmds": 42,
+      "dlen": 578,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "hospital",
+      "category": "healthcare",
+      "paths": 11,
+      "cmds": 41,
+      "dlen": 881,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "appointment",
+      "category": "healthcare",
+      "paths": 15,
+      "cmds": 40,
+      "dlen": 562,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "calendar-medical",
+      "category": "healthcare",
+      "paths": 11,
+      "cmds": 40,
+      "dlen": 494,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "grid2",
+      "category": "interfaces",
+      "paths": 8,
+      "cmds": 40,
+      "dlen": 152,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "automation-gear",
+      "category": "healthcare",
+      "paths": 5,
+      "cmds": 38,
+      "dlen": 597,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "billing-code",
+      "category": "healthcare",
+      "paths": 13,
+      "cmds": 38,
+      "dlen": 538,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "neural-network",
+      "category": "healthcare",
+      "paths": 15,
+      "cmds": 38,
+      "dlen": 337,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "patient-satisfaction",
+      "category": "healthcare",
+      "paths": 4,
+      "cmds": 36,
+      "dlen": 484,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "telehealth",
+      "category": "healthcare",
+      "paths": 11,
+      "cmds": 36,
+      "dlen": 485,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "ehr-system",
+      "category": "healthcare",
+      "paths": 5,
+      "cmds": 35,
+      "dlen": 500,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "graphql",
+      "category": "healthcare",
+      "paths": 3,
+      "cmds": 35,
+      "dlen": 591,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "machine-learning",
+      "category": "healthcare",
+      "paths": 5,
+      "cmds": 35,
+      "dlen": 703,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "sale",
+      "category": "ecommerce",
+      "paths": 4,
+      "cmds": 35,
+      "dlen": 515,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "workflow",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 34,
+      "dlen": 95,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "github",
+      "category": "technology",
+      "paths": 3,
+      "cmds": 33,
+      "dlen": 854,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "coding-agent",
+      "category": "technology",
+      "paths": 9,
+      "cmds": 32,
+      "dlen": 558,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "companion",
+      "category": "elderlycare",
+      "paths": 7,
+      "cmds": 32,
+      "dlen": 357,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "horizontal-scroll",
+      "category": "handgestures",
+      "paths": 5,
+      "cmds": 32,
+      "dlen": 378,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "medical-chart",
+      "category": "healthcare",
+      "paths": 10,
+      "cmds": 32,
+      "dlen": 721,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "medication-reminder",
+      "category": "healthcare",
+      "paths": 10,
+      "cmds": 32,
+      "dlen": 635,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "microservice",
+      "category": "healthcare",
+      "paths": 8,
+      "cmds": 32,
+      "dlen": 86,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "schedule",
+      "category": "healthcare",
+      "paths": 10,
+      "cmds": 32,
+      "dlen": 429,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "tap-scroll",
+      "category": "handgestures",
+      "paths": 5,
+      "cmds": 32,
+      "dlen": 401,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "clap",
+      "category": "handgestures",
+      "paths": 5,
+      "cmds": 31,
+      "dlen": 426,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "defibrillator",
+      "category": "healthcare",
+      "paths": 5,
+      "cmds": 31,
+      "dlen": 474,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "free-drag",
+      "category": "handgestures",
+      "paths": 5,
+      "cmds": 31,
+      "dlen": 383,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "puzzle2",
+      "category": "interfaces",
+      "paths": 6,
+      "cmds": 31,
+      "dlen": 276,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "real-time-monitor",
+      "category": "healthcare",
+      "paths": 4,
+      "cmds": 31,
+      "dlen": 409,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "data-flow",
+      "category": "healthcare",
+      "paths": 8,
+      "cmds": 30,
+      "dlen": 90,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "pizza2",
+      "category": "food",
+      "paths": 5,
+      "cmds": 30,
+      "dlen": 588,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "rest-api",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 30,
+      "dlen": 89,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "scan-fingerprint",
+      "category": "handgestures",
+      "paths": 7,
+      "cmds": 30,
+      "dlen": 337,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "snowflake",
+      "category": "weather",
+      "paths": 9,
+      "cmds": 30,
+      "dlen": 230,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "bot",
+      "category": "misc",
+      "paths": 8,
+      "cmds": 29,
+      "dlen": 398,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "crutch",
+      "category": "healthcare",
+      "paths": 7,
+      "cmds": 29,
+      "dlen": 671,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "medical-record",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 29,
+      "dlen": 625,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "multi-touch",
+      "category": "handgestures",
+      "paths": 6,
+      "cmds": 29,
+      "dlen": 385,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "phone-setting",
+      "category": "interfaces",
+      "paths": 9,
+      "cmds": 29,
+      "dlen": 317,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "scroll-down",
+      "category": "handgestures",
+      "paths": 5,
+      "cmds": 29,
+      "dlen": 367,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "scroll-left",
+      "category": "handgestures",
+      "paths": 5,
+      "cmds": 29,
+      "dlen": 370,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "scroll-right",
+      "category": "handgestures",
+      "paths": 5,
+      "cmds": 29,
+      "dlen": 368,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "scroll-up",
+      "category": "handgestures",
+      "paths": 5,
+      "cmds": 29,
+      "dlen": 367,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "server",
+      "category": "misc",
+      "paths": 8,
+      "cmds": 29,
+      "dlen": 278,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "swipe-left",
+      "category": "handgestures",
+      "paths": 5,
+      "cmds": 29,
+      "dlen": 370,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "swipe-right",
+      "category": "handgestures",
+      "paths": 5,
+      "cmds": 29,
+      "dlen": 368,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "wireframe",
+      "category": "technology",
+      "paths": 10,
+      "cmds": 29,
+      "dlen": 415,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "pipeline",
+      "category": "technology",
+      "paths": 14,
+      "cmds": 28,
+      "dlen": 376,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "prior-authorization",
+      "category": "healthcare",
+      "paths": 10,
+      "cmds": 28,
+      "dlen": 400,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "project-planner",
+      "category": "technology",
+      "paths": 10,
+      "cmds": 28,
+      "dlen": 484,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "quality-metric",
+      "category": "healthcare",
+      "paths": 4,
+      "cmds": 28,
+      "dlen": 303,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "snowman",
+      "category": "weather",
+      "paths": 7,
+      "cmds": 28,
+      "dlen": 352,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "touch-hold",
+      "category": "handgestures",
+      "paths": 5,
+      "cmds": 28,
+      "dlen": 385,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "wave-left",
+      "category": "handgestures",
+      "paths": 6,
+      "cmds": 28,
+      "dlen": 389,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "wave-right",
+      "category": "handgestures",
+      "paths": 6,
+      "cmds": 28,
+      "dlen": 397,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "car",
+      "category": "misc",
+      "paths": 6,
+      "cmds": 27,
+      "dlen": 393,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "conveyor-belt",
+      "category": "ecommerce",
+      "paths": 6,
+      "cmds": 27,
+      "dlen": 454,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "file-pdf",
+      "category": "files",
+      "paths": 5,
+      "cmds": 27,
+      "dlen": 279,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "gloves",
+      "category": "healthcare",
+      "paths": 7,
+      "cmds": 27,
+      "dlen": 653,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "magic-wand",
+      "category": "interfaces",
+      "paths": 5,
+      "cmds": 27,
+      "dlen": 185,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "page-move",
+      "category": "handgestures",
+      "paths": 5,
+      "cmds": 27,
+      "dlen": 289,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "splint",
+      "category": "healthcare",
+      "paths": 11,
+      "cmds": 27,
+      "dlen": 459,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "api-connect",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 26,
+      "dlen": 77,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "blood-sugar",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 26,
+      "dlen": 244,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "codex",
+      "category": "technology",
+      "paths": 9,
+      "cmds": 26,
+      "dlen": 402,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "copilot",
+      "category": "technology",
+      "paths": 7,
+      "cmds": 26,
+      "dlen": 459,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "double-tap",
+      "category": "handgestures",
+      "paths": 5,
+      "cmds": 26,
+      "dlen": 367,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "efficiency-meter",
+      "category": "healthcare",
+      "paths": 10,
+      "cmds": 26,
+      "dlen": 433,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "family-support",
+      "category": "healthcare",
+      "paths": 6,
+      "cmds": 26,
+      "dlen": 276,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "file-form",
+      "category": "files",
+      "paths": 7,
+      "cmds": 26,
+      "dlen": 237,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "foundation-model",
+      "category": "technology",
+      "paths": 4,
+      "cmds": 26,
+      "dlen": 368,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "offer",
+      "category": "ecommerce",
+      "paths": 5,
+      "cmds": 26,
+      "dlen": 470,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "pencil-ruler",
+      "category": "interfaces",
+      "paths": 8,
+      "cmds": 26,
+      "dlen": 130,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "rotate",
+      "category": "handgestures",
+      "paths": 4,
+      "cmds": 26,
+      "dlen": 340,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "snow",
+      "category": "weather",
+      "paths": 6,
+      "cmds": 26,
+      "dlen": 364,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "sofa",
+      "category": "objects",
+      "paths": 7,
+      "cmds": 26,
+      "dlen": 211,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "tap",
+      "category": "handgestures",
+      "paths": 5,
+      "cmds": 26,
+      "dlen": 371,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "time-saved",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 26,
+      "dlen": 417,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "ai-agent",
+      "category": "technology",
+      "paths": 9,
+      "cmds": 25,
+      "dlen": 480,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "bus",
+      "category": "misc",
+      "paths": 7,
+      "cmds": 25,
+      "dlen": 334,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "cast",
+      "category": "healthcare",
+      "paths": 8,
+      "cmds": 25,
+      "dlen": 565,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "compliance-check",
+      "category": "healthcare",
+      "paths": 4,
+      "cmds": 25,
+      "dlen": 253,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "dropbox",
+      "category": "logos",
+      "paths": 5,
+      "cmds": 25,
+      "dlen": 186,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "file-list",
+      "category": "files",
+      "paths": 6,
+      "cmds": 25,
+      "dlen": 232,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "hand",
+      "category": "handgestures",
+      "paths": 4,
+      "cmds": 25,
+      "dlen": 335,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "meal-tray",
+      "category": "elderlycare",
+      "paths": 10,
+      "cmds": 25,
+      "dlen": 185,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "saving",
+      "category": "finance",
+      "paths": 4,
+      "cmds": 25,
+      "dlen": 287,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "transform",
+      "category": "interfaces",
+      "paths": 5,
+      "cmds": 25,
+      "dlen": 105,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "mri-scan",
+      "category": "healthcare",
+      "paths": 10,
+      "cmds": 24,
+      "dlen": 325,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "pizza",
+      "category": "food",
+      "paths": 5,
+      "cmds": 24,
+      "dlen": 473,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "prescription",
+      "category": "healthcare",
+      "paths": 7,
+      "cmds": 24,
+      "dlen": 227,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "waiting-room",
+      "category": "healthcare",
+      "paths": 8,
+      "cmds": 24,
+      "dlen": 125,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "website",
+      "category": "technology",
+      "paths": 9,
+      "cmds": 24,
+      "dlen": 438,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "bug",
+      "category": "misc",
+      "paths": 8,
+      "cmds": 23,
+      "dlen": 275,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "database",
+      "category": "technology",
+      "paths": 8,
+      "cmds": 23,
+      "dlen": 386,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "docker",
+      "category": "technology",
+      "paths": 8,
+      "cmds": 23,
+      "dlen": 368,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "calculator",
+      "category": "interfaces",
+      "paths": 8,
+      "cmds": 22,
+      "dlen": 222,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "chip",
+      "category": "misc",
+      "paths": 8,
+      "cmds": 22,
+      "dlen": 184,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "crying-emoji",
+      "category": "emojis",
+      "paths": 8,
+      "cmds": 22,
+      "dlen": 279,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "discharge-form",
+      "category": "healthcare",
+      "paths": 7,
+      "cmds": 22,
+      "dlen": 117,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "file-spreadsheet",
+      "category": "files",
+      "paths": 7,
+      "cmds": 22,
+      "dlen": 201,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "screen-rotate",
+      "category": "handgestures",
+      "paths": 7,
+      "cmds": 22,
+      "dlen": 142,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "setting",
+      "category": "interfaces",
+      "paths": 9,
+      "cmds": 22,
+      "dlen": 205,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "shift-handover",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 22,
+      "dlen": 113,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "sidebar",
+      "category": "userinterface",
+      "paths": 7,
+      "cmds": 22,
+      "dlen": 165,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "sun2",
+      "category": "interfaces",
+      "paths": 8,
+      "cmds": 22,
+      "dlen": 322,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "webhook",
+      "category": "healthcare",
+      "paths": 4,
+      "cmds": 22,
+      "dlen": 468,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "whatsapp",
+      "category": "logos",
+      "paths": 2,
+      "cmds": 22,
+      "dlen": 469,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "chatbot-medical",
+      "category": "healthcare",
+      "paths": 7,
+      "cmds": 21,
+      "dlen": 69,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "claude",
+      "category": "technology",
+      "paths": 7,
+      "cmds": 21,
+      "dlen": 386,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "file-csv",
+      "category": "files",
+      "paths": 8,
+      "cmds": 21,
+      "dlen": 183,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "satellite",
+      "category": "misc",
+      "paths": 8,
+      "cmds": 21,
+      "dlen": 231,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "skype",
+      "category": "logos",
+      "paths": 2,
+      "cmds": 21,
+      "dlen": 517,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "automation",
+      "category": "misc",
+      "paths": 8,
+      "cmds": 20,
+      "dlen": 241,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "aws",
+      "category": "technology",
+      "paths": 7,
+      "cmds": 20,
+      "dlen": 336,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "daily-routine",
+      "category": "elderlycare",
+      "paths": 8,
+      "cmds": 20,
+      "dlen": 177,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "exercise",
+      "category": "elderlycare",
+      "paths": 9,
+      "cmds": 20,
+      "dlen": 204,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "move",
+      "category": "interfaces",
+      "paths": 10,
+      "cmds": 20,
+      "dlen": 106,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "other-gender",
+      "category": "gendersymbols",
+      "paths": 9,
+      "cmds": 20,
+      "dlen": 183,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "snapchat",
+      "category": "logos",
+      "paths": 1,
+      "cmds": 20,
+      "dlen": 476,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "sun",
+      "category": "interfaces",
+      "paths": 8,
+      "cmds": 20,
+      "dlen": 186,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "sunny",
+      "category": "weather",
+      "paths": 9,
+      "cmds": 20,
+      "dlen": 191,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "nutrition-plan",
+      "category": "healthcare",
+      "paths": 7,
+      "cmds": 18,
+      "dlen": 106,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "railway",
+      "category": "technology",
+      "paths": 9,
+      "cmds": 18,
+      "dlen": 309,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "transgender2",
+      "category": "gendersymbols",
+      "paths": 7,
+      "cmds": 18,
+      "dlen": 177,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "brain-scan",
+      "category": "healthcare",
+      "paths": 8,
+      "cmds": 17,
+      "dlen": 390,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "calendar",
+      "category": "interfaces",
+      "paths": 7,
+      "cmds": 17,
+      "dlen": 170,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "vector",
+      "category": "weather",
+      "paths": 7,
+      "cmds": 17,
+      "dlen": 113,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "gemini",
+      "category": "technology",
+      "paths": 8,
+      "cmds": 16,
+      "dlen": 328,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "loader",
+      "category": "userinterface",
+      "paths": 8,
+      "cmds": 16,
+      "dlen": 113,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "sun4",
+      "category": "interfaces",
+      "paths": 8,
+      "cmds": 16,
+      "dlen": 132,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "sun3",
+      "category": "interfaces",
+      "paths": 7,
+      "cmds": 15,
+      "dlen": 123,
+      "overSoft": true,
+      "overHard": false
+    },
+    {
+      "name": "dashboard",
+      "category": "interfaces",
+      "paths": 7,
+      "cmds": 14,
+      "dlen": 164,
+      "overSoft": true,
+      "overHard": false
+    }
+  ],
+  "hardViolations": [
+    {
+      "name": "agentic",
+      "category": "technology",
+      "paths": 10,
+      "cmds": 46,
+      "dlen": 639,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "ai-agent",
+      "category": "technology",
+      "paths": 9,
+      "cmds": 25,
+      "dlen": 480,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "ai-brain",
+      "category": "healthcare",
+      "paths": 11,
+      "cmds": 53,
+      "dlen": 827,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "ambulance",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 49,
+      "dlen": 795,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "api-connect",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 26,
+      "dlen": 77,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "appointment",
+      "category": "healthcare",
+      "paths": 15,
+      "cmds": 40,
+      "dlen": 562,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "automation-gear",
+      "category": "healthcare",
+      "paths": 5,
+      "cmds": 38,
+      "dlen": 597,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "bandage-alt",
+      "category": "healthcare",
+      "paths": 16,
+      "cmds": 42,
+      "dlen": 606,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "billing-code",
+      "category": "healthcare",
+      "paths": 13,
+      "cmds": 38,
+      "dlen": 538,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "blood-sugar",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 26,
+      "dlen": 244,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "calendar-medical",
+      "category": "healthcare",
+      "paths": 11,
+      "cmds": 40,
+      "dlen": 494,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "care-plan",
+      "category": "healthcare",
+      "paths": 12,
+      "cmds": 50,
+      "dlen": 685,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "codex",
+      "category": "technology",
+      "paths": 9,
+      "cmds": 26,
+      "dlen": 402,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "coding-agent",
+      "category": "technology",
+      "paths": 9,
+      "cmds": 32,
+      "dlen": 558,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "crutch",
+      "category": "healthcare",
+      "paths": 7,
+      "cmds": 29,
+      "dlen": 671,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "efficiency-meter",
+      "category": "healthcare",
+      "paths": 10,
+      "cmds": 26,
+      "dlen": 433,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "ehr-system",
+      "category": "healthcare",
+      "paths": 5,
+      "cmds": 35,
+      "dlen": 500,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "exercise",
+      "category": "elderlycare",
+      "paths": 9,
+      "cmds": 20,
+      "dlen": 204,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "github",
+      "category": "technology",
+      "paths": 3,
+      "cmds": 33,
+      "dlen": 854,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "gloves",
+      "category": "healthcare",
+      "paths": 7,
+      "cmds": 27,
+      "dlen": 653,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "graphql",
+      "category": "healthcare",
+      "paths": 3,
+      "cmds": 35,
+      "dlen": 591,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "grid2",
+      "category": "interfaces",
+      "paths": 8,
+      "cmds": 40,
+      "dlen": 152,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "hospital",
+      "category": "healthcare",
+      "paths": 11,
+      "cmds": 41,
+      "dlen": 881,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "insurance-claim",
+      "category": "healthcare",
+      "paths": 13,
+      "cmds": 42,
+      "dlen": 883,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "knowledge-base",
+      "category": "healthcare",
+      "paths": 15,
+      "cmds": 43,
+      "dlen": 847,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "machine-learning",
+      "category": "healthcare",
+      "paths": 5,
+      "cmds": 35,
+      "dlen": 703,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "meal-tray",
+      "category": "elderlycare",
+      "paths": 10,
+      "cmds": 25,
+      "dlen": 185,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "medical-chart",
+      "category": "healthcare",
+      "paths": 10,
+      "cmds": 32,
+      "dlen": 721,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "medical-record",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 29,
+      "dlen": 625,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "medication-reminder",
+      "category": "healthcare",
+      "paths": 10,
+      "cmds": 32,
+      "dlen": 635,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "move",
+      "category": "interfaces",
+      "paths": 10,
+      "cmds": 20,
+      "dlen": 106,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "mri-scan",
+      "category": "healthcare",
+      "paths": 10,
+      "cmds": 24,
+      "dlen": 325,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "neural-network",
+      "category": "healthcare",
+      "paths": 15,
+      "cmds": 38,
+      "dlen": 337,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "other-gender",
+      "category": "gendersymbols",
+      "paths": 9,
+      "cmds": 20,
+      "dlen": 183,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "patient-satisfaction",
+      "category": "healthcare",
+      "paths": 4,
+      "cmds": 36,
+      "dlen": 484,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "phone-setting",
+      "category": "interfaces",
+      "paths": 9,
+      "cmds": 29,
+      "dlen": 317,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "pill-organizer",
+      "category": "healthcare",
+      "paths": 12,
+      "cmds": 45,
+      "dlen": 542,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "pipeline",
+      "category": "technology",
+      "paths": 14,
+      "cmds": 28,
+      "dlen": 376,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "prior-authorization",
+      "category": "healthcare",
+      "paths": 10,
+      "cmds": 28,
+      "dlen": 400,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "project-planner",
+      "category": "technology",
+      "paths": 10,
+      "cmds": 28,
+      "dlen": 484,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "qr",
+      "category": "ecommerce",
+      "paths": 8,
+      "cmds": 48,
+      "dlen": 471,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "railway",
+      "category": "technology",
+      "paths": 9,
+      "cmds": 18,
+      "dlen": 309,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "referral",
+      "category": "healthcare",
+      "paths": 10,
+      "cmds": 53,
+      "dlen": 800,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "rest-api",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 30,
+      "dlen": 89,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "roi-calculator",
+      "category": "healthcare",
+      "paths": 16,
+      "cmds": 50,
+      "dlen": 552,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "sale",
+      "category": "ecommerce",
+      "paths": 4,
+      "cmds": 35,
+      "dlen": 515,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "schedule",
+      "category": "healthcare",
+      "paths": 10,
+      "cmds": 32,
+      "dlen": 429,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "setting",
+      "category": "interfaces",
+      "paths": 9,
+      "cmds": 22,
+      "dlen": 205,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "setting2",
+      "category": "interfaces",
+      "paths": 18,
+      "cmds": 44,
+      "dlen": 400,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "shift-handover",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 22,
+      "dlen": 113,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "snowflake",
+      "category": "weather",
+      "paths": 9,
+      "cmds": 30,
+      "dlen": 230,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "spine",
+      "category": "healthcare",
+      "paths": 11,
+      "cmds": 46,
+      "dlen": 397,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "splint",
+      "category": "healthcare",
+      "paths": 11,
+      "cmds": 27,
+      "dlen": 459,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "staff-scheduling",
+      "category": "healthcare",
+      "paths": 12,
+      "cmds": 42,
+      "dlen": 591,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "sunny",
+      "category": "weather",
+      "paths": 9,
+      "cmds": 20,
+      "dlen": 191,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "support-ticket",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 50,
+      "dlen": 720,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "telehealth",
+      "category": "healthcare",
+      "paths": 11,
+      "cmds": 36,
+      "dlen": 485,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "time-saved",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 26,
+      "dlen": 417,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "vitals-monitor",
+      "category": "healthcare",
+      "paths": 12,
+      "cmds": 42,
+      "dlen": 578,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "website",
+      "category": "technology",
+      "paths": 9,
+      "cmds": 24,
+      "dlen": 438,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "wireframe",
+      "category": "technology",
+      "paths": 10,
+      "cmds": 29,
+      "dlen": 415,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "workflow",
+      "category": "healthcare",
+      "paths": 9,
+      "cmds": 34,
+      "dlen": 95,
+      "overSoft": true,
+      "overHard": true
+    },
+    {
+      "name": "x-ray",
+      "category": "healthcare",
+      "paths": 17,
+      "cmds": 46,
+      "dlen": 617,
+      "overSoft": true,
+      "overHard": true
+    }
+  ]
+}

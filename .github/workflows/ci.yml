@@ -59,6 +59,18 @@ jobs:
             fi
           done
 
+      - name: Icon complexity audit
+        # Reports outliers and writes a JSON report. Not strict yet — flips
+        # to STRICT_COMPLEXITY=1 once the simplification PRs land.
+        run: |
+          mkdir -p docs
+          COMPLEXITY_REPORT=docs/icon-complexity-baseline.json node generate.mjs >> $GITHUB_STEP_SUMMARY 2>&1 || true
+          if [ -f docs/icon-complexity-baseline.json ]; then
+            HARD=$(node -e "console.log(JSON.parse(require('fs').readFileSync('docs/icon-complexity-baseline.json','utf8')).hardViolations.length)")
+            SOFT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('docs/icon-complexity-baseline.json','utf8')).softViolations.length)")
+            echo "Icon complexity — soft: $SOFT, hard: $HARD"
+          fi
+
       - name: Verify icon counts match across frameworks
         run: |
           RAW_COUNT=$(node -e "const d=JSON.parse(require('fs').readFileSync('icon-data-raw.json','utf8')); console.log(Object.keys(d).length)")

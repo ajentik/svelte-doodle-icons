@@ -36,6 +36,28 @@ npm run build
    - `node packages/laravel/scripts/sync-icons.mjs`
    - `node packages/rails/scripts/sync-icons.mjs`
 
+### Icon complexity budget
+
+doo-iconik is a **doodle** set. Icons should read as a single quick gesture, not
+a mini-illustration. Every run of `npm run generate` prints a complexity audit
+and lists the worst offenders.
+
+| Metric | Soft cap (warn) | Hard cap (fail under `STRICT_COMPLEXITY=1`) |
+|--------|-----------------|---------------------------------------------|
+| Paths per icon | ≤ 6 | ≤ 8 |
+| Path commands (M/L/C/…) | ≤ 24 | ≤ 32 |
+| Total `d` characters | ≤ 450 | ≤ 600 |
+
+Useful commands:
+
+```bash
+npm run report:icons   # writes docs/icon-complexity-baseline.json
+npm run lint:icons     # fails if any icon exceeds the hard cap
+```
+
+If a new icon needs more than the soft cap, look for: duplicated decorative
+loops, literal text, or symbols that could be replaced with metonymy.
+
 ## Making Changes
 
 1. Fork the repo and create a feature branch
