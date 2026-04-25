@@ -1,0 +1,251 @@
+#!/usr/bin/env node
+// Second simplification pass: tech / agent / misc outliers + remaining
+// healthcare infra icons (workflow, graphql, rest-api, microservice,
+// api-connect, shift-handover, time-saved, blood-sugar — all tech-shaped
+// despite their category tag).
+//
+// Same rules as scripts/simplify-healthcare.mjs: keep name, viewBox,
+// stroke flag and category; aim for the soft cap (≤ 6 paths, ≤ 24 cmds,
+// ≤ 450 d-chars); always under the hard cap (≤ 8 / 32 / 600).
+
+import { readFileSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const dataPath = join(__dirname, '..', 'icon-data-raw.json');
+const data = JSON.parse(readFileSync(dataPath, 'utf8'));
+
+const replacements = {
+  // Single agent ring + central spark — was 10 paths with 8 orbital ticks.
+  agentic: [
+    'M 12 4 C 16.4 4 20 7.6 20 12 C 20 16.4 16.4 20 12 20 C 7.6 20 4 16.4 4 12 C 4 7.6 7.6 4 12 4 Z',
+    'M 12 8 L 13.5 11 L 16.5 11.5 L 14.2 13.5 L 14.8 16.5 L 12 15 L 9.2 16.5 L 9.8 13.5 L 7.5 11.5 L 10.5 11 Z',
+  ],
+
+  // Robot head + antenna + two eye dots; dropped the body legs.
+  'ai-agent': [
+    'M 7 11 C 7 8 9.2 6 12 6 C 14.8 6 17 8 17 11 L 17 17 C 17 18.1 16.1 19 15 19 L 9 19 C 7.9 19 7 18.1 7 17 Z',
+    'M 12 6 L 12 3.5 M 11 3.5 L 13 3.5',
+    'M 9.5 12 C 9.7 12 9.7 12.5 9.5 12.5 Z M 14.5 12 C 14.7 12 14.7 12.5 14.5 12.5 Z',
+    'M 10 16 L 14 16',
+  ],
+
+  // Code window + < > brackets and a slash.
+  'coding-agent': [
+    'M 3.5 5 C 3.5 4.4 4 4 4.5 4 L 19.5 4 C 20 4 20.5 4.4 20.5 5 L 20.5 19 C 20.5 19.6 20 20 19.5 20 L 4.5 20 C 4 20 3.5 19.6 3.5 19 Z',
+    'M 3.5 8 L 20.5 8',
+    'M 9 12 L 7 14 L 9 16',
+    'M 15 12 L 17 14 L 15 16',
+    'M 13 11.5 L 11 16.5',
+  ],
+
+  // Book + a doodled `<` accent (like codex.openai mark).
+  codex: [
+    'M 4 5 C 4 4.4 4.4 4 5 4 L 19 4 C 19.6 4 20 4.4 20 5 L 20 20 C 20 20.6 19.6 21 19 21 L 5 21 C 4.4 21 4 20.6 4 20 Z',
+    'M 4 8 L 20 8',
+    'M 11 12 L 8 15 L 11 18',
+    'M 15 12 L 16 15 L 15 18',
+  ],
+
+  // Two stages with a piped arrow between them.
+  pipeline: [
+    'M 3 7 L 9 7 L 9 11 L 3 11 Z',
+    'M 15 13 L 21 13 L 21 17 L 15 17 Z',
+    'M 9 9 C 12 9 12 15 15 15',
+    'M 15 15 L 13.5 14 M 15 15 L 13.5 16',
+  ],
+
+  // Layout panel: header bar + sidebar + content area.
+  wireframe: [
+    'M 3.5 4 C 3.5 3.4 4 3 4.5 3 L 19.5 3 C 20 3 20.5 3.4 20.5 4 L 20.5 20 C 20.5 20.6 20 21 19.5 21 L 4.5 21 C 4 21 3.5 20.6 3.5 20 Z',
+    'M 3.5 7.5 L 20.5 7.5',
+    'M 9 7.5 L 9 21',
+    'M 11.5 11 L 18 11 M 11.5 14 L 18 14 M 11.5 17 L 16 17',
+  ],
+
+  // Three swim-lanes (like a mini kanban).
+  'project-planner': [
+    'M 3.5 4 C 3.5 3.4 4 3 4.5 3 L 19.5 3 C 20 3 20.5 3.4 20.5 4 L 20.5 20 C 20.5 20.6 20 21 19.5 21 L 4.5 21 C 4 21 3.5 20.6 3.5 20 Z',
+    'M 3.5 7 L 20.5 7',
+    'M 9 7 L 9 21 M 15 7 L 15 21',
+    'M 5 10 L 7 10 M 11 10 L 13 10 M 17 10 L 19 10',
+    'M 5 14 L 7 14 M 11 14 L 13 14',
+  ],
+
+  // Octocat silhouette: head + two ears + a smile.
+  github: [
+    'M 12 3 C 7.5 3 4 6.5 4 11 C 4 14.5 6 17.5 9 18.7 L 9 21 L 15 21 L 15 18.7 C 18 17.5 20 14.5 20 11 C 20 6.5 16.5 3 12 3 Z',
+    'M 7 7 L 6 5 M 17 7 L 18 5',
+    'M 9.5 11 C 9.7 11 9.7 11.5 9.5 11.5 Z M 14.5 11 C 14.7 11 14.7 11.5 14.5 11.5 Z',
+    'M 9.5 14 C 11 15 13 15 14.5 14',
+  ],
+
+  // QR: three position squares (each as a simple open frame) + a few
+  // scattered timing dots for the bottom-right.
+  qr: [
+    'M 3 3 L 9 3 L 9 9 L 3 9 Z',
+    'M 15 3 L 21 3 L 21 9 L 15 9 Z',
+    'M 3 15 L 9 15 L 9 21 L 3 21 Z',
+    'M 13 13 L 15 13 M 17 13 L 17 15 M 19 19 L 21 19 M 13 21 L 15 21',
+    'M 6 6 C 6.3 6 6.3 6.3 6 6.3 Z M 18 6 C 18.3 6 18.3 6.3 18 6.3 Z M 6 18 C 6.3 18 6.3 18.3 6 18.3 Z',
+  ],
+
+  // Two slider tracks with knobs (the "settings" archetype).
+  setting2: [
+    'M 3 8 L 21 8',
+    'M 3 16 L 21 16',
+    'M 9 8 C 9 6.9 9.9 6 11 6 C 12.1 6 13 6.9 13 8 C 13 9.1 12.1 10 11 10 C 9.9 10 9 9.1 9 8 Z',
+    'M 13 16 C 13 14.9 13.9 14 15 14 C 16.1 14 17 14.9 17 16 C 17 17.1 16.1 18 15 18 C 13.9 18 13 17.1 13 16 Z',
+  ],
+
+  // 2x3 grid drawn as outer frame + cross-bars.
+  grid2: [
+    'M 3 4 L 21 4 L 21 20 L 3 20 Z',
+    'M 9 4 L 9 20 M 15 4 L 15 20',
+    'M 3 12 L 21 12',
+  ],
+
+  // Pizza slice triangle + crust arc + 3 toppings.
+  pizza2: [
+    'M 12 4 L 19.5 18 L 4.5 18 Z',
+    'M 4.5 18 C 8 20 16 20 19.5 18',
+    'M 11 10 C 11.4 10 11.4 10.6 11 10.6 Z',
+    'M 14 13 C 14.4 13 14.4 13.6 14 13.6 Z',
+    'M 9 14 C 9.4 14 9.4 14.6 9 14.6 Z',
+  ],
+
+  // Three boxes connected by short flow arrows.
+  workflow: [
+    'M 3 4 L 9 4 L 9 9 L 3 9 Z',
+    'M 15 4 L 21 4 L 21 9 L 15 9 Z',
+    'M 9 15 L 15 15 L 15 20 L 9 20 Z',
+    'M 9 6.5 L 15 6.5',
+    'M 6 9 L 6 17 L 9 17 M 18 9 L 18 17 L 15 17',
+  ],
+
+  // Hexagon emblem + a single inscribed dot (the GraphQL spirit, doodled).
+  graphql: [
+    'M 12 3 L 20 7.5 L 20 16.5 L 12 21 L 4 16.5 L 4 7.5 Z',
+    'M 12 8 L 16 14 L 8 14 Z',
+    'M 12 12.5 C 12.4 12.5 12.4 13.1 12 13.1 Z',
+  ],
+
+  // Three stacked endpoint rows.
+  'rest-api': [
+    'M 3.5 4 C 3.5 3.4 4 3 4.5 3 L 19.5 3 C 20 3 20.5 3.4 20.5 4 L 20.5 20 C 20.5 20.6 20 21 19.5 21 L 4.5 21 C 4 21 3.5 20.6 3.5 20 Z',
+    'M 3.5 9 L 20.5 9 M 3.5 15 L 20.5 15',
+    'M 6 6 L 10 6 M 6 12 L 12 12 M 6 18 L 10 18',
+    'M 16 6 C 16.4 6 16.4 6.6 16 6.6 Z M 16 12 C 16.4 12 16.4 12.6 16 12.6 Z M 16 18 C 16.4 18 16.4 18.6 16 18.6 Z',
+  ],
+
+  // Four service nodes around a hub line.
+  microservice: [
+    'M 3 3 L 8 3 L 8 8 L 3 8 Z',
+    'M 16 3 L 21 3 L 21 8 L 16 8 Z',
+    'M 3 16 L 8 16 L 8 21 L 3 21 Z',
+    'M 16 16 L 21 16 L 21 21 L 16 21 Z',
+    'M 8 5.5 L 16 5.5 M 8 18.5 L 16 18.5 M 5.5 8 L 5.5 16 M 18.5 8 L 18.5 16',
+  ],
+
+  // Two endpoint cards joined by three signal lines.
+  'api-connect': [
+    'M 3 7 L 9 7 L 9 17 L 3 17 Z',
+    'M 15 7 L 21 7 L 21 17 L 15 17 Z',
+    'M 9 10 L 15 10 M 9 12 L 15 12 M 9 14 L 15 14',
+  ],
+
+  // Two interlocking arrows, hand-drawn arc.
+  'shift-handover': [
+    'M 4 10 C 4 6.7 7 4 10.5 4 L 16 4',
+    'M 14 2 L 16 4 L 14 6',
+    'M 20 14 C 20 17.3 17 20 13.5 20 L 8 20',
+    'M 10 22 L 8 20 L 10 18',
+  ],
+
+  // Clock face + check mark in the lower-right.
+  'time-saved': [
+    'M 3 11 C 3 6.6 6.6 3 11 3 C 15.4 3 19 6.6 19 11 C 19 15.4 15.4 19 11 19 C 6.6 19 3 15.4 3 11 Z',
+    'M 11 6 L 11 11 L 14 13',
+    'M 16 18 L 18 20 L 22 16',
+  ],
+
+  // Blood drop + a 3-bar meter.
+  'blood-sugar': [
+    'M 8 3 C 6 7 4 9.5 4 12.5 C 4 15 6 17 8 17 C 10 17 12 15 12 12.5 C 12 9.5 10 7 8 3 Z',
+    'M 16 7 L 21 7 M 16 11 L 21 11 M 16 15 L 21 15',
+    'M 14.5 7 L 14.5 15',
+  ],
+
+  // Starburst tag + diagonal slash + two tag dots.
+  sale: [
+    'M 12 3 L 14 5 L 17 4 L 17 7 L 20 8 L 18.5 11 L 20 14 L 17 15 L 17 18 L 14 17 L 12 19 L 10 17 L 7 18 L 7 15 L 4 14 L 5.5 11 L 4 8 L 7 7 L 7 4 L 10 5 Z',
+    'M 9 14 L 15 8',
+    'M 9.5 9 C 10 9 10 9.6 9.5 9.6 Z',
+    'M 14.5 13 C 15 13 15 13.6 14.5 13.6 Z',
+  ],
+
+  // Four-direction arrow as a single closed cross.
+  move: [
+    'M 12 2 L 15 5 L 13 5 L 13 11 L 19 11 L 19 9 L 22 12 L 19 15 L 19 13 L 13 13 L 13 19 L 15 19 L 12 22 L 9 19 L 11 19 L 11 13 L 5 13 L 5 15 L 2 12 L 5 9 L 5 11 L 11 11 L 11 5 L 9 5 Z',
+  ],
+
+  // Domed plate + tray + two side legs.
+  'meal-tray': [
+    'M 5 16 C 5 12 8 9 12 9 C 16 9 19 12 19 16',
+    'M 3 16 L 21 16',
+    'M 3 16 C 3 18 5 20 7 20 L 17 20 C 19 20 21 18 21 16',
+    'M 11 7 L 13 7',
+  ],
+
+  // Single figure with a raised arm.
+  exercise: [
+    'M 12 4 C 12 3.4 12.4 3 13 3 C 13.6 3 14 3.4 14 4 C 14 4.6 13.6 5 13 5 C 12.4 5 12 4.6 12 4 Z',
+    'M 13 6 L 13 13',
+    'M 13 8 L 17 5',
+    'M 13 8 L 8 11',
+    'M 13 13 L 9 20 M 13 13 L 17 20',
+  ],
+
+  // Hand pointing right (horizontal scroll archetype).
+  'horizontal-scroll': [
+    'M 6 11 L 6 8 C 6 7.4 6.4 7 7 7 C 7.6 7 8 7.4 8 8 L 8 13',
+    'M 8 9 C 8 8.4 8.4 8 9 8 C 9.6 8 10 8.4 10 9 L 10 13',
+    'M 10 10 C 10 9.4 10.4 9 11 9 C 11.6 9 12 9.4 12 10 L 12 14 C 16 14 17 12 17 10',
+    'M 17 10 L 19 10 M 17 10 L 18 9 M 17 10 L 18 11',
+  ],
+
+  // Single tap finger with motion arrows.
+  'tap-scroll': [
+    'M 11 12 L 11 6 C 11 5.4 11.4 5 12 5 C 12.6 5 13 5.4 13 6 L 13 12',
+    'M 13 11 C 13 10.4 13.4 10 14 10 C 14.6 10 15 10.4 15 11 L 15 19 C 15 20.1 14.1 21 13 21 L 11 21 C 9.9 21 9 20.1 9 19 L 9 14',
+    'M 4 6 L 4 10 M 2.5 7.5 L 4 6 L 5.5 7.5',
+    'M 20 6 L 20 10 M 18.5 7.5 L 20 6 L 21.5 7.5',
+  ],
+
+  // Generic cog body + circular arrow.
+  automation: [
+    'M 12 5 C 15.9 5 19 8.1 19 12 C 19 15.9 15.9 19 12 19 C 8.1 19 5 15.9 5 12',
+    'M 5 12 L 7 10 M 5 12 L 7 14',
+    'M 12 5 L 12 3 M 19 12 L 21 12 M 12 19 L 12 21',
+    'M 12 9 C 13.7 9 15 10.3 15 12 C 15 13.7 13.7 15 12 15 C 10.3 15 9 13.7 9 12 C 9 10.3 10.3 9 12 9 Z',
+  ],
+};
+
+let updated = 0;
+let skipped = 0;
+for (const [name, paths] of Object.entries(replacements)) {
+  if (!data[name]) {
+    console.warn('skip (missing): ' + name);
+    skipped++;
+    continue;
+  }
+  data[name].paths = paths;
+  data[name].stroke = true;
+  delete data[name].circles;
+  delete data[name].lines;
+  updated++;
+}
+
+writeFileSync(dataPath, JSON.stringify(data, null, 2) + '\n', 'utf8');
+console.log('Updated ' + updated + ' icons (' + skipped + ' skipped).');
